@@ -52,8 +52,11 @@
 		<!-- Admin Main File Copy Section -->
 		<filename>index.html</filename>
 		<filename>tsj.php</filename>
+		<folder>controllers</folder>
+		<folder>models</folder>
 		<!-- SQL files section -->
 		<folder>sql</folder>
+		<folder>views</folder>
 		</files>
 		<languages folder="admin">
 			<language tag="ru-RU">language/ru-RU/ru-RU.com_tsj.ini</language>
