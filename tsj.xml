@@ -1,67 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5.0" method="upgrade">
- 
-	<name>com_tsj</name>
-	<!-- The following elements are optional and free of formatting constraints -->
-	<creationDate>September 2012</creationDate>
-	<author>RSA</author>
-	<authorEmail>rsa_m@mail.ru</authorEmail>
-	<authorUrl>http://tsj47.org</authorUrl>
-	<copyright>Copyright(c) ТСЖ "Южный,47" 2012</copyright>
-	<license>GNU/GPLv3</license>
-	<!-- The version string is recorded in the components table -->
-	<version>0.0.4</version>
-	<!-- The description is optional and defaults to the name -->
-	<description>tsj</description>
- 
-	<update> <!-- Runs on update; New in 2.5 -->
-		<schemas>
-		<schemapath type="mysql">sql/updates/mysql</schemapath>
-		</schemas>
-	</update>
- 
-	<!-- Site Main File Copy Section -->
-	<!-- Note the folder attribute: This attribute describes the folder
-	to copy FROM in the package to install therefore files copied
-	in this section are copied from /site/ in the package -->
-	<files folder="site">
-		<filename>index.html</filename>
-		<filename>tsj.php</filename>
-		<filename>controller.php</filename>
-		<folder>views</folder>
-		<folder>models</folder>
-		<!-- language files section -->
-		<folder>language</folder>
-	</files>
- 
-	<administration>
-		<!-- Administration Menu Section -->
-		<menu>COM_TSJ_MENU</menu>
-			<submenu>
-				<menu link="option=com_tsj&amp;view=water" img=""
-					alt="">COM_TSJ_SUBMENU_WATER</menu>
-				<menu link="option=com_tsj&amp;view=water" img=""
-					alt="">COM_TSJ_SUBMENU_PLATEJKA</menu>
-			</submenu>
-			
-		<!-- Administration Main File Copy Section -->
-		<!-- Note the folder attribute: This attribute describes the folder
-		to copy FROM in the package to install therefore files copied
-		in this section are copied from /admin/ in the package -->
-		<files folder="admin">
-		<!-- Admin Main File Copy Section -->
-		<filename>index.html</filename>
-		<filename>tsj.php</filename>
-		<folder>controllers</folder>
-		<folder>models</folder>
-		<!-- SQL files section -->
-		<folder>sql</folder>
-		<folder>views</folder>
-		</files>
-		<languages folder="admin">
-			<language tag="ru-RU">language/ru-RU/ru-RU.com_tsj.ini</language>
-			<language tag="ru-RU">language/ru-RU/ru-RU.com_tsj.sys.ini</language>
-		</languages>
-	</administration>
+    
+   <name>com_tsj</name>
+   <!-- The following elements are optional and free of formatting constraints -->
+   <creationDate>September 2012</creationDate>
+   <author>RSA</author>
+   <authorEmail>rsa_m@mail.ru</authorEmail>
+   <authorUrl>http://tsj47.ru</authorUrl>
+   <copyright>Copyright (c) RSA 2012</copyright>
+   <license>GNE/GPL3</license>
+   <!-- The version string is recorded in the components table -->
+   <version>0.0.7</version>
+   <!-- The description is optional and defaults to the name -->
+   <description>COM_TSJ_DESCRIPTION</description>
+   
+   <install> <!-- Runs on install -->
+      <sql>
+         <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+      </sql>
+   </install>
+    
+   <uninstall> <!-- Runs on uninstall -->
+      <sql>
+         <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+      </sql>
+   </uninstall>
+
+   <update> <!-- Runs on update; New in 2.5 -->
+      <schemas>
+         <schemapath type="mysql">sql/updates/mysql</schemapath>
+      </schemas>
+   </update>
+    
+   <!-- Site Main File Copy Section -->
+   <!-- Note the folder attribute: This attribute describes the folder
+   to copy FROM in the package to install therefore files copied
+   in this section are copied from /site/ in the package -->
+   <files folder="site">
+      <filename>index.html</filename>
+      <filename>tsj.php</filename>
+      <filename>controller.php</filename>
+      <folder>models</folder>
+      <folder>views</folder>
+      <folder>language</folder>
+   </files>
+    
+   <media destination="com_tsj" folder="media">
+      <filename>index.html</filename>
+      <folder>images</folder>
+   </media>
+
+   <administration>
+      <!-- Administration Menu Section -->
+      <menu link="option=com_tsj&amp;view=tsjs" img="../media/com_tsj/images/jkx16.png"
+			alt="">COM_TSJ_MENU</menu>
+      <submenu>
+         <menu link="option=com_tsj&amp;view=waters" img="../media/com_tsj/images/water16.png"
+            alt="">COM_TSJ_SUBMENU_WATER</menu>
+			<menu link="option=com_tsj&amp;view=gazs" img="../media/com_tsj/images/gaz16.png"
+				alt="">COM_TSJ_SUBMENU_GAZ</menu>
+         <menu link="option=com_tsj&amp;view=electros" img="../media/com_tsj/images/el16.png"
+				alt="">COM_TSJ_SUBMENU_ELECTRO</menu>
+         <menu link="option=com_tsj&amp;view=requests" img="../media/com_tsj/images/request16.png"
+				alt="">COM_TSJ_SUBMENU_REQUEST</menu>
+         <menu link="option=com_tsj&amp;view=hscounters" img="../media/com_tsj/images/hsc16.png"
+				alt="">COM_TSJ_SUBMENU_HSCOUNTER</menu>
+         <menu link="option=com_tsj&amp;view=tarifs" img="../media/com_tsj/images/tarif16.png"
+				alt="">COM_TSJ_SUBMENU_TARIF</menu>
+         <menu link="option=com_tsj&amp;view=payments" img="../media/com_tsj/images/payments16.png"
+				alt="">COM_TSJ_SUBMENU_PAYMENT</menu>
+		</submenu>
+        
+      <!-- Administration Main File Copy Section -->
+      <!-- Note the folder attribute: This attribute describes the folder
+      to copy FROM in the package to install therefore files copied
+      in this section are copied from /admin/ in the package -->
+      <files folder="admin">
+         <!-- Admin Main File Copy Section -->
+         <filename>index.html</filename>
+         <filename>tsj.php</filename>
+         <filename>controller.php</filename>
+         <!-- views files section -->
+         <folder>views</folder>
+         <!-- SQL files section -->
+         <folder>sql</folder>
+         <!-- tables files section -->
+			<folder>tables</folder>
+			<!-- models files section -->
+			<folder>models</folder>
+         <!-- controllers files section -->
+         <folder>controllers</folder>
+      </files>
+        
+      <languages folder="admin">
+         <language tag="en-GB">language/en-GB/en-GB.com_tsj.ini</language>
+         <language tag="en-GB">language/en-GB/en-GB.com_tsj.sys.ini</language>
+         <language tag="ru-RU">language/ru-RU/ru-RU.com_tsj.ini</language>
+         <language tag="ru-RU">language/ru-RU/ru-RU.com_tsj.sys.ini</language>
+      </languages>
+   </administration>
  
 </extension>

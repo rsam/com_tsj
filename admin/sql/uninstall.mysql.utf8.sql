@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS `#__tsj_config`;
+DROP TABLE IF EXISTS `#__tsj_city`;
+DROP TABLE IF EXISTS `#__tsj_street`;
+DROP TABLE IF EXISTS `#__tsj_address`;
+DROP TABLE IF EXISTS `#__tsj_office`;
+DROP TABLE IF EXISTS `#__tsj_account`;
+DROP TABLE IF EXISTS `#__tsj_water_counter`;
+DROP TABLE IF EXISTS `#__tsj_water`;
+DROP TABLE IF EXISTS `#__tsj_gaz_counter`;
+DROP TABLE IF EXISTS `#__tsj_gaz`;
+DROP TABLE IF EXISTS `#__tsj_electro_counter`;
+DROP TABLE IF EXISTS `#__tsj_electro`;

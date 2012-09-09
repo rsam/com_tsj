@@ -3,4 +3,18 @@
 	<layout title="COM_TSJ_TSJ_VIEW_DEFAULT_TITLE">
 		<message>COM_TSJ_TSJ_VIEW_DEFAULT_DESC</message>
 	</layout>
+	<fields
+		name="request"
+		addfieldpath="/administrator/components/com_tsj/models/fields"
+	>
+		<fieldset name="request">
+			<field
+				name="id"
+				type="tsj"
+				label="COM_TSJ_TSJ_FIELD_GREETING_LABEL"
+				description="COM_TSJ_TSJ_FIELD_GREETING_DESC"
+			/>
+		</fieldset>
+	</fields>
 </metadata>
+
