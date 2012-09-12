@@ -36,7 +36,7 @@ class TSJModelTSJ extends JModelItem
 	{
 		if (!isset($this->msg)) 
 		{
-			$id = JRequest::getInt('id', 1);
+			$id = JRequest::getInt('city_id', 1);
 			// Get a TableTSJ instance
 			$table = $this->getTable();
  
@@ -44,7 +44,7 @@ class TSJModelTSJ extends JModelItem
 			$table->load($id);
  
 			// Assign the message
-			$this->msg = $table->name;
+			$this->msg = $table->city;
 		}
 		return $this->msg;
 	}

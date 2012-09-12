@@ -27,8 +27,8 @@ class JFormFieldTSJ extends JFormFieldList
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('id,name');
-		$query->from('#__tsj_water');
+		$query->select('city_id,city');
+		$query->from('#__tsj_city');
 		$db->setQuery((string)$query);
 		$messages = $db->loadObjectList();
 		$options = array();
@@ -36,7 +36,7 @@ class JFormFieldTSJ extends JFormFieldList
 		{
 			foreach($messages as $message) 
 			{
-				$options[] = JHtml::_('select.option', $message->id, $message->name);
+				$options[] = JHtml::_('select.option', $message->city_id, $message->city);
 			}
 		}
 		$options = array_merge(parent::getOptions(), $options);

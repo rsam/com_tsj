@@ -6,15 +6,15 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.controlleradmin');
  
 /**
- * Main Controller
+ * Tarifs Controller
  */
-class TSJControllerTSJs extends JControllerAdmin
+class TSJControllerTarifs extends JControllerAdmin
 {
 	/**
 	 * Proxy for getModel.
 	 * @since	2.5
 	 */
-	public function getModel($name = 'TSJs', $prefix = 'TSJModel') 
+	public function getModel($name = 'Tarifs', $prefix = 'TSJModel') 
 	{
 		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
 		return $model;

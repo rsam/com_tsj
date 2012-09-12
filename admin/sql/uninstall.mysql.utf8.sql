@@ -10,3 +10,4 @@ DROP TABLE IF EXISTS `#__tsj_gaz_counter`;
 DROP TABLE IF EXISTS `#__tsj_gaz`;
 DROP TABLE IF EXISTS `#__tsj_electro_counter`;
 DROP TABLE IF EXISTS `#__tsj_electro`;
+DROP TABLE IF EXISTS `#__tsj_tarif`;

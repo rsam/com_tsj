@@ -6,7 +6,7 @@ jimport('joomla.application.component.modellist');
 /**
  * TSJList Model
  */
-class TSJModelWaters extends JModelList
+class TSJModelElectros extends JModelList
 {
 	/**
 	 * Method to build an SQL query to load the list data.
@@ -16,12 +16,13 @@ class TSJModelWaters extends JModelList
 	protected function getListQuery()
 	{
 		// Create a new query object.		
-		$db = JFactory::getDBO();
+/*		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		// Select some fields
-		$query->select('water_id,water_counter_id');
+		$query->select('electro_id,electro_counter_id');
 		// From the hello table
-		$query->from('#__tsj_water');
+		$query->from('#__tsj_electro');*/
+        $query = 'electro';
 		return $query;
 	}
 }

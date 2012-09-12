@@ -4,11 +4,11 @@
 >
 	<fieldset>
 		<field
-			name="id"
+			name="city_id"
 			type="hidden"
 		/>
 		<field
-			name="name"
+			name="city"
 			type="text"
 			label="COM_TSJ_TSJ_NAME_LABEL"
 			description="COM_TSJ_TSJ_NAME_DESC"

@@ -9,10 +9,10 @@
 	>
 		<fieldset name="request">
 			<field
-				name="id"
+				name="city_id"
 				type="tsj"
-				label="COM_TSJ_TSJ_FIELD_GREETING_LABEL"
-				description="COM_TSJ_TSJ_FIELD_GREETING_DESC"
+				label="COM_TSJ_TSJ_FIELD_NAME_LABEL"
+				description="COM_TSJ_TSJ_FIELD_NAME_DESC"
 			/>
 		</fieldset>
 	</fields>

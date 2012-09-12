@@ -19,9 +19,9 @@ class TSJModelTSJs extends JModelList
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		// Select some fields
-		$query->select('id,name');
+		$query->select('city_id,city');
 		// From the hello table
-		$query->from('#__tsj_water');
+		$query->from('#__tsj_city');
 		return $query;
 	}
 }

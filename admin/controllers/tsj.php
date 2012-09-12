@@ -6,7 +6,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.controllerform');
  
 /**
- * HelloWorld Controller
+ * Empty Controller
  */
 class TSJControllerTSJ extends JControllerForm
 {

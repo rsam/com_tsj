@@ -63,7 +63,7 @@
 				alt="">COM_TSJ_SUBMENU_ELECTRO</menu>
          <menu link="option=com_tsj&amp;view=requests" img="../media/com_tsj/images/request16.png"
 				alt="">COM_TSJ_SUBMENU_REQUEST</menu>
-         <menu link="option=com_tsj&amp;view=hscounters" img="../media/com_tsj/images/hsc16.png"
+         <menu link="option=com_tsj&amp;view=hscs" img="../media/com_tsj/images/hsc16.png"
 				alt="">COM_TSJ_SUBMENU_HSCOUNTER</menu>
          <menu link="option=com_tsj&amp;view=tarifs" img="../media/com_tsj/images/tarif16.png"
 				alt="">COM_TSJ_SUBMENU_TARIF</menu>

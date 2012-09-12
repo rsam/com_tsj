@@ -17,6 +17,6 @@ class TSJTableTSJ extends JTable
 	 */
 	function __construct(&$db) 
 	{
-		parent::__construct('#__tsj_water', 'id', $db);
+		parent::__construct('#__tsj_city', 'city_id', $db);
 	}
 }

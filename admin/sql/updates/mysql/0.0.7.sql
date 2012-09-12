@@ -1,5 +1,7 @@
 DROP TABLE IF EXISTS `#__tsj_config`;
 
+/* User Account System*/
+/* User Account System: City Table*/
 DROP TABLE IF EXISTS `#__tsj_city`;
 CREATE TABLE `#__tsj_city` (
   `city_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
@@ -7,6 +9,7 @@ CREATE TABLE `#__tsj_city` (
    PRIMARY KEY  (`city_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+/* User Account System: Street Table*/
 DROP TABLE IF EXISTS `#__tsj_street`;
 CREATE TABLE `#__tsj_street` (
   `street_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
@@ -14,6 +17,7 @@ CREATE TABLE `#__tsj_street` (
    PRIMARY KEY  (`street_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+/* User Account System: Adress Table*/
 DROP TABLE IF EXISTS `#__tsj_address`;
 CREATE TABLE `#__tsj_address` (
   `address_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
@@ -24,6 +28,7 @@ CREATE TABLE `#__tsj_address` (
    PRIMARY KEY  (`address_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+/* User Account System: Office Table*/
 DROP TABLE IF EXISTS `#__tsj_office`;
 CREATE TABLE `#__tsj_office` (
   `office_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
@@ -33,41 +38,41 @@ CREATE TABLE `#__tsj_office` (
    PRIMARY KEY  (`office_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+/* User Account System: Account Table*/
 DROP TABLE IF EXISTS `#__tsj_account`;
 CREATE TABLE `#__tsj_account` (
   `account_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `office_id` INT(11) NOT NULL COMMENT 'FK to #__tsj_office.office_id',
   `username` VARCHAR(150) NOT NULL COMMENT 'FK to #__users.username',
-  `cat` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Category',
-  `lic` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'license',
+  `cat` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Category',
+  `lic` TINYINT(1) NOT NULL DEFAULT '0' COMMENT 'license',
    PRIMARY KEY  (`account_id`),
    UNIQUE INDEX `office_id` (`office_id`),
    UNIQUE INDEX `username` (`username`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+/* Water Counters System */
+/* Water Counters System: Water Counters Table */
 DROP TABLE IF EXISTS `#__tsj_water_counter`;
 CREATE TABLE `#__tsj_water_counter` (
   `water_counter_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
-  `username` VARCHAR(150) NOT NULL COMMENT 'FK to #__users.username',
-  `counts` tinyint(1) UNSIGNED NOT NULL DEFAULT '1' COMMENT 'Count of point with water-counters',
-  `name_1` VARCHAR(50) NULL COMMENT 'Name of point 1',
-  `sn_hot_1` VARCHAR(50) NULL COMMENT 'SN counter for hot water',
-  `date_hot_1` DATE NULL COMMENT 'Check date for hot water counter',
-  `sn_cold_1` VARCHAR(50) NULL COMMENT 'SN counter for cold water',
-  `date_cold_1` DATE NULL COMMENT 'Check date for cold water counter',
-  `name_2` VARCHAR(50) NULL COMMENT 'Name of point 2',
-  `sn_hot_2` VARCHAR(50) NULL COMMENT 'SN counter for hot water',
-  `date_hot_2` DATE NULL COMMENT 'Check date for hot water counter',
-  `sn_cold_2` VARCHAR(50) NULL COMMENT 'SN counter for cold water',
-  `date_cold_2` DATE NULL COMMENT 'Check date for cold water counter',
-  `name_3` VARCHAR(50) NULL COMMENT 'Name of point 3',
-  `sn_hot_3` VARCHAR(50) NULL COMMENT 'SN counter for hot water',
-  `date_hot_3` DATE NULL COMMENT 'Check date for hot water counter',
-  `sn_cold_3` VARCHAR(50) NULL COMMENT 'SN counter for cold water',
-  `date_cold_3` DATE NULL COMMENT 'Check date for cold water counter',
+  `serialnum` VARCHAR(50) NULL COMMENT 'SN counter',
+  `ctype` CHAR(1) NOT NULL COMMENT 'Type: c-cold or h-hot',
    PRIMARY KEY  (`water_counter_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+/* Water Counters System: Office Counters Table */
+DROP TABLE IF EXISTS `#__tsj_office_counter`;
+CREATE TABLE `#__tsj_office_counter` (
+  `office_counter_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+  `office_id` INT(11) NOT NULL COMMENT 'FK to #__tsj_office.office_id',
+  `counts` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' COMMENT 'Count of point with water-counters',
+  `water_counter_id` VARCHAR(50) NULL COMMENT 'Счетчик',
+   PRIMARY KEY  (`office_counter_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/* Water Counters System: Water Table */
 DROP TABLE IF EXISTS `#__tsj_water`;
 CREATE TABLE `#__tsj_water` (
   `water_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
@@ -78,12 +83,28 @@ CREATE TABLE `#__tsj_water` (
   `data_cold_2` DOUBLE NULL COMMENT 'Data cold water counter m3',
   `data_hot_3` DOUBLE NULL COMMENT 'Data hot water counter m3',
   `data_cold_3` DOUBLE NULL COMMENT 'Data cold water counter m3',
-  `date_in` DATE NULL  COMMENT 'Date of delivery',
+  `date_in` DATE NULL COMMENT 'Date of delivery',
    PRIMARY KEY  (`water_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+/* Gaz Counters System */
 DROP TABLE IF EXISTS `#__tsj_gaz_counter`;
 DROP TABLE IF EXISTS `#__tsj_gaz`;
 
+/* Electrocity Counters System */
 DROP TABLE IF EXISTS `#__tsj_electro_counter`;
 DROP TABLE IF EXISTS `#__tsj_electro`;
+
+/* Tarifs System */
+/* Tarifs System: Tarifs Table */
+DROP TABLE IF EXISTS `#__tsj_tarif`;
+CREATE TABLE `#__tsj_tarif` (
+  `tarif_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+  `tarif` DATE NOT NULL COMMENT 'Tarif date',
+  `tarif_name` VARCHAR(20) NULL COMMENT 'Tarif name',
+  `tarif` DOUBLE NULL  COMMENT 'Main Tarif',
+  `tarif_1` DOUBLE NULL  COMMENT 'Tarif category 1',
+  `tarif_2` DOUBLE NULL  COMMENT 'Tarif category 2',
+   PRIMARY KEY  (`tarif_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
