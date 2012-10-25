@@ -11,14 +11,14 @@ jimport('joomla.application.component.view');
 class TSJViewTSJ extends JView
 {
 	/**
-	 * display method of Hello view
+	 * display method of TSJ view
 	 * @return void
 	 */
 	public function display($tpl = null) 
 	{
 		// get the Data
 		$form = $this->get('Form');
-		$item = $this->get('Item');
+		//$item = $this->get('Item');
 		$script = $this->get('Script');
  
 		// Check for errors.
@@ -29,7 +29,7 @@ class TSJViewTSJ extends JView
 		}
 		// Assign the Data
 		$this->form = $form;
-		$this->item = $item;
+		//$this->item = $item;
 		$this->script = $script;
  
 		// Set the toolbar
@@ -54,6 +54,7 @@ class TSJViewTSJ extends JView
 		JToolBarHelper::save('tsj.save');
 		JToolBarHelper::cancel('tsh.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 	}
+	
 	/**
 	 * Method to set up the document properties
 	 *

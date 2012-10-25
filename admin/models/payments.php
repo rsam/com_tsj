@@ -20,7 +20,7 @@ class TSJModelPayments extends JModelList
 		$query = $db->getQuery(true);
 		// Select some fields
 		$query->select('payment_id,payment_name');
-		// From the hello table
+		// From the table
 		$query->from('#__tsj_payment');*/
         $query = 'payment';
 		return $query;

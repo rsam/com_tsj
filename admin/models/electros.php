@@ -20,7 +20,7 @@ class TSJModelElectros extends JModelList
 		$query = $db->getQuery(true);
 		// Select some fields
 		$query->select('electro_id,electro_counter_id');
-		// From the hello table
+		// From the table
 		$query->from('#__tsj_electro');*/
         $query = 'electro';
 		return $query;

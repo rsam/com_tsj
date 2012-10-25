@@ -7,10 +7,10 @@
    <author>RSA</author>
    <authorEmail>rsa_m@mail.ru</authorEmail>
    <authorUrl>http://tsj47.ru</authorUrl>
-   <copyright>Copyright (c) RSA 2012</copyright>
+   <copyright>Copyright RSAm 2012</copyright>
    <license>GNE/GPL3</license>
    <!-- The version string is recorded in the components table -->
-   <version>0.0.7</version>
+   <version>0.1.0</version>
    <!-- The description is optional and defaults to the name -->
    <description>COM_TSJ_DESCRIPTION</description>
    
@@ -40,6 +40,7 @@
       <filename>index.html</filename>
       <filename>tsj.php</filename>
       <filename>controller.php</filename>
+      <folder>controllers</folder>
       <folder>models</folder>
       <folder>views</folder>
       <folder>language</folder>
@@ -80,6 +81,7 @@
          <filename>index.html</filename>
          <filename>tsj.php</filename>
          <filename>controller.php</filename>
+         <filename>config.xml</filename>
          <!-- views files section -->
          <folder>views</folder>
          <!-- SQL files section -->

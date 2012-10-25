@@ -20,7 +20,7 @@ class TSJModelTarifs extends JModelList
 		$query = $db->getQuery(true);
 		// Select some fields
 		$query->select('tarif_id,tarif_name');
-		// From the hello table
+		// From the table
 		$query->from('#__tsj_tarif');*/
         $query = 'tarif';
 		return $query;

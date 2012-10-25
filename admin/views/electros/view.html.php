@@ -31,7 +31,7 @@ class TSJViewElectros extends JView
 //		$this->pagination = $pagination;
  
 		// Set the toolbar
-		$this->addToolBar();
+		//$this->addToolBar();
  
     // Display the template
 		parent::display($tpl);

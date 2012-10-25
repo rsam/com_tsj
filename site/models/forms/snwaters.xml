@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="snwaters">
+	<fieldset name="snwaters">
+
+		<field name="name1" type="text" description="" label="" id="name1"
+			required="true" maxlength="30" size="30" />
+		<field name="sncwater1" type="text" description="" label=""
+			id="sncwater1" required="true" maxlength="20" size="20" />
+		<field name="snhwater1" type="text" description="" label=""
+			id="snhwater1" required="true" maxlength="20" size="20" />
+		<field name="datecwater1" type="calendar" description="" label=""
+			id="datecwater1" format="%d-%m-%Y" />
+		<field name="datehwater1" type="calendar" description="" label=""
+			id="datehwater1" format="%d-%m-%Y" />
+
+		<field name="name2" type="text" description="" label="" id="name2"
+			required="false" maxlength="30" size="30" />
+		<field name="sncwater2" type="text" description="" label=""
+			id="sncwater2" required="false" maxlength="20" size="20" />
+		<field name="snhwater2" type="text" description="" label=""
+			id="snhwater2" required="false" maxlength="20" size="20" />
+		<field name="datecwater2" type="calendar" description="" label=""
+			id="datecwater2" format="%d-%m-%Y" />
+		<field name="datehwater2" type="calendar" description="" label=""
+			id="datehwater2" format="%d-%m-%Y" />
+
+		<field name="name3" type="text" description="" label="" id="name3"
+			required="false" maxlength="30" size="30" />
+		<field name="sncwater3" type="text" description="" label=""
+			id="sncwater3" required="false" maxlength="20" size="20" />
+		<field name="snhwater3" type="text" description="" label=""
+			id="snhwater3" required="false" maxlength="20" size="20" />
+		<field name="datecwater3" type="calendar" description="" label=""
+			id="datecwater3" format="%d-%m-%Y" />
+		<field name="datehwater3" type="calendar" description="" label=""
+			id="datehwater3" format="%d-%m-%Y" />
+	</fieldset>
+</form>

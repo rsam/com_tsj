@@ -1,15 +1,15 @@
 <?php
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
- 
-// import joomla controller library
+
+// Подключаем класс контроллера
 jimport('joomla.application.component.controller');
- 
-// Get an instance of the controller prefixed by TSJ
+
+// Создаем экземпляр контроллера по умолчанию TSJ
 $controller = JController::getInstance('TSJ');
- 
-// Perform the Request task
+
+// Контроллер выполняет задачу task переданную ему через переменную task в адресной строке
 $controller->execute(JRequest::getCmd('task'));
- 
-// Redirect if set by the controller
+
+// Передаем управление контроллеру
 $controller->redirect();

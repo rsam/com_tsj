@@ -20,7 +20,7 @@ class TSJModelHSCs extends JModelList
 		$query = $db->getQuery(true);
 		// Select some fields
 		$query->select('hsc_id,hsc_counter_id');
-		// From the hello table
+		// From the table
 		$query->from('#__tsj_hsc');*/
         $query = 'hsc';
 		return $query;

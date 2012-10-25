@@ -20,7 +20,7 @@ class TSJModelTSJs extends JModelList
 		$query = $db->getQuery(true);
 		// Select some fields
 		$query->select('city_id,city');
-		// From the hello table
+		// From the table
 		$query->from('#__tsj_city');
 		return $query;
 	}

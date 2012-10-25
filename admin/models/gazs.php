@@ -20,7 +20,7 @@ class TSJModelGazs extends JModelList
 		$query = $db->getQuery(true);
 		// Select some fields
 		$query->select('gaz_id,gaz_counter_id');
-		// From the hello table
+		// From the table
 		$query->from('#__tsj_gaz');
         //$query = 'gaz';
 		return $query;

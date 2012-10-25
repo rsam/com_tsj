@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form name="waters">
+	<fieldset name="data">
+		<field name="cwater1" type="text" description="" label=""
+			required="true" maxlength="10" size="10" />
+		<field name="hwater1" type="text" description="" label=""
+			required="true" maxlength="10" size="10" />
+		<field name="cwater2" type="text" description="" label=""
+			required="false" maxlength="10" size="10" />
+		<field name="hwater2" type="text" description="" label=""
+			required="false" maxlength="10" size="10" />
+		<field name="cwater3" type="text" description="" label=""
+			required="false" maxlength="10" size="10" />
+		<field name="hwater3" type="text" description="" label=""
+			required="false" maxlength="10" size="10" />
+
+	</fieldset>
+</form>
