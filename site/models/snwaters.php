@@ -90,14 +90,14 @@ class TSJModelSNWaters extends JModelForm
                         t1.water_name_3, DATE_FORMAT( t1.date_in_hot_p3, '%d-%m-%Y' ) AS date_in_hot_pp3, t1.ser_num_hot_p3,
                                          DATE_FORMAT( t1.date_in_cold_p3, '%d-%m-%Y' ) AS date_in_cold_pp3, t1.ser_num_cold_p3
                  FROM #__tsj_water_office t1
-                 INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username =" . $this->username .
+                 INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username ='" . $this->username . "'" .
                " GROUP BY t1.office_counter_id;";
 
          $this->db->setQuery( $sql );
          $row =& $this->db->loadObjectList();
 
          if (!$result = $this->db->query()) {
-            echo $this->db->stderr();
+            //echo $this->db->stderr();
             return false;
          }
          
@@ -163,13 +163,14 @@ class TSJModelSNWaters extends JModelForm
       // get user office id
       $sql = "SELECT office_id
               FROM #__tsj_account
-              WHERE username =" . $this->username . ";";
+              WHERE username ='" . $this->username . "';";
 
       $this->db->setQuery( $sql );
       $row =& $this->db->loadObject();
 
       if (!$result = $this->db->query()) {
-         echo $this->db->stderr();
+         echo 'Не заполнены дополнительные базы данных. Обратитесь к администратору.';
+         //echo $this->db->stderr();
          return false;
       }
       
@@ -182,14 +183,14 @@ class TSJModelSNWaters extends JModelForm
                              t1.water_name_2, t1.date_in_hot_p2, t1.ser_num_hot_p2, t1.date_in_cold_p2, t1.ser_num_cold_p2,
                              t1.water_name_3, t1.date_in_hot_p3, t1.ser_num_hot_p3, t1.date_in_cold_p3, t1.ser_num_cold_p3
                     FROM #__tsj_water_office t1
-                    INNER JOIN t4sj7_tsj_account t2 ON t1.office_id = t2.office_id AND t2.username =" . $this->username . 
+                    INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username ='" . $this->username . "'" .
                     " GROUP BY t1.office_counter_id;";
 
       $this->db->setQuery( $sql );
       $row =& $this->db->loadObjectList();
 
       if (!$result = $this->db->query()) {
-         echo $this->db->stderr();
+         //echo $this->db->stderr();
          return false;
       }
       

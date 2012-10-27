@@ -13,8 +13,8 @@ function check_form(value)
 	   document.getElementById('pdh2').style.display="";
 	   document.getElementById('psnc2').style.display="";
 	   document.getElementById('pdc2').style.display="";
-	   document.snwaters.snwaters_name2.disabled = false;
-	   document.snwaters.snwaters_name2.style.display="";
+	   document.snwaters.snwaters_wname2.disabled = false;
+	   document.snwaters.snwaters_wname2.style.display="";
 	   document.snwaters.snwaters_sncwater2.disabled = false;
 	   document.snwaters.snwaters_sncwater2.style.display="";
       document.snwaters.snwaters_snhwater2.disabled = false;
@@ -41,8 +41,8 @@ function check_form(value)
       document.snwaters.snwaters_datecwater3.style.display="none";
       document.snwaters.snwaters_datehwater3.disabled = true;
       document.snwaters.snwaters_datehwater3.style.display="none";
-      document.snwaters.snwaters_name3.disabled = true;
-      document.snwaters.snwaters_name3.style.display="none";
+      document.snwaters.snwaters_wname3.disabled = true;
+      document.snwaters.snwaters_wname3.style.display="none";
    }
    else if(value == 3)
    {
@@ -65,8 +65,8 @@ function check_form(value)
       document.snwaters.snwaters_datehwater2.style.display="";
     	document.snwaters.snwaters_datehwater2.disabled = false;
     	document.snwaters.snwaters_datehwater2.style.display="";
-      document.snwaters.snwaters_name2.disabled = false;
-      document.snwaters.snwaters_name2.style.display="";
+      document.snwaters.snwaters_wname2.disabled = false;
+      document.snwaters.snwaters_wname2.style.display="";
       
       document.getElementById('th3').style.display="";
       document.getElementById('snh3').style.display="";
@@ -85,8 +85,8 @@ function check_form(value)
       document.snwaters.snwaters_datecwater3.style.display="";
       document.snwaters.snwaters_datehwater3.disabled = false;
       document.snwaters.snwaters_datehwater3.style.display="";
-      document.snwaters.snwaters_name3.disabled = false;
-      document.snwaters.snwaters_name3.style.display="";
+      document.snwaters.snwaters_wname3.disabled = false;
+      document.snwaters.snwaters_wname3.style.display="";
    }
    else
    {
@@ -107,8 +107,8 @@ function check_form(value)
 	   document.snwaters.snwaters_datecwater2.style.display="none";
 	   document.snwaters.snwaters_datehwater2.disabled = true;
 	   document.snwaters.snwaters_datehwater2.style.display="none";
-      document.snwaters.snwaters_name2.disabled = true;
-      document.snwaters.snwaters_name2.style.display="none";
+      document.snwaters.snwaters_wname2.disabled = true;
+      document.snwaters.snwaters_wname2.style.display="none";
 
       document.getElementById('th3').style.display="none";
       document.getElementById('snh3').style.display="none";
@@ -127,8 +127,8 @@ function check_form(value)
       document.snwaters.snwaters_datecwater3.style.display="none";
       document.snwaters.snwaters_datehwater3.disabled = true;
       document.snwaters.snwaters_datehwater3.style.display="none";
-      document.snwaters.snwaters_name3.disabled = true;
-      document.snwaters.snwaters_name3.style.display="none";
+      document.snwaters.snwaters_wname3.disabled = true;
+      document.snwaters.snwaters_wname3.style.display="none";
    }
 }
 
@@ -224,11 +224,10 @@ JHtml::_('behavior.formvalidation');
 	$counts = 3;
 	for($i = 1; $i <= $counts; $i++)
 	{
-	   ?>
+	?>
 
 		<tr>
-			<th align=left id="th<?=$i ?>">Место установки <?=$i ?>: <?php echo $this->form->getInput('name'.$i, null, $name[$i+1]); ?></th>
-			<th></th>
+			<th align=left id="th<?=$i ?>">Место установки <?=$i ?>: <?php echo $this->form->getInput('wname'.$i, null, $name[$i]); ?></th>
 			<th></th>
 		</tr>
 		<tr>
@@ -276,7 +275,7 @@ JHtml::_('behavior.formvalidation');
 	</form>
 	<br>
    	<?php
-   	echo "<script>check_form($row->counts);</script>";
+   	echo "<script>check_form(" . $row->counts . ");</script>";
    	?>
    </td>
 </tr>

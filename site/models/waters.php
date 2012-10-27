@@ -99,7 +99,7 @@ class TSJModelWaters extends JModelForm
                           t1.water_name_3, t1.date_in_hot_p3, t1.ser_num_hot_p3, t3.data_hot_c3, t1.date_in_cold_p3, t1.ser_num_cold_p3, t3.data_cold_c3,
                           t3.date_in
                   FROM #__tsj_water_office t1
-                  INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username =" . $this->username . 
+                  INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username ='" . $this->username . "'" .
                 " INNER JOIN #__tsj_water_data t3 ON t1.office_counter_id = t3.office_counter_id
                   GROUP BY t3.date_in;";
 
@@ -109,7 +109,7 @@ class TSJModelWaters extends JModelForm
          
          // Проверка на ошибки
          if (!$result = $this->db->query()) {
-            echo $this->db->stderr();
+            //echo $this->db->stderr();
             return false;
          }
          
@@ -144,7 +144,7 @@ class TSJModelWaters extends JModelForm
                         t1.water_name_3, DATE_FORMAT( t1.date_in_hot_p3, '%d-%m-%Y' ) AS date_in_hot_pp3, t1.ser_num_hot_p3,
                                          DATE_FORMAT( t1.date_in_cold_p3, '%d-%m-%Y' ) AS date_in_cold_pp3, t1.ser_num_cold_p3
                   FROM #__tsj_water_office t1
-                  INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username =" . $this->username .
+                  INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username ='" . $this->username . "'" .
                 " GROUP BY t1.office_counter_id DESC limit 1;";
 
          // Выполнение запроса в базу данных и получения списка строк соответствующих запросу row
@@ -155,7 +155,7 @@ class TSJModelWaters extends JModelForm
 
          // Проверка на ошибки
          if (!$result = $this->db->query()) {
-            echo $this->db->stderr();
+            //echo $this->db->stderr();
             return false;
          }
 
@@ -215,7 +215,7 @@ class TSJModelWaters extends JModelForm
                         t1.water_name_3, DATE_FORMAT( t1.date_in_hot_p3, '%d-%m-%Y' ) AS date_in_hot_pp3, t1.ser_num_hot_p3,
                                          DATE_FORMAT( t1.date_in_cold_p3, '%d-%m-%Y' ) AS date_in_cold_pp3, t1.ser_num_cold_p3
                FROM #__tsj_water_office t1
-               INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username =" . $this->username .
+               INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username ='" . $this->username . "'" .
              " GROUP BY t1.office_counter_id DESC limit 1;";
 
       
@@ -244,7 +244,7 @@ class TSJModelWaters extends JModelForm
                         t1.water_name_3, t1.date_in_hot_p3, t1.ser_num_hot_p3, t3.data_hot_c3, t1.date_in_cold_p3, t1.ser_num_cold_p3, t3.data_cold_c3,
                         t3.date_in
                FROM #__tsj_water_office t1
-               INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username =" . $this->username . 
+               INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username ='" . $this->username . "'" .
              " INNER JOIN #__tsj_water_data t3 ON t1.office_counter_id = t3.office_counter_id
                GROUP BY t3.date_in;";
 

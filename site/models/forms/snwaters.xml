@@ -2,8 +2,8 @@
 <form name="snwaters">
 	<fieldset name="snwaters">
 
-		<field name="name1" type="text" description="" label="" id="name1"
-			required="true" maxlength="30" size="30" />
+		<field name="wname1" type="text" description="" label="" id="wname1"
+         required="false" maxlength="30" size="30" />
 		<field name="sncwater1" type="text" description="" label=""
 			id="sncwater1" required="true" maxlength="20" size="20" />
 		<field name="snhwater1" type="text" description="" label=""
@@ -13,7 +13,7 @@
 		<field name="datehwater1" type="calendar" description="" label=""
 			id="datehwater1" format="%d-%m-%Y" />
 
-		<field name="name2" type="text" description="" label="" id="name2"
+		<field name="wname2" type="text" description="" label="" id="wname2"
 			required="false" maxlength="30" size="30" />
 		<field name="sncwater2" type="text" description="" label=""
 			id="sncwater2" required="false" maxlength="20" size="20" />
@@ -24,7 +24,7 @@
 		<field name="datehwater2" type="calendar" description="" label=""
 			id="datehwater2" format="%d-%m-%Y" />
 
-		<field name="name3" type="text" description="" label="" id="name3"
+		<field name="wname3" type="text" description="" label="" id="wname3"
 			required="false" maxlength="30" size="30" />
 		<field name="sncwater3" type="text" description="" label=""
 			id="sncwater3" required="false" maxlength="20" size="20" />
