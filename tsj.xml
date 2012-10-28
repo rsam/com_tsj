@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5.0" method="upgrade">
-    
+
    <name>com_tsj</name>
    <!-- The following elements are optional and free of formatting constraints -->
    <creationDate>September 2012</creationDate>
@@ -13,13 +13,13 @@
    <version>0.1.0</version>
    <!-- The description is optional and defaults to the name -->
    <description>COM_TSJ_DESCRIPTION</description>
-   
+
    <install> <!-- Runs on install -->
       <sql>
          <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
       </sql>
    </install>
-    
+
    <uninstall> <!-- Runs on uninstall -->
       <sql>
          <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
@@ -31,7 +31,7 @@
          <schemapath type="mysql">sql/updates/mysql</schemapath>
       </schemas>
    </update>
-    
+
    <!-- Site Main File Copy Section -->
    <!-- Note the folder attribute: This attribute describes the folder
    to copy FROM in the package to install therefore files copied
@@ -45,7 +45,7 @@
       <folder>views</folder>
       <folder>language</folder>
    </files>
-    
+
    <media destination="com_tsj" folder="media">
       <filename>index.html</filename>
       <folder>images</folder>
@@ -71,7 +71,7 @@
          <menu link="option=com_tsj&amp;view=payments" img="../media/com_tsj/images/payments16.png"
 				alt="">COM_TSJ_SUBMENU_PAYMENT</menu>
 		</submenu>
-        
+
       <!-- Administration Main File Copy Section -->
       <!-- Note the folder attribute: This attribute describes the folder
       to copy FROM in the package to install therefore files copied
@@ -93,7 +93,7 @@
          <!-- controllers files section -->
          <folder>controllers</folder>
       </files>
-        
+
       <languages folder="admin">
          <language tag="en-GB">language/en-GB/en-GB.com_tsj.ini</language>
          <language tag="en-GB">language/en-GB/en-GB.com_tsj.sys.ini</language>
@@ -101,5 +101,5 @@
          <language tag="ru-RU">language/ru-RU/ru-RU.com_tsj.sys.ini</language>
       </languages>
    </administration>
- 
+
 </extension>
