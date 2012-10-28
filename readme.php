@@ -3,7 +3,7 @@
 COPYRIGHT AND DISCLAIMER
 ------------------------
 TSJ Component is Mgt.Co & HOA solution for Joomla!
-Copyright (C) 2012  Shibin Roman (RSA_M)
+Copyright (C) 2012  Shibin Roman
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

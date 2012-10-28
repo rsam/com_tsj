@@ -4,11 +4,11 @@
    <name>com_tsj</name>
    <!-- The following elements are optional and free of formatting constraints -->
    <creationDate>September 2012</creationDate>
-   <author>RSA</author>
+   <author>Shibin Roman</author>
    <authorEmail>rsa_m@mail.ru</authorEmail>
    <authorUrl>http://tsj47.ru</authorUrl>
-   <copyright>Copyright RSAm 2012</copyright>
-   <license>GNE/GPL3</license>
+   <copyright>Copyright Shibin Roman 2012</copyright>
+   <license>GNU/GPL3</license>
    <!-- The version string is recorded in the components table -->
    <version>0.1.0</version>
    <!-- The description is optional and defaults to the name -->
