@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+	addrulepath="/administrator/components/com_tsj/models/rules"
+>
+	<fieldset>
+		<field
+			name="account_id"
+			type="hidden"
+		/>
+		<field
+			name="address_id"
+			type="Address"
+			label="address_id"
+			description="address_id"
+			size="1"
+			class="inputbox validate-name"
+			validate="account"
+			required="true"
+			default=""
+		/>
+      <field
+         name="user_id"
+         type="User"
+         label="user_id"
+         description="user_id"
+         size="80"
+         class="inputbox validate-name"
+         validate="account"
+         required="true"
+         default=""
+      />
+      <field
+         name="account_num"
+         type="text"
+         label="account_num"
+         description="account_num"
+         size="40"
+         class="inputbox validate-name"
+         validate="account"
+         required="true"
+         default=""
+      />
+      <field
+         name="tel"
+         type="text"
+         label="tel"
+         description="tel"
+         size="40"
+         class="inputbox validate-name"
+         validate="phone"
+         required="false"
+         default=""
+      />
+      <field
+         name="sq"
+         type="text"
+         label="sq"
+         description="sq"
+         size="40"
+         class="inputbox validate-name"
+         validate="account"
+         required="true"
+         default=""
+      />
+      <field
+         name="cat"
+         type="text"
+         label="cat"
+         description="cat"
+         size="1"
+         class="inputbox validate-name"
+         validate="account"
+         required="true"
+         default="0"
+      />
+     <field
+         name="lic"
+         type="checkbox"
+         label="lic"
+         description="lic"
+         value="1"
+      />
+	</fieldset>
+</form>

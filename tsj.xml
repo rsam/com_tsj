@@ -3,14 +3,14 @@
 
    <name>com_tsj</name>
    <!-- The following elements are optional and free of formatting constraints -->
-   <creationDate>September 2012</creationDate>
+   <creationDate>January 2013</creationDate>
    <author>Shibin Roman</author>
    <authorEmail>rsa_m@mail.ru</authorEmail>
    <authorUrl>http://tsj47.ru</authorUrl>
-   <copyright>Copyright Shibin Roman 2012</copyright>
+   <copyright>Copyright 2012-2013 Shibin Roman</copyright>
    <license>GNU/GPL3</license>
    <!-- The version string is recorded in the components table -->
-   <version>0.1.0</version>
+   <version>1.0.0</version>
    <!-- The description is optional and defaults to the name -->
    <description>COM_TSJ_DESCRIPTION</description>
 
@@ -44,6 +44,7 @@
       <folder>models</folder>
       <folder>views</folder>
       <folder>language</folder>
+      <folder>helpers</folder>
    </files>
 
    <media destination="com_tsj" folder="media">
@@ -82,6 +83,7 @@
          <filename>tsj.php</filename>
          <filename>controller.php</filename>
          <filename>config.xml</filename>
+         <filename>access.xml</filename>
          <!-- views files section -->
          <folder>views</folder>
          <!-- SQL files section -->
@@ -92,6 +94,14 @@
 			<folder>models</folder>
          <!-- controllers files section -->
          <folder>controllers</folder>
+         <!-- buttons files section -->
+         <folder>buttons</folder>
+         <!-- helpers files section -->
+         <folder>helpers</folder>
+         <!-- images files section -->
+         <folder>images</folder>
+			<!-- help files section -->
+         <folder>help</folder>
       </files>
 
       <languages folder="admin">

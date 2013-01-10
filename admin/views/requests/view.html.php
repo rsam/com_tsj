@@ -11,7 +11,7 @@ jimport('joomla.application.component.view');
 class TSJViewRequests extends JView
 {
 	/**
-	 * HelloWorlds view display method
+	 * Requests view display method
 	 * @return void
 	 */
 	function display($tpl = null) 

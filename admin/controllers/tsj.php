@@ -10,4 +10,15 @@ jimport('joomla.application.component.controllerform');
  */
 class TSJControllerTSJ extends JControllerForm
 {
+   public $my_var4;
+   
+	/**
+	 * Конструктор 
+	 */
+	function __construct($config=array())
+	{
+		// Задаем вид для списка
+		$this->view_list = 'tsjs';
+		parent::__construct($config);
+	}
 }

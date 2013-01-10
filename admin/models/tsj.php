@@ -4,12 +4,17 @@ defined('_JEXEC') or die('Restricted access');
  
 // import Joomla modelform library
 jimport('joomla.application.component.modeladmin');
- 
+jimport( 'joomla.application.component.view' );
+
 /**
  * TSJ Model
  */
 class TSJModelTSJ extends JModelAdmin
 {
+   public $lout;
+   
+      public $my_var3;
+   
 	/**
 	 * Returns a reference to the a Table object, always creating it.
 	 *
@@ -21,6 +26,7 @@ class TSJModelTSJ extends JModelAdmin
 	 */
 	public function getTable($type = 'TSJ', $prefix = 'TSJTable', $config = array()) 
 	{
+	   //echo 'tsj getTable ';
 		return JTable::getInstance($type, $prefix, $config);
 	}
 	/**
@@ -34,7 +40,9 @@ class TSJModelTSJ extends JModelAdmin
 	public function getForm($data = array(), $loadData = true) 
 	{
 		// Get the form.
-		$form = $this->loadForm('com_tsj.tsj', 'tsj',
+	// Check for layout override
+      //echo 'tsj getFormCity '. $this->type;
+		$form = $this->loadForm('com_tsj.city', 'city',
 		                        array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form)) 
 		{
@@ -42,6 +50,7 @@ class TSJModelTSJ extends JModelAdmin
 		}
 		return $form;
 	}
+
 	/**
 	 * Method to get the script that have to be included on the form
 	 *
@@ -59,8 +68,10 @@ class TSJModelTSJ extends JModelAdmin
 	 */
 	protected function loadFormData() 
 	{
+	   
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_tsj.edit.tsj.data', array());
+		$data = JFactory::getApplication()->getUserState('com_tsj.edit.city.data', array());
+		//echo 'tsj loadFormData ';
 		if (empty($data)) 
 		{
 			$data = $this->getItem();

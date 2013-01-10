@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+	addrulepath="/administrator/components/com_tsj/models/rules"
+>
+	<fieldset>
+		<field
+			name="address_id"
+			type="hidden"
+		/>
+      <field
+         name="city_id"
+         type="City"
+         label="Город"
+         description="Город"
+         size="1"
+         class="inputbox validate-name"
+         validate="int"
+         required="true"
+         default=""
+      >
+      <option value="0">- Выберите город -</option>
+      </field>
+      <field
+         name="street_id"
+         type="Street"
+         label="Улица"
+         description="Улица"
+         size="1"
+         class="inputbox validate-name"
+         validate="int"
+         required="true"
+         default=""
+      >
+      <option value="0">- Выберите улицу -</option>
+      </field>
+		<field
+			name="house"
+			type="text"
+			label="Номер дома"
+			description="Номер дома"
+			size="40"
+			class="inputbox validate-name"
+			validate="address"
+			required="true"
+			default=""
+		/>
+      <field
+         name="office"
+         type="text"
+         label="Номер квартиры/офиса"
+         description="Номер квартиры/офиса"
+         size="40"
+         class="inputbox validate-name"
+         validate="address"
+         required="false"
+         default=""
+      />
+	</fieldset>
+</form>

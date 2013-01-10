@@ -47,8 +47,16 @@ class TSJViewWaters extends JView
    {
       // Выводим заголовок
       JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_WATERS'), 'waters');
+
+		$bar = JToolBar::getInstance('toolbar');
+		$bar->appendButton('Popup', 'options', 'Мои Настройки', 'index.php?option=com_tsj&amp;view=wconfig&amp;tmpl=component', 850, 400);
+      
       //Выводим кнопку настройки
-      JToolBarHelper::preferences('com_tsj');
+	   if (JFactory::getUser()->authorise('core.admin', 'com_tsj')) {
+			JToolBarHelper::preferences('com_tsj');
+			JToolBarHelper::divider();
+		}
+
       JToolBarHelper::help( 'com_tsj', true );
    }
 

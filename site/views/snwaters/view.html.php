@@ -14,13 +14,15 @@ class TSJViewSNWaters extends JView
    public $params;
    public $form;
    public $username;
+   public $user;
    
    public function __construct($config)
    {
       parent::__construct($config);
       // Чтение username из таблицы User
       $user = &JFactory::getUser();
-      $this->username = $user->get('username');
+      $this->username = $user->get('id');
+      $this->user = $user->get('username');
       if($this->username == null) $this->username = 0;
       
       ## only for test

@@ -17,8 +17,12 @@ class TSJController extends JController
     */
    function display($cachable = false)
    {
+      $view = JRequest::getCmd('view', 'TSJs');
+      //$layout = JRequest::getCmd('layout', 'main');
+      //$id      = JRequest::getInt('id');
+      
       // set default view if not set
-      JRequest::setVar('view', JRequest::getCmd('view', 'Waters'));
+      JRequest::setVar('view', $view);
 
       // call parent behavior
       parent::display($cachable);

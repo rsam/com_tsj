@@ -14,7 +14,7 @@ class TSJControllerWaters extends JControllerForm
     * @var    string
     * @since  11.1
     */
-   protected $context;
+   protected $context = 'waters';
 
    /**
     * Method to get a model object, loading it if required.

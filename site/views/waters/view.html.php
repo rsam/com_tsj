@@ -15,23 +15,39 @@ class TSJViewWaters extends JView
    public $params;
    public $form;
    
+   public $user;
    public $username;
    
-   public function __construct($config)
+   public $lic;
+   
+   public function __construct($config = array())
    {
       parent::__construct($config);
+
       // Чтение username из таблицы User
       $user = &JFactory::getUser();
-      $this->username = $user->get('username');
+      $this->username = $user->get('id');
+      $this->user = $user->get('username');
       if($this->username == null) $this->username = 0;
-      
+
       ## only for test
       //$this->username = 6334;
+      
    }
    
    // Переопределяем JView display метод
    function display($tpl = null)
-   {
+   { 
+      $app = &JFactory::getApplication();
+
+      $this->lic = JRequest::getVar('lic');
+      //echo $this->lic;
+
+      if($this->lic == 0){
+         // redirect to lic
+         $app->redirect('index.php?option=com_tsj&view=lic'); 
+      }
+      
       // Получим данные для вида из модели вызвав метод модели getDataOfSN
       $dataofsn = $this->get('DataOfSN');
       $this->dataofsn = $dataofsn;
@@ -40,10 +56,9 @@ class TSJViewWaters extends JView
       $dataofcounter = $this->get('DataOfCounters');
       $this->dataofcounter = $dataofcounter;
 
-      // Получим параметры компонента вызвав метод getParams
-      $app = &JFactory::getApplication();
-      $this->params = $app->getParams();
-
+      // Получим параметры компонента вызвав метод модели getParams
+      $this->params = $this->get('Params');
+      //print_r($this->params);
       //$dispatcher = JDispatcher::getInstance();
 
       // Получим данные формы из модели

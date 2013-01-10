@@ -7,7 +7,7 @@ defined('_JEXEC') or die('Restricted Access');
 	<th width="100%">
 	<?php
    	// Вывод идентификатора пользователя
-   	echo JText::_('<h2>Ваш идентификатор пользователя : ' . $this->username . '</h2><br>');
+   	echo JText::_('<h2>Ваш идентификатор пользователя : ' . $this->user . '</h2><br>');
    	echo JText::_('<h2>Серийные номера счетчиков воды</h2>');
 	?>
 	</th>

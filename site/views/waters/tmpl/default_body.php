@@ -9,14 +9,16 @@ defined('_JEXEC') or die('Restricted Access');
    if(!empty($this->dataofcounter))
    {
        // Чтение параметров отобажения таблицы
-       $count_rows = count($this->params->get('show_rows_water'));
+       $count_rows = 0;
+       if($this->params['water_show_rows_sn'] == '1') $count_rows++;
+		 if($this->params['water_show_rows_water'] == '1') $count_rows++;
        
        // Нужно ли отображать серийные номера
-       if ($this->params->get('show_rows_water')[0] == '0') $show_sn = 1;
+       if ($this->params['water_show_rows_sn']) $show_sn = 1;
        else $show_sn = 0;
         
        // Нужно ли отображать расход
-       if( ($this->params->get('show_rows_water')[0] == '1') or ($this->params->get('show_rows_water')[1] == '1') ) $show_delta = 1;
+       if ($this->params['water_show_rows_water']) $show_delta = 1;
        else $show_delta = 0;
         
        // set tables with data of water counters

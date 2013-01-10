@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+	addrulepath="/administrator/components/com_tsj/models/rules"
+>
+	<fieldset>
+		<field
+			name="street_id"
+			type="hidden"
+		/>
+		<field
+			name="street"
+			type="text"
+			label="Улица"
+			description="Улица"
+			size="40"
+			class="inputbox validate-name"
+			validate="street"
+			required="true"
+			default=""
+		/>
+	</fieldset>
+</form>

@@ -50,6 +50,7 @@ class TSJModelTSJ extends JModelItem
          // Выдаем информационное сообшение
          $this->msg = 'Empty message from model TSJModel';
       }
+      
       return $this->msg;
    }
 }

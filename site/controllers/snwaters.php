@@ -55,6 +55,7 @@ class TSJControllerSNWaters extends JControllerForm
 
       // Get the data from the form POST
       $data = JRequest::getVar('snwaters', array(), 'post', 'array');
+      //print_r($data);
       $data1 = JRequest::get( 'post' );
       // Now update the loaded data to the database via a function in the model
       $upditem        = $model->setDataOfSN($data, $data1);

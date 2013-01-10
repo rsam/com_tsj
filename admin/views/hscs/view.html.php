@@ -11,7 +11,7 @@ jimport('joomla.application.component.view');
 class TSJViewHSCs extends JView
 {
 	/**
-	 * HelloWorlds view display method
+	 * HSCs view display method
 	 * @return void
 	 */
 	function display($tpl = null) 

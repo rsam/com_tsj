@@ -11,7 +11,7 @@ jimport('joomla.application.component.view');
 class TSJViewGazs extends JView
 {
 	/**
-	 * HelloWorlds view display method
+	 * Gazs view display method
 	 * @return void
 	 */
 	function display($tpl = null) 

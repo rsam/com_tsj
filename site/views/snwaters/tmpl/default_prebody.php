@@ -149,19 +149,22 @@ JHtml::_('behavior.formvalidation');
 
 <tr>
 	<td><?php
-	   foreach ( $this->dataofsn as $row )
-	   {
-	      for($i = 1; $i <= $row->counts; $i++)
-	      {
-	         $csnp[$i] = $row->{'ser_num_cold_p'.$i};
-	         $hsnp[$i] = $row->{'ser_num_hot_p'.$i};
-	          
-	         $cdatep[$i] = $row->{'date_in_cold_pp'.$i};
-	         $hdatep[$i] = $row->{'date_in_hot_pp'.$i};
-	          
-	         $name[$i] = $row->{'water_name_'.$i};
-	      }
-	   }
+		if($this->dataofsn != NULL)
+		{
+		   foreach ( $this->dataofsn as $row )
+		   {
+		      for($i = 1; $i <= $row->counts; $i++)
+		      {
+		         $csnp[$i] = $row->{'ser_num_cold_p'.$i};
+		         $hsnp[$i] = $row->{'ser_num_hot_p'.$i};
+		          
+		         $cdatep[$i] = $row->{'date_in_cold_pp'.$i};
+		         $hdatep[$i] = $row->{'date_in_hot_pp'.$i};
+		          
+		         $name[$i] = $row->{'water_name_'.$i};
+		      }
+		   }
+		}
 	    
 	   if($row->counts == 0) $this->countofpoint = 1;
       else $this->countofpoint = $row->counts;

@@ -18,7 +18,9 @@ JHtml::_('behavior.formvalidation');
 	<?php
 
       // Вывод информационных сообщений
-   	echo '<h3>Внимание!!! Вы можете ввести показания счетчиков только c '. $this->params->get('startDay') .' по ' . $this->params->get('stopDay') . ' число включительно каждого месяца.</h3>';
+      if( !(($this->params['water_startDay'] == '1') && ($this->params['water_stopDay'] == '31')) )
+   		echo '<h3>Внимание!!! Вы можете ввести показания счетчиков только c '. $this->params['water_startDay'] .' по ' . $this->params['water_stopDay'] . ' число включительно каждого месяца.</h3>';
+   	
    	echo '<h3>При вводе показаний повторно, предыдущие показания будут заменены вновь введенными.</h3>';
    	
    	// Присвоение переменным серийных номеров счетчиков
@@ -103,7 +105,7 @@ JHtml::_('behavior.formvalidation');
       	<?php
          else :
             // если серийные номера не заполнены, то вывод ссылки на страницу заполения серийных номеров
-            $linksn = $this->params->get( 'linksn', '');
+            $linksn = $this->params['water_linksn'];
             if(!empty($linksn))
             {
                echo '<h3>Перед началом ввода показаний <a href=';

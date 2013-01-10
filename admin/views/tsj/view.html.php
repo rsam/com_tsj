@@ -10,6 +10,8 @@ jimport('joomla.application.component.view');
  */
 class TSJViewTSJ extends JView
 {
+   
+      public $my_var6;
 	/**
 	 * display method of TSJ view
 	 * @return void
@@ -17,20 +19,17 @@ class TSJViewTSJ extends JView
 	public function display($tpl = null) 
 	{
 		// get the Data
-		$form = $this->get('Form');
-		//$item = $this->get('Item');
-		$script = $this->get('Script');
- 
+		$this->form = $this->get('Form');
+			
+		$this->item = $this->get('Item');
+		$this->script = $this->get('Script');
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) 
 		{
 			JError::raiseError(500, implode('<br />', $errors));
 			return false;
 		}
-		// Assign the Data
-		$this->form = $form;
-		//$this->item = $item;
-		$this->script = $script;
  
 		// Set the toolbar
 		$this->addToolBar();
@@ -52,7 +51,7 @@ class TSJViewTSJ extends JView
 		JToolBarHelper::title($isNew ? JText::_('COM_TSJ_MANAGER_TSJ_NEW')
 		                             : JText::_('COM_TSJ_MANAGER_TSJ_EDIT'), 'tsj');
 		JToolBarHelper::save('tsj.save');
-		JToolBarHelper::cancel('tsh.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
+		JToolBarHelper::cancel('tsj.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 	}
 	
 	/**

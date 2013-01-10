@@ -27,7 +27,7 @@ class TSJModelSNWaters extends JModelForm
    /**
     * @var string name of points
     */
-   protected $name = array("","","");
+   protected $name;
     
    /**
     * @var form data
@@ -55,7 +55,7 @@ class TSJModelSNWaters extends JModelForm
       // Чтение username из таблицы User
       $user = &JFactory::getUser();
 
-      $this->username = $user->get('username');
+      $this->username = $user->get('id');
       if($this->username == null) $this->username = 0;
       
       // Возвращаем ссылку на глобальный объект базы данных
@@ -81,7 +81,7 @@ class TSJModelSNWaters extends JModelForm
       if (!isset($this->msg))
       {
          // DATE_FORMAT используем для перевода даты из Y-m-d в d-m-Y
-         $sql = "SELECT t1.office_counter_id, t2.username,
+         $sql = "SELECT t1.office_counter_id, t2.user_id,
                         t1.counts,
                         t1.water_name_1, DATE_FORMAT( t1.date_in_hot_p1, '%d-%m-%Y' ) AS date_in_hot_pp1 , t1.ser_num_hot_p1,
                                          DATE_FORMAT( t1.date_in_cold_p1, '%d-%m-%Y' ) AS date_in_cold_pp1, t1.ser_num_cold_p1,
@@ -90,7 +90,7 @@ class TSJModelSNWaters extends JModelForm
                         t1.water_name_3, DATE_FORMAT( t1.date_in_hot_p3, '%d-%m-%Y' ) AS date_in_hot_pp3, t1.ser_num_hot_p3,
                                          DATE_FORMAT( t1.date_in_cold_p3, '%d-%m-%Y' ) AS date_in_cold_pp3, t1.ser_num_cold_p3
                  FROM #__tsj_water_office t1
-                 INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username ='" . $this->username . "'" .
+                 INNER JOIN #__tsj_account t2 ON t1.account_id = t2.account_id AND t2.user_id ='" . $this->username . "'" .
                " GROUP BY t1.office_counter_id;";
 
          $this->db->setQuery( $sql );
@@ -148,9 +148,9 @@ class TSJModelSNWaters extends JModelForm
       $sncoldwater2 = $data['sncwater2'];
       $snhotwater3 = $data['snhwater3'];
       $sncoldwater3 = $data['sncwater3'];
-      $name[1] = $data['name1'];
-      $name[2] = $data['name2'];
-      $name[3] = $data['name3'];
+      $name[1] = $data['wname1'];
+      $name[2] = $data['wname2'];
+      $name[3] = $data['wname3'];
 
       // Перевод даты из d-m-Y в Y-m-d
       $datehotwater1 = date('Y-m-d',strtotime($data['datehwater1']));
@@ -161,9 +161,9 @@ class TSJModelSNWaters extends JModelForm
       $datecoldwater3 = date('Y-m-d',strtotime($data['datecwater3']));
       
       // get user office id
-      $sql = "SELECT office_id
+      $sql = "SELECT account_id
               FROM #__tsj_account
-              WHERE username ='" . $this->username . "';";
+              WHERE user_id ='" . $this->username . "';";
 
       $this->db->setQuery( $sql );
       $row =& $this->db->loadObject();
@@ -174,16 +174,16 @@ class TSJModelSNWaters extends JModelForm
          return false;
       }
       
-      $office_id = $row->office_id;
+      $account_id = $row->account_id;
       
       // set the data into a query to update the record
-      $sql = "SELECT   t1.office_counter_id, t2.username,
+      $sql = "SELECT   t1.office_counter_id, t2.user_id,
                              t1.counts,
                              t1.water_name_1, t1.date_in_hot_p1, t1.ser_num_hot_p1, t1.date_in_cold_p1, t1.ser_num_cold_p1,
                              t1.water_name_2, t1.date_in_hot_p2, t1.ser_num_hot_p2, t1.date_in_cold_p2, t1.ser_num_cold_p2,
                              t1.water_name_3, t1.date_in_hot_p3, t1.ser_num_hot_p3, t1.date_in_cold_p3, t1.ser_num_cold_p3
                     FROM #__tsj_water_office t1
-                    INNER JOIN #__tsj_account t2 ON t1.office_id = t2.office_id AND t2.username ='" . $this->username . "'" .
+                    INNER JOIN #__tsj_account t2 ON t1.account_id = t2.account_id AND t2.user_id ='" . $this->username . "'" .
                     " GROUP BY t1.office_counter_id;";
 
       $this->db->setQuery( $sql );
@@ -216,10 +216,10 @@ class TSJModelSNWaters extends JModelForm
          //echo 'Сохранено.' . date('Y-m-d',strtotime($datehotwater));
          // Сохраняем серийные номера и другую информацию
          $sql = "INSERT INTO #__tsj_water_office
-                        (office_id, counts, water_name_1,ser_num_hot_p1,ser_num_cold_p1, date_in_hot_p1, date_in_cold_p1,
+                        (account_id, counts, water_name_1,ser_num_hot_p1,ser_num_cold_p1, date_in_hot_p1, date_in_cold_p1,
                                           water_name_2,ser_num_hot_p2,ser_num_cold_p2, date_in_hot_p2, date_in_cold_p2,
                                           water_name_3,ser_num_hot_p3,ser_num_cold_p3, date_in_hot_p3, date_in_cold_p3) 
-                    VALUES('$office_id','$countpoint','$name[1]','$snhotwater1','$sncoldwater1', '$datehotwater1', '$datecoldwater1',
+                    VALUES('$account_id','$countpoint','$name[1]','$snhotwater1','$sncoldwater1', '$datehotwater1', '$datecoldwater1',
                                                 '$name[2]','$snhotwater2','$sncoldwater2', '$datehotwater2','$datecoldwater2',
                                                 '$name[3]','$snhotwater3','$sncoldwater3', '$datehotwater3','$datecoldwater3')";
          $this->db->setQuery( $sql );

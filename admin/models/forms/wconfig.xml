@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form 
+	addrulepath="/administrator/components/com_tsj/models/rules"
+>
+	<fieldset
+		name="waterparams"
+		label="COM_TSJ_CONFIG_GREETING_SETTINGS_LABEL"
+		description="COM_TSJ_CONFIG_GREETING_SETTINGS_DESC" 
+    >
+		<field
+			name="water_show_rows_sn"
+			type="checkbox"
+			label="Серийные номера счетчиков"
+			description="COM_TSJ_TSJ_FIELD_SHOW_CATEGORY_DESC" 
+			value="1"
+      >
+      </field>
+		<field
+			name="water_show_rows_water"
+			type="checkbox"
+			label="Расход воды"
+			description="COM_TSJ_TSJ_FIELD_SHOW_CATEGORY_DESC"
+			value="1"
+      >
+      </field>
+      <field
+            name="water_startDay"
+            type="integer"
+            first="1"
+            last="31"
+            step="1"
+            default="1"
+            label="День начала сдачи показаний"
+            description="День с которого включительно становиться доступна система ввода показаний счетчиков воды"
+            filter="integer"
+      />
+      <field
+            name="water_stopDay"
+            type="integer"
+            first="1"
+            last="31"
+            step="1"
+            default="5"
+            label="День окончания сдачи показаний"
+            description="Последний день сдачи показаний, после которого система ввода показаний счетчиков воды становиться не доступной"
+            filter="integer"
+      />
+      <field
+            name="water_linksn"
+            type="text"
+            default=""
+            size="80"
+            maxlength="100"
+            label="Страница ввода серийных номеров счетчиков воды"
+            description="Короткая ссылка на страницу ввода серийных номеров счетчиков воды"
+      />
+   </fieldset>
+   
+	<fieldset
+		name="waterparams1"
+		label="COM_TSJ_CONFIG_GREETING_SETTINGS_LABEL1"
+		description="COM_TSJ_CONFIG_GREETING_SETTINGS_DESC1" 
+    >
+      <field
+      	name="water_prefix_text"
+      	label="COM_TSJ_CONFIG_GREETING_LABEL"
+      	type="editor"
+      	width="300"
+      	filter="safehtml"
+      />
+	</fieldset>
+</form>

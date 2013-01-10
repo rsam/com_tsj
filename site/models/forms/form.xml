@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<form name="jformlic">
+    <fieldset name="fields">
+        <field name="hello" id="hello" type="modal_book" label="Greetings from the modal window" win_width="300" win_height="30">
+            <postcontent><![CDATA[
+                <div style='text-align: center; font-size: 18px;'>
+                    <a href="#" onclick="activeField.insert('Hello, World'); SqueezeBox.close();">Click here to greet the world.</a>
+                </div>
+             ]]>
+            </postcontent>
+        </field>
+    </fieldset>
+</form>

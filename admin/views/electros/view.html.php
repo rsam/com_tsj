@@ -11,7 +11,7 @@ jimport('joomla.application.component.view');
 class TSJViewElectros extends JView
 {
 	/**
-	 * HelloWorlds view display method
+	 * Electros view display method
 	 * @return void
 	 */
 	function display($tpl = null) 

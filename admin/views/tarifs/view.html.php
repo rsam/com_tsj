@@ -11,7 +11,7 @@ jimport('joomla.application.component.view');
 class TSJViewTarifs extends JView
 {
 	/**
-	 * HelloWorlds view display method
+	 * Tarifs view display method
 	 * @return void
 	 */
 	function display($tpl = null) 
