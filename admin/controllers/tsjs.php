@@ -79,7 +79,7 @@ class TSJControllerTSJs extends JControllerAdmin
 
 			// Проверка формата файла, включая заголовок.
 			// Строки csv файла должны быть в формате:
-			//"№_лицевого_счета";"Город";"Улица";"№_дома";"№_квартиры";площадь(.);"Телефон";№_категории
+			//"№_лицевого_счета";"Город";"Улица";"№_дома";"№_квартиры";"ФИО",площадь(.);"Телефон";№_категории
 			// Кодировка UTF-8
 			while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
 				$num = count($data);
@@ -213,10 +213,48 @@ class TSJControllerTSJs extends JControllerAdmin
 					$address_id = $row;
 				}
 
+				// Если в таблице users есть запись с username == account_num, то записываем в поле users.name ФИО
+				// Если в таблице users нет записи с username == account_num, то создаем запись в users.name
+				// Запоминаем user_id
+				$sql = " SELECT *
+                  	FROM #__users t1
+                  	WHERE  t1.username = '" . trim($data[0]) . "';";
+
+				$this->db->setQuery( $sql );
+				$row =& $this->db->loadResult();
+
+				if (!$result = $this->db->query()) {
+					//echo $this->db->stderr();
+					fclose($handle);
+					return false;
+				}
+				if (!empty($row)) {
+					$user_id = $row;
+				}
+				else {
+					echo "Для записи с лицевым счетом ". trim($data[0]) . " не создан пользователь с таким же логином.<br>";
+					echo "Пользователь добавлен автоматически.<br><br>";
+					//continue;
+					$user_id = preg_replace('/[^a-zA-Z0-9\-_]/', '',$data[0]);
+					echo "<br>u=".$user_id;
+					$sql = " INSERT INTO #__users
+								(name, username, email, password, block, sendEmail)
+                  		VALUES ('$data[5]','$user_id','$user_id". '@test.ru' ."','" . md5($user_id) . "','0','1');";
+
+					$this->db->setQuery( $sql );
+
+					if (!$result = $this->db->query()) {
+						echo $this->db->stderr();
+						fclose($handle);
+						return false;
+					}
+					$user_id = $this->db->insertid();
+				}
+				
 				// Ищем в таблице Лицевые_счета номер лицевого счета.
 				// Если записи с лицевым счетом нет, то добавляем запись в таблицу Лицевые_счета. И добавляем площадб и номер телефона.
 				// Если запись с лицевым счетом есть, то обновляем остальные данные в таблице (считая что данные изменились).
-							$sql = " SELECT *
+				$sql = " SELECT *
                   	FROM #__tsj_account t1
                   	WHERE  t1.account_num = '" . trim($data[0]) . "';";
 
@@ -228,21 +266,22 @@ class TSJControllerTSJs extends JControllerAdmin
 					fclose($handle);
 					return false;
 				}
-				$cipher = "MCRYPT_CAST_256";
-				$mode = "MCRYPT_MODE_ECB";
-				$key = "thg43hgfhd45";
-				echo $this->encrypt($data[7], $key,  $cipher, $mode);
-				$user_id = 258;
+				//$cipher = "MCRYPT_CAST_256";
+				//$mode = "MCRYPT_MODE_ECB";
+				//$key = "thg43hgfhd45";
+				//echo $this->encrypt($data[7], $key,  $cipher, $mode);
+				//$user_id = 258;
+
 				if (empty($row)) {
 					// Добавить
 					$sql = " INSERT INTO #__tsj_account
 								(user_id, address_id, account_num, sq, tel, cat, lic)
-                  		VALUES ('$user_id','$address_id','$data[0]','$data[6]','" .$this->encrypt($data[7], $key,  $cipher, $mode). "','$data[8]','$data[9]');";
+                  		VALUES ('$user_id','$address_id','$data[0]','$data[6]','$data[7]','$data[8]','$data[9]');";
 
 					$this->db->setQuery( $sql );
 
 					if (!$result = $this->db->query()) {
-						//echo $this->db->stderr();
+						echo $this->db->stderr();
 						fclose($handle);
 						return false;
 					}

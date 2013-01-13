@@ -69,7 +69,8 @@ class TSJModelTSJs extends JModelList
                      FROM #__tsj_address
                      INNER JOIN #__tsj_city ON #__tsj_address.city_id = #__tsj_city.city_id
                      INNER JOIN #__tsj_street ON #__tsj_street.street_id = #__tsj_address.street_id
-                     GROUP BY #__tsj_address.address_id;';
+                     GROUP BY #__tsj_address.address_id
+                     ORDER BY #__tsj_city.city, #__tsj_street.street, #__tsj_address.house, #__tsj_address.office;';
 
          $this->_address = $this->_getList( $query );
       }
@@ -96,7 +97,7 @@ class TSJModelTSJs extends JModelList
          $query->innerJoin('#__tsj_city on #__tsj_address.city_id = #__tsj_city.city_id');
          $query->innerJoin('#__tsj_street on #__tsj_address.street_id = #__tsj_street.street_id');
          $query->innerJoin('#__users on #__tsj_account.user_id = #__users.id');
-         $query->order('#__tsj_account.account_id');
+         $query->order('#__tsj_city.city, #__tsj_street.street, #__tsj_address.house, #__tsj_address.office;');
          $db->setQuery((string)$query);
          $this->_account = $db->loadObjectList();
          

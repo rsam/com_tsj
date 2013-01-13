@@ -11,10 +11,12 @@ defined('_JEXEC') or die('Restricted Access');
          <?php echo JHtml::_('grid.id', $i, $addressitem->address_id); ?>
       </td>
       <td>
-         <?php echo $addressitem->city; ?>
+      	<a href="<?php echo JRoute::_('index.php?option=com_tsj&task=address.edit&layout=edit&address_id='.(int) $addressitem->address_id); ?>">
+         <?php echo $addressitem->city; ?></a>
       </td>
       <td>
-         <?php echo $addressitem->street; ?>
+      	<a href="<?php echo JRoute::_('index.php?option=com_tsj&task=address.edit&layout=edit&address_id='.(int) $addressitem->address_id); ?>">
+         <?php echo $addressitem->street; ?></a>
       </td>
       <td>
          <?php //echo $addressitems->house; ?>
