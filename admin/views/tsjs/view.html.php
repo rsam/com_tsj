@@ -4,17 +4,21 @@ defined('_JEXEC') or die('Restricted access');
 
 // import Joomla view library
 jimport('joomla.application.component.view');
-//jimport( 'joomla.html.toolbar' );
+jimport( 'joomla.html.pagination' );
+jimport( 'joomla.html.toolbar' );
 
 JLoader::register('TSJsHelper', JPATH_COMPONENT.'/helpers/tsjs.php');
 /**
  * TSJs View
  */
-class TSJViewTSJs extends JView
+class TSJViewTSJs extends JViewLegacy
 {
 	//public $layout='';
 
-	//public $state;
+  //список записей
+  protected $items;
+  //объект постраничной навигации
+  protected $pagination;
 
 	/**
 	 * TSJs view display method
@@ -24,8 +28,8 @@ class TSJViewTSJs extends JView
 	{
 		// Get data from the model
 		$form = $this->get('Form');
-		//$item = $this->get('Item');
-		//$state = $this->get('State');
+		$item = $this->get('Item');
+		$state = $this->get('State');
 		$pagination = $this->get('Pagination');
 
 		// Check for errors.
@@ -37,8 +41,8 @@ class TSJViewTSJs extends JView
 
 		// Assign the Data
 		$this->form = $form;
-		//$this->item = $item;
-		//$this->state = $state;
+		$this->item = $item;
+		$this->state = $state;
 
 		// Get data from the model
 		if ($this->getLayout() == 'city')

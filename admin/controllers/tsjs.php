@@ -233,13 +233,27 @@ class TSJControllerTSJs extends JControllerAdmin
 				}
 				else {
 					echo "Для записи с лицевым счетом ". trim($data[0]) . " не создан пользователь с таким же логином.<br>";
-					echo "Пользователь добавлен автоматически.<br><br>";
 					//continue;
-					$user_id = preg_replace('/[^a-zA-Z0-9\-_]/', '',$data[0]);
-					echo "<br>u=".$user_id;
+					
+					// Это регулярное выражение оставит только латиницу, цифры _ и -
+					//$user_id = preg_replace('/[^a-zA-Z0-9\-_]/', '',$data[0]);
+					
+					// Это регулярное выражение удалит: пробелы и <>"'%;()&
+					$user_id = preg_replace('/[ <>\"\'%;()]+/i', '', $data[0]);
+					// проверка на размер логина. Должен быть более 2х символов
+					if(strlen($user_id) < 2) {
+						echo "Ошибка. Логин должен быть не менее 2х символов.<br><br>";
+						continue;
+					}
+					
+					// Добавляем пользователя
+					//echo "login = ".$user_id. "<br>";
+					$currentdate = JFactory::getDate();
+					echo "Пользователь добавлен автоматически ". $currentdate .".<br><br>";
+					
 					$sql = " INSERT INTO #__users
-								(name, username, email, password, block, sendEmail)
-                  		VALUES ('$data[5]','$user_id','$user_id". '@test.ru' ."','" . md5($user_id) . "','0','1');";
+								(name, username, email, password, block, sendEmail, registerDate)
+                  		VALUES ('$data[5]','$user_id','$user_id". '@test.ru' ."','" . md5($user_id) . "','0','1','$currentdate');";
 
 					$this->db->setQuery( $sql );
 

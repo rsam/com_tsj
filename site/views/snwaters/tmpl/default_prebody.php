@@ -132,8 +132,19 @@ function check_form(value)
    }
 }
 
+function verify()
+{
+	var answer = confirm("Вы уверены что хотите добавить новую запись? Это следует делать если вы изменяете серийные номера счётчиков, дату следующей поверки или количество мест установки.");
+
+	if (answer){
+		return true;
+	} else {
+		return false;
+	}
+}
+
 -->
-</script>
+</script> 
 
 <?php
 // No direct access to this file
@@ -175,8 +186,9 @@ JHtml::_('behavior.formvalidation');
 	   ?>
 
 	<form class="form-validate" name="snwaters" id="snwaters"
-		action="<?php echo JRoute::_('index.php'); ?>" method="post">
-
+		action="<?php echo JRoute::_('index.php'); ?>" 
+		method="post" <?php if(!empty($this->dataofsn)) echo 'onSubmit="return verify()"'; ?>
+	>
 	<fieldset><!--<legend>Ввод показаний индивидуальных счетчиков воды</legend>-->
 
 	<TABLE BORDER=0 COLS=2 BGCOLOR="#FFF4FF">

@@ -1,6 +1,7 @@
 <?php
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
+
 ?>
 <?php foreach($this->addressitems as $i => $addressitem): ?>
    <tr class="row<?php echo $i % 2; ?>">

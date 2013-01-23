@@ -27,7 +27,9 @@ class MyHelper
 
       //echo 'day='.$day.'start='.$startday.'stop='.$stopday.'form='.$form;
 
-		if($form == 0)
+      // Старая версия допускала ввод показаний только один раз в день.
+      // Сейчас эта функция закоментирована
+		/*if($form == 0)
 		{
 				if($this->dataofcounter != NULL)
 				{
@@ -43,7 +45,8 @@ class MyHelper
 	    			}
 				}
         }
-		else
+		else*/
+      if($form != 0)
 		{
 			echo '<br><h3>Извините. Сегодня ввод показаний счетчиков невозможен.</h3>';
 		}

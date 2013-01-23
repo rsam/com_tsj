@@ -160,7 +160,7 @@ class TSJModelSNWaters extends JModelForm
       $datehotwater3 = date('Y-m-d',strtotime($data['datehwater3']));
       $datecoldwater3 = date('Y-m-d',strtotime($data['datecwater3']));
       
-      // get user office id
+      // get user account id
       $sql = "SELECT account_id
               FROM #__tsj_account
               WHERE user_id ='" . $this->username . "';";
@@ -177,41 +177,45 @@ class TSJModelSNWaters extends JModelForm
       $account_id = $row->account_id;
       
       // set the data into a query to update the record
-      $sql = "SELECT   t1.office_counter_id, t2.user_id,
-                             t1.counts,
-                             t1.water_name_1, t1.date_in_hot_p1, t1.ser_num_hot_p1, t1.date_in_cold_p1, t1.ser_num_cold_p1,
-                             t1.water_name_2, t1.date_in_hot_p2, t1.ser_num_hot_p2, t1.date_in_cold_p2, t1.ser_num_cold_p2,
-                             t1.water_name_3, t1.date_in_hot_p3, t1.ser_num_hot_p3, t1.date_in_cold_p3, t1.ser_num_cold_p3
-                    FROM #__tsj_water_office t1
-                    INNER JOIN #__tsj_account t2 ON t1.account_id = t2.account_id AND t2.user_id ='" . $this->username . "'" .
-                    " GROUP BY t1.office_counter_id;";
-
+      $sql = "SELECT office_counter_id
+              FROM #__tsj_water_office t1
+              WHERE t1.account_id = '". $account_id ."' AND
+              			t1.ser_num_hot_p1 = '". $snhotwater1 ."' AND
+              			t1.ser_num_hot_p1 = '". $snhotwater1 ."' AND
+              			t1.ser_num_cold_p1 = '". $sncoldwater1 ."' AND
+              			t1.ser_num_hot_p2 = '". $snhotwater2 ."' AND
+              			t1.ser_num_cold_p2 = '". $sncoldwater2 ."' AND
+              			t1.ser_num_hot_p3 = '". $snhotwater3 ."' AND
+              			t1.ser_num_cold_p3 = '". $sncoldwater3 ."' AND
+              			t1.counts = '". $countpoint . "';";
+                                          
       $this->db->setQuery( $sql );
-      $row =& $this->db->loadObjectList();
+      $row =& $this->db->loadResult();
 
       if (!$result = $this->db->query()) {
+         JError::raiseError(500, $this->db->getErrorMsg());
          //echo $this->db->stderr();
          return false;
       }
       
       // Определяем количество записей
       //$nrow = count($row);
-      //$tid = 0;
+      
 
-      // добавить
-      /*        if($tid != 0)
-       {
+      // добавить       
+      if($row != 0)
+      {
        //echo 'Обновлено.';
-       $sql = "UPDATE #__tsj_water_data
-       SET date_in='$date', data_hot_c1='$hotwater', data_cold_c1='$coldwater',
-       data_hot_c2='$hotwater2', data_cold_c2='$coldwater2',
-       data_hot_c3='$hotwater3', data_cold_c3='$coldwater3'
-       WHERE water_id='$tid'";
-       $db = $this->getDBO();
-       $db->setQuery( $sql );
+       $sql = "UPDATE #__tsj_water_office
+       SET water_name_1='$name[1]',water_name_2='$name[2]',water_name_3='$name[3]',
+       	date_in_hot_p1='$datehotwater1',date_in_hot_p2='$datehotwater2',date_in_hot_p2='$datehotwater2',
+       	date_in_cold_p1='$datecoldwater1',date_in_cold_p2='$datecoldwater2',date_in_cold_p3='$datecoldwater3'
+       WHERE office_counter_id = '".$row."';";
 
-       }
-       else*/
+        $this->db->setQuery( $sql );
+
+      }
+      else
       {
          //echo 'Сохранено.' . date('Y-m-d',strtotime($datehotwater));
          // Сохраняем серийные номера и другую информацию

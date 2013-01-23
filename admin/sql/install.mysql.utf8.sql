@@ -14,6 +14,18 @@ AUTO_INCREMENT=1
 DEFAULT CHARSET=utf8
 ENGINE=InnoDB;
 
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('water_linksn','');
+
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('water_prefix_text','');
+
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('water_startDay','1');
+
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('water_stopDay','31');
+
 /* User Account System*/
 /* User Account System: City Table*/
 DROP TABLE IF EXISTS `#__tsj_city`;

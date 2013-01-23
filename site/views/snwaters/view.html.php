@@ -32,6 +32,16 @@ class TSJViewSNWaters extends JView
    // Overwriting JView display method
    function display($tpl = null)
    {
+      $app = &JFactory::getApplication();
+
+      $this->lic = JRequest::getVar('lic');
+      //echo $this->lic;
+
+      if($this->lic == 0){
+         // redirect to lic
+         $app->redirect('index.php?option=com_tsj&view=lic'); 
+      }
+      
       // Assign data to the view
       $dataofsn = $this->get('DataOfSN');
       $this->dataofsn = $dataofsn;
