@@ -14,6 +14,7 @@ AUTO_INCREMENT=1
 DEFAULT CHARSET=utf8
 ENGINE=InnoDB;
 
+/* Add default value*/
 INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
 VALUES ('water_linksn','');
 

@@ -1,5 +1,6 @@
 /* @ver. 1.1.0 */
 
+/* Add default value*/
 INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
 VALUES ('water_linksn','');
 
