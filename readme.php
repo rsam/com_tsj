@@ -34,4 +34,4 @@ documentation on-line in the Doc section of GIT https://github.com/rsam/com_tsj.
 You can load current version component of GIT https://github.com/rsam/com_tsj.git always.
 If you detect any bug, please use bug report of GIT.
 
-You can add issues of GIT https://github.com/rsam/com_tsj/issues
+You can add issues of GIT https://github.com/rsam/com_tsj/issues always.
