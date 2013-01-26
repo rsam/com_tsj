@@ -89,11 +89,11 @@ class TSJModelTSJs extends JModelList
 			$listOrder = $this->state->get('list.ordering','address_id');
 			$listDirn = $this->state->get('list.direction','asc');
 			 
-			echo "lim=".$this->limit;
-			echo "start=".$this->limitstart . "<br>";
+			//echo "lim=".$this->limit;
+			//echo "start=".$this->limitstart . "<br>";
 			$query->order($listOrder . ' ' . $listDirn);
-			echo "orderCol=".$listOrder;
-			echo "orderDirn=".$listDirn."<br>";
+			//echo "orderCol=".$listOrder;
+			//echo "orderDirn=".$listDirn."<br>";
 
 			// Пагинация. Возвразщаем в массив нужное количество с нужной страницы
 			if($this->limit == 0)
@@ -120,11 +120,12 @@ class TSJModelTSJs extends JModelList
 
 			$listOrder = $this->state->get('list.ordering','address_id');
 			$listDirn = $this->state->get('list.direction','asc');
-			echo "lim=".$this->limit;
-			echo "start=".$this->limitstart . "<br>";
+			
+			//echo "lim=".$this->limit;
+			//echo "start=".$this->limitstart . "<br>";
 			$query->order($listOrder . ' ' . $listDirn);
-			echo "orderCol=".$listOrder;
-			echo "orderDirn=".$listDirn."<br>";
+			//echo "orderCol=".$listOrder;
+			//echo "orderDirn=".$listDirn."<br>";
 			// Пагинация. Возвразщаем в массив нужное количество с нужной страницы
 			if($this->limit == 0)
 			$this->_street = $this->_getList( $query );
@@ -144,8 +145,8 @@ class TSJModelTSJs extends JModelList
 			$this->limitstart = JRequest::getVar('limitstart', 0, '', 'int');
 
 			//$db = JFactory::getDBO();
-			echo "lim=".$this->limit;
-			echo "start=".$this->limitstart . "<br>";
+			//echo "lim=".$this->limit;
+			//echo "start=".$this->limitstart . "<br>";
 			//$query = $db->getQuery(true);
 			/*         $query = 'SELECT  #__tsj_address.address_id,
 			 #__tsj_city.city,
@@ -170,8 +171,8 @@ class TSJModelTSJs extends JModelList
 			$listOrder = $this->state->get('list.ordering','address_id');
 			$listDirn = $this->state->get('list.direction','asc');
 
-			echo "orderCol=".$listOrder;
-			echo "orderDirn=".$listDirn."<br>";
+			//echo "orderCol=".$listOrder;
+			//echo "orderDirn=".$listDirn."<br>";
 
 			//$query->order( $this->getDbo()->escape( $orderCol . ' ' . $orderDirn ) );
 			//include the ordering on the query
@@ -213,11 +214,11 @@ class TSJModelTSJs extends JModelList
 			 
 			$listOrder = $this->state->get('list.ordering','address_id');
 			$listDirn = $this->state->get('list.direction','asc');
-			echo "lim=".$this->limit;
-			echo "start=".$this->limitstart . "<br>";
+			//echo "lim=".$this->limit;
+			//echo "start=".$this->limitstart . "<br>";
 			$query->order($listOrder . ' ' . $listDirn);
-			echo "orderCol=".$listOrder;
-			echo "orderDirn=".$listDirn."<br>";
+			//echo "orderCol=".$listOrder;
+			//echo "orderDirn=".$listDirn."<br>";
 			// Пагинация. Возвразщаем в массив нужное количество с нужной страницы
 			if($this->limit == 0)
 			$this->_account = $this->_getList( $query );
