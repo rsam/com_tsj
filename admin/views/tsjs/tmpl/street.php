@@ -3,6 +3,14 @@
 defined('_JEXEC') or die('Restricted Access');
 // load tooltip behavior
 JHtml::_('behavior.tooltip');
+
+$option = JRequest::getCmd('option');
+$view = JRequest::getCmd('view');
+
+//поле для текущей сортировки
+$listOrder = $this->escape($this->state->get('list.ordering'));
+//направление сортировки
+$listDirn = $this->escape($this->state->get('list.direction'));
 ?>
 
 <form action="<?php echo JRoute::_('index.php?option=com_tsj'); ?>"
@@ -15,11 +23,15 @@ JHtml::_('behavior.tooltip');
    </table>
    
    <div>
-   	<input type="hidden" name="option" value="com_tsj" />
-   	<input type="hidden" name="controller" value="street" />
-   	<input type="hidden" name="task" value="" />
-   	<input type="hidden" name="boxchecked" value="0" />
-   	<?php echo JHtml::_('form.token'); ?>
+		<input name="filter_order" value="<?php echo $listOrder; ?>" />
+		<input name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+      <input type="hidden"  name="view" value="<?=$view?>" />
+      <input type="hidden"  name="option" value="<?=$option?>" />
+      <input type="hidden" name="controller" value="street" />
+      <input type="hidden" name="layout" value="street" />
+      <input type="hidden" name="task" value="" />
+      <input type="hidden" name="boxchecked" value="0" />
+      <?php echo JHtml::_('form.token'); ?>
    </div>
 
 </form>

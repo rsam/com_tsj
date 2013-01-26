@@ -31,6 +31,8 @@ class JFormFieldAddress extends JFormFieldList
       inner join #__tsj_city on #__tsj_address.city_id = #__tsj_city.city_id
       inner join #__tsj_street on #__tsj_address.street_id = #__tsj_street.street_id;*/
       
+   	// Выборка данных в форму при добавлении или редактировании адреса
+   	
       $db = JFactory::getDBO();
       $query = $db->getQuery(true);
       $query->select('*');

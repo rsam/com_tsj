@@ -13,12 +13,12 @@ JLoader::register('TSJsHelper', JPATH_COMPONENT.'/helpers/tsjs.php');
  */
 class TSJViewTSJs extends JViewLegacy
 {
-	//public $layout='';
+	public $layout='';
 
-  //список записей
-  protected $items;
-  //объект постраничной навигации
-  protected $pagination;
+	//список записей
+   protected $items;
+   //объект постраничной навигации
+   protected $pagination;
 
 	/**
 	 * TSJs view display method
@@ -49,29 +49,34 @@ class TSJViewTSJs extends JViewLegacy
 		{
 			$this->cityitems = $this->get('CityItems');
 			$this->setLayout('city');
-			//$layout = 'city';
+			$layout = 'city';
 		}
 		else if ($this->getLayout() == 'street')
 		{
 			$this->streetitems = $this->get('StreetItems');
 			$this->setLayout('street');
-			//$layout = 'street';
+			$layout = 'street';
 		}
 		else if ($this->getLayout() == 'address')
 		{
 			$this->addressitems = $this->get('AddressItems');
 			$this->setLayout('address');
-			//$layout = 'address';
+			$layout = 'address';
 		}
 		else if ($this->getLayout() == 'account')
 		{
 			$this->accountitems = $this->get('AccountItems');
 			$this->setLayout('account');
+			$layout = 'account';
 		}
 		else
 		{
-			$this->items = $this->get('Item');
+			$this->accountitems = $this->get('Items');
 			$this->setLayout('tsjs');
+			$layout = 'tsjs';
+			//$this->items = $this->get('Item');
+			//$this->setLayout('tsjs');
+			
 		}
 
 		//$this->sortDirection = $state->get('filter_order_Dir');
@@ -83,7 +88,6 @@ class TSJViewTSJs extends JViewLegacy
 		$this->addToolBar();
 
 		TSJsHelper::addSubmenu(JRequest::getCmd('view', 'TSJs'));
-
 		// Display the template
 		parent::display($tpl);
 

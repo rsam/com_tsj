@@ -3,7 +3,8 @@
 defined('_JEXEC') or die('Restricted Access');
 
 ?>
-<?php foreach($this->addressitems as $i => $addressitem): ?>
+<?php foreach($this->addressitems as $i => $addressitem):
+	//$ordering = ( $listOrder == 'ordering' );?>
    <tr class="row<?php echo $i % 2; ?>">
       <td>
          <?php echo $addressitem->address_id; ?>

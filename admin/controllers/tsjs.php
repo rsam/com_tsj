@@ -73,7 +73,6 @@ class TSJControllerTSJs extends JControllerAdmin
 			$filename = JPATH_COMPONENT_ADMINISTRATOR.'/'.'files'.'/'.JRequest::getVar('local_file', null);
 		}
 
-
 		//$row = 1;
 		if (($handle = fopen($filename, "r")) !== FALSE) {
 
@@ -266,7 +265,7 @@ class TSJControllerTSJs extends JControllerAdmin
 				}
 				
 				// Ищем в таблице Лицевые_счета номер лицевого счета.
-				// Если записи с лицевым счетом нет, то добавляем запись в таблицу Лицевые_счета. И добавляем площадб и номер телефона.
+				// Если записи с лицевым счетом нет, то добавляем запись в таблицу Лицевые_счета. И добавляем площадь и номер телефона.
 				// Если запись с лицевым счетом есть, то обновляем остальные данные в таблице (считая что данные изменились).
 				$sql = " SELECT *
                   	FROM #__tsj_account t1
@@ -280,6 +279,8 @@ class TSJControllerTSJs extends JControllerAdmin
 					fclose($handle);
 					return false;
 				}
+				
+				// Тут должно быть кодирование телефона чтобы его нельзя было посмотреть в прямую из базы.
 				//$cipher = "MCRYPT_CAST_256";
 				//$mode = "MCRYPT_MODE_ECB";
 				//$key = "thg43hgfhd45";
