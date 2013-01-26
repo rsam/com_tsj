@@ -70,7 +70,7 @@ class TSJModelTSJs extends JModelList
 		 }*/
 
 
-		echo "layout=".$layout."<br>";
+		//echo "layout=".$layout."<br>";
 		parent::__construct( $config );
 	}
 	 
