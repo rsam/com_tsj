@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
 DROP TABLE IF EXISTS `#__tsj_config`;
 DROP TABLE IF EXISTS `#__tsj_office`;
 
@@ -33,7 +35,8 @@ DROP TABLE IF EXISTS `#__tsj_city`;
 CREATE TABLE `#__tsj_city` (
 	`city_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
 	`city` VARCHAR(50) NOT NULL COMMENT 'City name' COLLATE 'utf8_unicode_ci',
-	PRIMARY KEY (`city_id`)
+	PRIMARY KEY (`city_id`),
+	INDEX `city_id` (`city_id`)
 )
 COLLATE='utf8_unicode_ci'
 AUTO_INCREMENT=1
@@ -45,7 +48,8 @@ DROP TABLE IF EXISTS `#__tsj_street`;
 CREATE TABLE `#__tsj_street` (
 	`street_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
 	`street` VARCHAR(50) NOT NULL COMMENT 'Street name' COLLATE 'utf8_unicode_ci',
-	PRIMARY KEY (`street_id`)
+	PRIMARY KEY (`street_id`),
+	INDEX `street_id` (`street_id`)
 )
 COLLATE='utf8_unicode_ci'
 AUTO_INCREMENT=1
@@ -61,6 +65,7 @@ CREATE TABLE `#__tsj_address` (
 	`house` VARCHAR(10) NOT NULL COMMENT 'House number' COLLATE 'utf8_unicode_ci',
 	`office` VARCHAR(10) NOT NULL COMMENT 'Office number' COLLATE 'utf8_unicode_ci',
 	PRIMARY KEY (`address_id`),
+	INDEX `address_id` (`address_id`),
 	INDEX `FK_db_tsj_address_db_tsj_city` (`city_id`),
 	INDEX `FK_db_tsj_address_db_tsj_street` (`street_id`),
 	CONSTRAINT `FK_db_tsj_address_db_tsj_city` FOREIGN KEY (`city_id`) REFERENCES `#__tsj_city` (`city_id`),
@@ -167,3 +172,5 @@ COLLATE='utf8_unicode_ci'
 AUTO_INCREMENT=0
 DEFAULT CHARSET=utf8
 ENGINE=InnoDB;
+
+SET FOREIGN_KEY_CHECKS = 1;

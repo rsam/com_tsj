@@ -1,3 +1,4 @@
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `#__tsj_cfg`;
 DROP TABLE IF EXISTS `#__tsj_config`;
 DROP TABLE IF EXISTS `#__tsj_water_data`;
@@ -12,3 +13,4 @@ DROP TABLE IF EXISTS `#__tsj_gaz_data`;
 DROP TABLE IF EXISTS `#__tsj_electro_office`;
 DROP TABLE IF EXISTS `#__tsj_electro_data`;
 DROP TABLE IF EXISTS `#__tsj_tarif`;
+SET FOREIGN_KEY_CHECKS = 1;
