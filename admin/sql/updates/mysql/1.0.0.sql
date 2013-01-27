@@ -50,10 +50,10 @@ CREATE TABLE `#__tsj_address` (
 	`house` VARCHAR(10) NOT NULL COMMENT 'House number' COLLATE 'utf8_unicode_ci',
 	`office` VARCHAR(10) NOT NULL COMMENT 'Office number' COLLATE 'utf8_unicode_ci',
 	PRIMARY KEY (`address_id`),
-	INDEX `FK_demo_tsj_address_demo_tsj_city` (`city_id`),
-	INDEX `FK_demo_tsj_address_demo_tsj_street` (`street_id`),
-	CONSTRAINT `FK_demo_tsj_address_demo_tsj_city` FOREIGN KEY (`city_id`) REFERENCES `demo_tsj_city` (`city_id`),
-	CONSTRAINT `FK_demo_tsj_address_demo_tsj_street` FOREIGN KEY (`street_id`) REFERENCES `demo_tsj_street` (`street_id`)
+	INDEX `FK_db_tsj_address_db_tsj_city` (`city_id`),
+	INDEX `FK_db_tsj_address_db_tsj_street` (`street_id`),
+	CONSTRAINT `FK_db_tsj_address_db_tsj_city` FOREIGN KEY (`city_id`) REFERENCES `#__tsj_city` (`city_id`),
+	CONSTRAINT `FK_db_tsj_address_db_tsj_street` FOREIGN KEY (`street_id`) REFERENCES `#__tsj_street` (`street_id`)
 )
 COLLATE='utf8_unicode_ci'
 AUTO_INCREMENT=1
@@ -73,10 +73,10 @@ CREATE TABLE `#__tsj_account` (
 	`lic` TINYINT(1) NOT NULL DEFAULT '0' COMMENT 'license',
 	PRIMARY KEY (`account_id`),
 	UNIQUE INDEX `account_num` (`account_num`),
-	INDEX `FK_demo_tsj_account_demo_tsj_address` (`address_id`),
-	INDEX `FK_demo_tsj_account_demo_users` (`user_id`),
-	CONSTRAINT `FK_demo_tsj_account_demo_tsj_address` FOREIGN KEY (`address_id`) REFERENCES `demo_tsj_address` (`address_id`),
-	CONSTRAINT `FK_demo_tsj_account_demo_users` FOREIGN KEY (`user_id`) REFERENCES `demo_users` (`id`)
+	INDEX `FK_db_tsj_account_db_tsj_address` (`address_id`),
+	INDEX `FK_db_tsj_account_dbo_users` (`user_id`),
+	CONSTRAINT `FK_db_tsj_account_db_tsj_address` FOREIGN KEY (`address_id`) REFERENCES `#__tsj_address` (`address_id`),
+	CONSTRAINT `FK_db_tsj_account_db_users` FOREIGN KEY (`user_id`) REFERENCES `#__users` (`id`)
 )
 COLLATE='utf8_unicode_ci'
 AUTO_INCREMENT=1
