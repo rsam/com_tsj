@@ -28,7 +28,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
 		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
       <input type="hidden" name="view" value="<?=$view?>" />
       <input type="hidden" name="option" value="<?=$option?>" />
-      <input type="hidden" name="controller" value="address" />
+      <input type="hidden" name="controller" value="tsjs" />
       <input type="hidden" name="layout" value="address" />
       <input type="hidden" name="task" value="" />
       <input type="hidden" name="boxchecked" value="0" />

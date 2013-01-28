@@ -12,9 +12,9 @@ jimport( 'joomla.html.toolbar' );
  */
 class TSJViewTarifs extends JView
 {
-	//список записей
+	//СЃРїРёСЃРѕРє Р·Р°РїРёСЃРµР№
 	protected $items;
-	//объект постраничной навигации
+	//РѕР±СЉРµРєС‚ РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕР№ РЅР°РІРёРіР°С†РёРё
 	protected $pagination;
 	 
 	/**
@@ -58,13 +58,13 @@ class TSJViewTarifs extends JView
 	{
 		JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TSJS'), 'tarifs');
 
-		//Выводим кнопку настройки
+		//Р’С‹РІРѕРґРёРј РєРЅРѕРїРєСѓ РЅР°СЃС‚СЂРѕР№РєРё
 		/*if (JFactory::getUser()->authorise('core.admin', 'com_tsj')) {
 		JToolBarHelper::preferences('com_tsj');
 		JToolBarHelper::divider();
 		}*/
 
-		JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'tarif.remove','Delete');
+		JToolBarHelper::deleteListX('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ Р·Р°РїРёСЃРё ?', 'tarif.remove','Delete');
 		JToolBarHelper::editListX('tarif.edit','Edit');
 		JToolBarHelper::addNewX('tarif.add','Add');
 

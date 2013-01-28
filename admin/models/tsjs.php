@@ -100,6 +100,7 @@ class TSJModelTSJs extends JModelList
 			$this->_city = $this->_getList( $query );
 			else
 			$this->_city = $this->_getList( $query, $this->limitstart, $this->limit);
+
 			//$this->_city = $this->_getList( $query );
 		}
 
@@ -273,4 +274,6 @@ class TSJModelTSJs extends JModelList
 		else parent::populateState('city_id', 'asc');
 		//parent::populateState($ordering, $direction);
 	}
+	
+	
 }

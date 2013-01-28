@@ -25,11 +25,11 @@ $listDirn = $this->escape($this->state->get('list.direction'));
    <div>
 		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
 		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-      <input type="hidden" name="view" value="<?=$view?>" />
-      <input type="hidden" name="option" value="<?=$option?>" />
-      <input type="hidden" name="controller" value="city" />
-      <input type="hidden" name="layout" value="city" />
-      <input type="hidden" name="task" value="" />
+      <input name="view" value="<?=$view?>" />
+      <input name="option" value="<?=$option?>" />
+      <input name="controller" value="tsjs" />
+      <input name="layout" value="city" />
+      <input name="task" value="" />
       <input type="hidden" name="boxchecked" value="0" />
       <?php echo JHtml::_('form.token'); ?>
    </div>

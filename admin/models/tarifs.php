@@ -11,9 +11,9 @@ jimport('joomla.application.component.modeladmin');
  */
 class TSJModelTarifs extends JModelList
 {
-	//òåêóùàÿ ñòðàíèöà
+	//Ñ‚ÐµÐºÑƒÑ‰Ð°Ñ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°
 	private $limitstart;
-	//êîëè÷åñòâî çàïèñåé íà ñòðàíèöå
+	//ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ
 	private $limit;
 
 
@@ -36,14 +36,14 @@ class TSJModelTarifs extends JModelList
 	public function __construct( $config = array() )
 	{
 		$app = JFactory::getApplication();
-		//ïîëó÷àåì îáúåêò äëÿ îáðàáîòêè ïîëüçîâàòåëüñêîãî ââîäà
+		//Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð¾Ð±ÑŠÐµÐºÑ‚ Ð´Ð»Ñ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³Ð¾ Ð²Ð²Ð¾Ð´Ð°
 		$input = $app->input;
-		//Ïîëó÷àåì òåêóùóþ ñòðàíèöó
+		//ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ñ‚ÐµÐºÑƒÑ‰ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ
 		$this->limitstart = $input->get( 'start', 0 );
-		//Îïðåäåëÿåì êîëè÷åñòâî ñòðîê âûâîäèìûõ íà ñòðàíèöó
+		//ÐžÐ¿Ñ€ÐµÐ´ÐµÐ»ÑÐµÐ¼ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÑ‚Ñ€Ð¾Ðº Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ð¼Ñ‹Ñ… Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ
 		$this->limit = $app->getUserStateFromRequest( 'global.list.limit', 'limit', $app->getCfg( 'list_limit' ), 'uint' );
 
-		//Óñòàíàâëèâàåì ïîëÿ ïî êîòîðûì áóäåò ñîðòèðîâêà
+		//Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð¿Ð¾Ð»Ñ Ð¿Ð¾ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼ Ð±ÑƒÐ´ÐµÑ‚ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ°
 		if ( empty( $config['filter_fields'] ) ) {
 			$config['filter_fields'] = array( 'tarif_id', 'tarif_name_short', 'tarif_name');
 		}
@@ -53,7 +53,7 @@ class TSJModelTarifs extends JModelList
 
 	function getItems()
 	{
-		// Çàãðóæàåì äàííûå, åñëè îíè åùå íå çàãðóæåíû
+		// Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ð´Ð°Ð½Ð½Ñ‹Ðµ, ÐµÑÐ»Ð¸ Ð¾Ð½Ð¸ ÐµÑ‰Ðµ Ð½Ðµ Ð·Ð°Ð³Ñ€ÑƒÐ¶ÐµÐ½Ñ‹
 		if (empty( $this->_tarif ))
 		{
 			$this->limitstart = JRequest::getVar('limitstart', 0, '', 'int');
@@ -71,7 +71,7 @@ class TSJModelTarifs extends JModelList
 			echo "orderCol=".$listOrder;
 			echo "orderDirn=".$listDirn."<br>";*/
 			
-			// Ïàãèíàöèÿ. Âîçâðàçùàåì â ìàññèâ íóæíîå êîëè÷åñòâî ñ íóæíîé ñòðàíèöû
+			// ÐŸÐ°Ð³Ð¸Ð½Ð°Ñ†Ð¸Ñ. Ð’Ð¾Ð·Ð²Ñ€Ð°Ð·Ñ‰Ð°ÐµÐ¼ Ð² Ð¼Ð°ÑÑÐ¸Ð² Ð½ÑƒÐ¶Ð½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ Ð½ÑƒÐ¶Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹
 			if($this->limit == 0)
 				$this->_tarif = $this->_getList( $query );
 			else

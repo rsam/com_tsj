@@ -13,7 +13,7 @@ JLoader::register('TSJsHelper', JPATH_COMPONENT.'/helpers/tsjs.php');
  */
 class TSJViewTSJs extends JViewLegacy
 {
-	public $layout='';
+	//public $layout='';
 
 	//список записей
    protected $items;
@@ -49,31 +49,31 @@ class TSJViewTSJs extends JViewLegacy
 		{
 			$this->cityitems = $this->get('CityItems');
 			$this->setLayout('city');
-			$layout = 'city';
+			//$layout = 'city';
 		}
 		else if ($this->getLayout() == 'street')
 		{
 			$this->streetitems = $this->get('StreetItems');
 			$this->setLayout('street');
-			$layout = 'street';
+			//$layout = 'street';
 		}
 		else if ($this->getLayout() == 'address')
 		{
 			$this->addressitems = $this->get('AddressItems');
 			$this->setLayout('address');
-			$layout = 'address';
+			//$layout = 'address';
 		}
 		else if ($this->getLayout() == 'account')
 		{
 			$this->accountitems = $this->get('AccountItems');
 			$this->setLayout('account');
-			$layout = 'account';
+			//$layout = 'account';
 		}
 		else
 		{
-			$this->accountitems = $this->get('Items');
+			$this->items = $this->get('Items');
 			$this->setLayout('tsjs');
-			$layout = 'tsjs';
+			//$layout = 'tsjs';
 			//$this->items = $this->get('Item');
 			//$this->setLayout('tsjs');
 			
