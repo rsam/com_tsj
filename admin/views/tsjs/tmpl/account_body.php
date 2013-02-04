@@ -13,27 +13,27 @@ jimport( 'joomla.html.html.grid' );
          <?php echo JHtml::_('grid.id', $i, $accountitem->account_id); ?>
       </td>
       <td>
-         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=edit&account_id='.(int) $accountitem->account_id); ?>">
+         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=account&account_id='.(int) $accountitem->account_id); ?>">
          <?php echo $this->escape($accountitem->account_num); ?></a>
       </td>
       <td>
-         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=edit&account_id='.(int) $accountitem->account_id); ?>">
+         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=account&account_id='.(int) $accountitem->account_id); ?>">
          <?php echo $this->escape($accountitem->city); ?></a>
       </td>
       <td>
-         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=edit&account_id='.(int) $accountitem->account_id); ?>">
+         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=account&account_id='.(int) $accountitem->account_id); ?>">
          <?php echo $this->escape($accountitem->street); ?></a>
       </td>
       <td>
-         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=edit&account_id='.(int) $accountitem->account_id); ?>">
+         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=account&account_id='.(int) $accountitem->account_id); ?>">
          <?php echo $this->escape($accountitem->house); ?></a>
       </td>
       <td>
-         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=edit&account_id='.(int) $accountitem->account_id); ?>">
+         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=account&account_id='.(int) $accountitem->account_id); ?>">
          <?php echo $this->escape($accountitem->office); ?></a>
       </td>
       <td>
-         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=edit&account_id='.(int) $accountitem->account_id); ?>">
+         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=account.edit&layout=account&account_id='.(int) $accountitem->account_id); ?>">
          <?php echo $this->escape($accountitem->name); ?></a>
       </td>
       <td>

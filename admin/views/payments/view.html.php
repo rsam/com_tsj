@@ -37,7 +37,7 @@ class TSJViewPayments extends JView
 		parent::display($tpl);
  
 		// Set the document
-		$this->setDocument();
+		//$this->setDocument();
 	}
  
 	/**

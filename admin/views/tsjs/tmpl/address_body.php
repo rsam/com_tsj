@@ -13,21 +13,21 @@ defined('_JEXEC') or die('Restricted Access');
          <?php echo JHtml::_('grid.id', $i, $addressitem->address_id); ?>
       </td>
       <td>
-      	<a href="<?php echo JRoute::_('index.php?option=com_tsj&task=address.edit&layout=edit&address_id='.(int) $addressitem->address_id); ?>">
+      	<a href="<?php echo JRoute::_('index.php?option=com_tsj&task=address.edit&layout=address&address_id='.(int) $addressitem->address_id); ?>">
          <?php echo $addressitem->city; ?></a>
       </td>
       <td>
-      	<a href="<?php echo JRoute::_('index.php?option=com_tsj&task=address.edit&layout=edit&address_id='.(int) $addressitem->address_id); ?>">
+      	<a href="<?php echo JRoute::_('index.php?option=com_tsj&task=address.edit&layout=address&address_id='.(int) $addressitem->address_id); ?>">
          <?php echo $addressitem->street; ?></a>
       </td>
       <td>
          <?php //echo $addressitems->house; ?>
-         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=address.edit&layout=edit&address_id='.(int) $addressitem->address_id); ?>">
+         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=address.edit&layout=address&address_id='.(int) $addressitem->address_id); ?>">
          <?php echo $this->escape($addressitem->house); ?></a>
       </td>
       <td>
          <?php //echo $addressitems->office; ?>
-          <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=address.edit&layout=edit&address_id='.(int) $addressitem->address_id); ?>">
+          <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=address.edit&layout=address&address_id='.(int) $addressitem->address_id); ?>">
          <?php echo $this->escape($addressitem->office); ?></a>
       </td>
    </tr>

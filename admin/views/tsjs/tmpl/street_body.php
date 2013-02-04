@@ -15,7 +15,7 @@ defined('_JEXEC') or die('Restricted Access');
             <?php //echo JHtml::_('jgrid.checkedout', $i, $cityitem->editor, $cityitem->checked_out_time, 'city.', $canCheckin); ?>
          <?php //endif; ?>
                   
-         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=street.edit&layout=edit&street_id='.(int) $streetitem->street_id); ?>">
+         <a href="<?php echo JRoute::_('index.php?option=com_tsj&task=street.edit&layout=street&street_id='.(int) $streetitem->street_id); ?>">
          <?php echo $this->escape($streetitem->street); ?></a>
       </td>
    </tr>
