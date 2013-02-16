@@ -191,7 +191,7 @@ JHtml::_('behavior.formvalidation');
 	>
 	<fieldset><!--<legend>Ввод показаний индивидуальных счетчиков воды</legend>-->
 
-	<TABLE BORDER=0 COLS=2 BGCOLOR="#FFF4FF">
+	<TABLE BORDER=0 COLS=2>
 		<TR>
 			<TH align=left>Количество мест установки :</TH>
 		</TR>
@@ -234,7 +234,7 @@ JHtml::_('behavior.formvalidation');
 	<BR>
 	<BR>
 
-	<table BORDER=0 COLS=2 BGCOLOR="#FFF4FF">
+	<table BORDER=0 COLS=2>
 	<?php
 	$counts = 3;
 	for($i = 1; $i <= $counts; $i++)

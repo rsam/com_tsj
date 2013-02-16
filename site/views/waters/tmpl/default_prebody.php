@@ -3,7 +3,7 @@
 defined('_JEXEC') or die('Restricted Access');
 
 // Подключаем helper.php
-require_once(dirname(__FILE__).'/helper.php');
+require_once(dirname(JPATH_COMPONENT).'/com_tsj/helpers/helper.php');
 
 // Установка живучести сессии
 JHtml::_('behavior.keepalive');
@@ -18,10 +18,16 @@ JHtml::_('behavior.formvalidation');
 	<?php
 
       // Вывод информационных сообщений
-      if( !(($this->params['water_startDay'] == '1') && ($this->params['water_stopDay'] == '31')) )
-   		echo '<h3>Внимание!!! Вы можете ввести показания счетчиков только c '. $this->params['water_startDay'] .' по ' . $this->params['water_stopDay'] . ' число включительно каждого месяца.</h3>';
+      $delta = abs($this->params['water_startDay'] - $this->params['water_stopDay']);
+      if( ($delta > 1 ) && ($delta < 30) )
+      {
+      	//echo abs($this->params['water_startDay'] - $this->params['water_stopDay']);
+   		echo '<h3>Внимание!!! Вы можете ввести показания счетчиков только c '. 
+   			$this->params['water_startDay'] .' по ' . $this->params['water_stopDay'] . 
+   			' число включительно каждого месяца.</h3>';
+      }
    	
-   	echo '<h3>При вводе показаний повторно, предыдущие показания будут заменены вновь введенными.</h3>';
+   	//echo '<h3>При вводе показаний повторно, предыдущие показания будут заменены вновь введенными.</h3>';
    	
    	// Присвоение переменным серийных номеров счетчиков
       for($i = 1; $i <= $this->dataofsn->counts; $i++)
@@ -41,9 +47,9 @@ JHtml::_('behavior.formvalidation');
    	//$date_month = date("Y-m");
    	$day = date("d");
    
-   	// Проверка на допущение ввода показаний по диапазону дат
+   	// Проверка на допущение ввода показаний по диапазону дат и повтора ввода показаний
    	$form = MyHelper::check($test, $date, $day);
-   	if ($form == '0') :
+   	if ($form > 0) :
    
          // Проверка на серийные номера. Если все серийные номера заполнены, то выводим форму
       	if(( ($this->dataofsn->counts == 1) && ($csnp[1] != NULL) && ($hsnp[1] != NULL) ) ||
@@ -56,7 +62,7 @@ JHtml::_('behavior.formvalidation');
       	<fieldset>
       	<!--<legend>Ввод показаний индивидуальных счетчиков воды</legend>-->
       
-      	<table BORDER=0 COLS=2 BGCOLOR="#FFF4FF">
+      	<table BORDER=0 COLS=2>
       	
             <?php 
             // Вывод полей формы для ввода показаний соответствующих количеству точек установки

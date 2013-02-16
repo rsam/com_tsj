@@ -2,6 +2,9 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+// Подключаем helper.php
+//require_once(dirname(JPATH_COMPONENT).'/com_tsj/helpers/helper.php');
+
 // Include dependancy of the main model form
 jimport('joomla.application.component.modelform');
 // import Joomla modelitem library
@@ -18,27 +21,27 @@ class TSJModelWaters extends JModelForm
 	 * @var string msg
 	 */
 	protected $msg;
-	 
+
 	/**
 	 * @var integer count of points with water counters
 	 */
 	protected $countofpoint;
-	 
+
 	/**
 	 * @var array string name of points with water counters
 	 */
 	protected $name;
-	 
+
 	/**
 	 * @var double data water counters
 	 */
 	protected $data = array("","");
-	 
+
 	/**
 	 * @var integer id office
 	 */
 	protected $office_counter_id;
-	 
+
 	/**
 	 * @var string username eq. account
 	 */
@@ -48,7 +51,7 @@ class TSJModelWaters extends JModelForm
 	 * @var pointer to global object database
 	 */
 	public $db;
-	 
+
 	/**
 	 * Constructor for set class variables
 	 */
@@ -83,41 +86,41 @@ class TSJModelWaters extends JModelForm
 	public function getParams()
 	{
 		$params = array();
-		 
+			
 		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_prefix_text';" );
 		$row =& $this->db->loadResult();
-			 
+
 		// Проверка на ошибки
 		if (!$result = $this->db->query()) {
 			//echo $this->db->stderr();
 			return false;
 		}
-      $params['water_prefix_text'] = $row;
-      
+		$params['water_prefix_text'] = $row;
+
 		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_show_rows_sn';" );
 		$row =& $this->db->loadResult();
-      $params['water_show_rows_sn'] = $row;
-      
+		$params['water_show_rows_sn'] = $row;
+
 		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_show_rows_water';" );
 		$row =& $this->db->loadResult();
-      $params['water_show_rows_water'] = $row;
-      
+		$params['water_show_rows_water'] = $row;
+
 		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_linksn';" );
 		$row =& $this->db->loadResult();
-      $params['water_linksn'] = $row;
+		$params['water_linksn'] = $row;
 
 		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_startDay';" );
 		$row =& $this->db->loadResult();
-      $params['water_startDay'] = $row;
-      
+		$params['water_startDay'] = $row;
+
 		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_stopDay';" );
 		$row =& $this->db->loadResult();
-      $params['water_stopDay'] = $row;
-       
-                
+		$params['water_stopDay'] = $row;
+		 
+
 		return $params;
 	}
-	
+
 	/**
 	 * Returns a data of water counters.
 	 *
@@ -130,10 +133,10 @@ class TSJModelWaters extends JModelForm
 		{
 			// Получаем версию Joomla
 			/*$version = new JVersion;
-			 $joomla = $version->getShortVersion();
-			 if(substr($joomla,0,3) == '2.5'){
+			$joomla = $version->getShortVersion();
+			if(substr($joomla,0,3) == '2.5'){
 
-			 }*/
+			}*/
 
 			// Подготовка запроса на получение данных счетчиков воды
 			$sql = " SELECT  t2.user_id,
@@ -150,18 +153,18 @@ class TSJModelWaters extends JModelForm
 			// Выполнение запроса в базу данных и получения списка строк соответствующих запросу row
 			$this->db->setQuery( $sql );
 			$row =& $this->db->loadObjectList();
-			 
+
 			// Проверка на ошибки
 			if (!$result = $this->db->query()) {
 				//echo $this->db->stderr();
 				return false;
 			}
-			 
+
 			if (empty($row))
 			{
 				return NULL;
 			}
-			 
+
 			$this->msg = true;
 		}
 
@@ -239,7 +242,8 @@ class TSJModelWaters extends JModelForm
 		// Получить текущую дату для последующего сохранения в базу
 		$date = date("Y-m-d");
 		// Получить месяц и год для последующей проверки на повтор ввода данных за месяц
-		$date_month = date("Y-m");
+		//$date_month = date("Y-m");
+		//$date_day = date("d");
 
 		// установить переменные из полей формы
 		$hotwater1 = $data['hwater1'];
@@ -249,7 +253,7 @@ class TSJModelWaters extends JModelForm
 		$hotwater3 = $data['hwater3'];
 		$coldwater3 = $data['cwater3'];
 
-		// подготовка запроса в базу данных для последующей проверки на повторный ввод данных в месяце
+		// подготовка запроса в базу данных для определения office_counter_id
 		$sql = " SELECT   t1.office_counter_id, t2.user_id,
                         t1.counts,
                         t1.water_name_1, DATE_FORMAT( t1.date_in_hot_p1, '%d-%m-%Y' ) AS date_in_hot_pp1 , t1.ser_num_hot_p1,
@@ -265,7 +269,7 @@ class TSJModelWaters extends JModelForm
 
 		// Выполнение запроса в базу данных и получения списка строк соответствующих запросу row
 		$this->db->setQuery( $sql );
-		$row =& $this->db->loadObject();
+		$rows =& $this->db->loadObject();
 
 		// Проверка на ошибки
 		if (!$result = $this->db->query()) {
@@ -273,12 +277,12 @@ class TSJModelWaters extends JModelForm
 			return false;
 		}
 
-		if (empty($row))
+		if (empty($rows))
 		{
 			return NULL;
 		}
 
-		$this->office_counter_id = $row->office_counter_id;
+		$this->office_counter_id = $rows->office_counter_id;
 
 		// подготовка запроса в базу данных для последующей проверки на повторный ввод данных в месяце
 		$sql = " SELECT   t2.user_id, t3.water_id, t3.office_counter_id,
@@ -294,7 +298,7 @@ class TSJModelWaters extends JModelForm
 
 		// Выполнение запроса в базу данных и получения списка строк соответствующих запросу row
 		$this->db->setQuery( $sql );
-		$row =& $this->db->loadObjectList();
+		$rows =& $this->db->loadObjectList();
 
 		// Проверка на ошибки
 		if (!$result = $this->db->query()) {
@@ -308,24 +312,81 @@ class TSJModelWaters extends JModelForm
 		 }*/
 
 		// Количество найденных записей удовлетворяющих запросу для офиса
-		$nrow = count($row);
+		$nrow = count($rows);
 		$tid = 0;
 		if($nrow > 0)
 		{
+			$params = TSJModelWaters::getParams();
+			$startday = $params['water_startDay'];
+			$stopday = $params['water_stopDay'];
+
+			$date_elements  = explode("-",$date);
+			$datem = $date_elements[0]. "-". $date_elements[1];
+
 			// Если записи есть, то проверка по записям на повтор ввода данных в месяце
-			foreach($row as $rows)
+			foreach($rows as $row)
 			{
-				$datefromdb = date($rows->date_in);
-				$date_elements  = explode("-",$datefromdb);
-				$datem = $date_elements[0]. "-". $date_elements[1];
-				if($datem == $date_month)
+				$newdata = 0;
+				//echo 'date_in='.$row->date_in;
+				if($stopday == $startday){
+					//echo ' 4 ';
+					if($stopday != 1) $stopday = $stopday - 1;
+					else $stopday = 31;
+					//$strdate1 = new DateTime($datem . '-' . $startday);
+					//$stpdate1 = new DateTime($datem . '-' . $stopday);
+					//$strdate1->modify("-1 day");
+					//if( ($row->date_in >= $strdate1->format('Y-m-d')) && ($row->date_in <= $stpdate1->format('Y-m-d')) ) $newdata = 1;
+				}
+					
+				// 5..10 7
+				if($stopday > $startday){
+					//echo ' 1 ';
+					$strdate1 = new DateTime($datem . '-' . $startday);
+					$stpdate1 = new DateTime($datem . '-' . $stopday);
+					if( ($row->date_in >= $strdate1->format('Y-m-d')) && ($row->date_in <= $stpdate1->format('Y-m-d')) ) $newdata = 1;
+				}
+					
+				/*if($stopday == $startday){
+				 echo ' 4 ';
+				 $strdate1 = new DateTime($datem . '-' . $startday);
+				 $strdate1->modify("-1 months");
+				 $stpdate1 = new DateTime($datem . '-' . $stopday);
+				 if( ($row->date_in >= $strdate1->format('Y-m-d')) && ($row->date_in <= $stpdate1->format('Y-m-d')) ) $newdata = 1;
+					}*/
+					
+				if($startday > $stopday){
+					// 10..5 1
+					if(($date_elements[2] <= $startday) && ($date_elements[2] <= $stopday)){
+						//echo ' 2 ';
+						$strdate1 = new DateTime($datem . '-' . $startday);
+						$strdate1->modify("-1 months");
+						$stpdate1 = new DateTime($datem . '-' . $stopday);
+							
+						if(($row->date_in < $stpdate1->format('Y-m-d')) || ($row->date_in >= $strdate1->format('Y-m-d'))) $newdata = 1;
+					}
+
+					// 10..5 20
+					if(($date_elements[2] >= $startday) && ($date_elements[2] >= $stopday)){
+						//echo ' 3 ';
+						$stpdate1 = new DateTime($datem . '-' . $stopday);
+						$stpdate1->modify("+1 months");
+						$strdate1 = new DateTime($datem . '-' . $startday);
+							
+						if(($row->date_in >= $strdate1->format('Y-m-d')) && ($row->date_in <= $stpdate1->format('Y-m-d'))) $newdata = 1;
+					}
+				}
+
+				//echo ' str='.$strdate1->format('Y-m-d');
+				//echo ' stp='.$stpdate1->format('Y-m-d');
+				if($newdata == 1)
 				{
 					// В текущем месяце данные уже вводили
-					$tid = $rows->water_id;
+					$tid = $row->water_id;
+					//echo $tid;
 					break;
 				}
 			}
-			//$office_counter_id = $rows->office_counter_id;
+
 		}
 		//echo qqq.$office_counter_id;
 
