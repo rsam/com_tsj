@@ -56,7 +56,7 @@ class TSJViewTarifs extends JView
 	 */
 	protected function addToolBar()
 	{
-		JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TSJS'), 'tarifs');
+      JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TARIF'));
 
 		//Выводим кнопку настройки
 		/*if (JFactory::getUser()->authorise('core.admin', 'com_tsj')) {
@@ -64,9 +64,9 @@ class TSJViewTarifs extends JView
 		JToolBarHelper::divider();
 		}*/
 
-		JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'tarif.remove','Delete');
-		JToolBarHelper::editListX('tarif.edit','Edit');
-		JToolBarHelper::addNewX('tarif.add','Add');
+		JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'tarif.remove');
+		JToolBarHelper::editListX('tarif.edit');
+		JToolBarHelper::addNewX('tarif.add');
 
 		JToolBarHelper::help( 'com_tsj', true );
 	}

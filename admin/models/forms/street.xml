@@ -10,8 +10,8 @@
 		<field
 			name="street"
 			type="text"
-			label="Улица"
-			description="Улица"
+			label="COM_TSJ_STREET_HEADING_NAME"
+			description="COM_TSJ_STREET_HEADING_NAME_DESC"
 			size="40"
 			class="inputbox validate-name"
 			validate="street"

@@ -10,8 +10,8 @@
       <field
          name="city_id"
          type="City"
-         label="Город"
-         description="Город"
+         label="COM_TSJ_CITY_HEADING_NAME"
+         description="COM_TSJ_LIST_DESC"
          size="1"
          class="inputbox validate-name"
          validate="int"
@@ -23,8 +23,8 @@
       <field
          name="street_id"
          type="Street"
-         label="Улица"
-         description="Улица"
+         label="COM_TSJ_STREET_HEADING_NAME"
+         description="COM_TSJ_LIST_DESC"
          size="1"
          class="inputbox validate-name"
          validate="int"
@@ -36,8 +36,8 @@
 		<field
 			name="house"
 			type="text"
-			label="Номер дома"
-			description="Номер дома"
+			label="COM_TSJ_ADDRESS_HEADING_HOUSE"
+			description="COM_TSJ_ADDRESS_HEADING_HOUSE_DESC"
 			size="40"
 			class="inputbox validate-name"
 			validate="address"
@@ -47,8 +47,8 @@
       <field
          name="office"
          type="text"
-         label="Номер квартиры/офиса"
-         description="Номер квартиры/офиса"
+         label="COM_TSJ_ADDRESS_HEADING_OFFICE"
+         description="COM_TSJ_ADDRESS_HEADING_OFFICE_DESC"
          size="40"
          class="inputbox validate-name"
          validate="address"

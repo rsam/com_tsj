@@ -45,7 +45,7 @@ class TSJViewHSCs extends JView
 	 */
 	protected function addToolBar() 
 	{
-		JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TSJS'), 'tsj');
+		JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TSJS'));
 		JToolBarHelper::deleteList('', 'tsjs.delete');
 		JToolBarHelper::editList('tsj.edit');
 		JToolBarHelper::addNew('tsj.add');

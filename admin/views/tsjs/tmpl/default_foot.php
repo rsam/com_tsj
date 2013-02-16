@@ -8,7 +8,13 @@ defined('_JEXEC') or die('Restricted Access');
 	<table width='100%'>
 		<tr>
 			<td width='50%' class='adminform' valign='top'>
-
+				<?php 
+					if (JRequest::getVar($dbuser, "MySQLi") != "InnoDB") {
+						echo 'Внимание!!! Таблица users базы данных не в формате InnoDB<br>
+						Для работы компонента пожалуйста измените формат таблицы users базы данных.<br>
+						Это можно сделать через phpMyAdmin.';
+					}
+				?>
 			<div class='clr'></div>
 			</td>
 			<td valign='top' width='50%' style='padding: 0px 0px 0px 0px'>
@@ -20,7 +26,7 @@ defined('_JEXEC') or die('Restricted Access');
 				</tr>
 				<tr>
 					<td width='40%'><?php echo JText::_('Version'); ?></td>
-					<td width='60%'><?php echo '1.0.0'; ?></td>
+					<td width='60%'><?php echo '1.3.0'; ?></td>
 				</tr>
 				<tr>
 					<td><?php echo JText::_('Copyright'); ?></td>

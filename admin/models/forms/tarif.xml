@@ -8,7 +8,7 @@
 		<field
 			name="tarif_name_short"
 			type="text"
-			label="COM_TSJ_TARIF_NAME_SHORT_LABEL"
+			label="COM_TSJ_TARIF_NAME_SHORT"
 			description="COM_TSJ_TARIF_NAME_SHORT_DESC"
 			size="40"
 			class="inputbox"
@@ -17,7 +17,7 @@
 		<field
 			name="tarif_name"
 			type="text"
-			label="COM_TSJ_TARIF_NAME_LABEL"
+			label="COM_TSJ_TARIF_NAME"
 			description="COM_TSJ_TARIF_NAME_DESC"
 			size="40"
 			class="inputbox"
@@ -26,7 +26,7 @@
 		<field
 			name="tarif"
 			type="text"
-			label="COM_TSJ_TARIF_LABEL"
+			label="COM_TSJ_TARIF"
 			description="COM_TSJ_TARIF_DESC"
 			size="40"
 			class="inputbox"
@@ -35,7 +35,7 @@
 		<field
 			name="tarif_1"
 			type="text"
-			label="COM_TSJ_TARIF_1_LABEL"
+			label="COM_TSJ_TARIF_1"
 			description="COM_TSJ_TARIF_1_DESC"
 			size="40"
 			class="inputbox"
@@ -44,7 +44,7 @@
 		<field
 			name="tarif_2"
 			type="text"
-			label="COM_TSJ_TARIF_2_LABEL"
+			label="COM_TSJ_TARIF_2"
 			description="COM_TSJ_TARIF_2_DESC"
 			size="40"
 			class="inputbox"

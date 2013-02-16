@@ -57,8 +57,8 @@ class TSJViewAddress extends JView
    {
       JRequest::setVar('hidemainmenu', true);
       $isNew = ($this->item->address_id == 0);
-      JToolBarHelper::title($isNew ? JText::_('NEW') : JText::_('EDIT'), 'address');
-      JToolBarHelper::save('address.save','Сохранить адрес');
+      JToolBarHelper::title($isNew ? JText::_('NEW') : JText::_('EDIT'));
+      JToolBarHelper::save('address.save');
       JToolBarHelper::cancel('address.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 
       $this->assignRef('address', $this->item);

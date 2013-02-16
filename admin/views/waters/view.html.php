@@ -46,7 +46,7 @@ class TSJViewWaters extends JView
    protected function addToolBar()
    {
       // Выводим заголовок
-      JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_WATERS'), 'waters');
+      JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_WATERS'));
 
 		$bar = JToolBar::getInstance('toolbar');
 		$bar->appendButton('Popup', 'options', 'Мои Настройки', 'index.php?option=com_tsj&amp;view=wconfig&amp;tmpl=component', 850, 400);

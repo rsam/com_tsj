@@ -10,8 +10,8 @@
 		<field
 			name="city"
 			type="text"
-			label="Город"
-			description="Город"
+			label="COM_TSJ_CITY_HEADING_NAME"
+			description="COM_TSJ_CITY_HEADING_NAME_DESC"
 			size="40"
 			class="inputbox validate-name"
 			validate="city"

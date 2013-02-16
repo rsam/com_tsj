@@ -319,6 +319,7 @@ class TSJControllerTSJs extends JControllerAdmin
 				
 			}
 
+			echo '<br>Импорт закончен.<br>';
 			fclose($handle);
 		}
 		//$this->setRedirect('index.php?option=com_tsjs');

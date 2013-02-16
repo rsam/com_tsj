@@ -57,8 +57,8 @@ class TSJViewAccount extends JView
    {
       JRequest::setVar('hidemainmenu', true);
       $isNew = ($this->item->account_id == 0);
-      JToolBarHelper::title($isNew ? JText::_('NEW') : JText::_('EDIT'), 'account');
-      JToolBarHelper::save('account.save','Сохранить');
+      JToolBarHelper::title($isNew ? JText::_('NEW') : JText::_('EDIT'));
+      JToolBarHelper::save('account.save');
       JToolBarHelper::cancel('account.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 
       $this->assignRef('account', $this->item);

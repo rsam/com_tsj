@@ -57,8 +57,8 @@ class TSJViewTarif extends JView
    {
       JRequest::setVar('hidemainmenu', true);
       $isNew = ($this->item->tarif_id == 0);
-      JToolBarHelper::title($isNew ? JText::_('NEW') : JText::_('EDIT'), 'tarif');
-      JToolBarHelper::save('tarif.save','Сохранить тариф');
+      JToolBarHelper::title($isNew ? JText::_('NEW') : JText::_('EDIT'));
+      JToolBarHelper::save('tarif.save');
       JToolBarHelper::cancel('tarif.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 
       $this->assignRef('tarif', $this->item);

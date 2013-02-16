@@ -101,7 +101,7 @@ class TSJViewTSJs extends JView
 	protected function addToolBar()
 	{
 		// Заголовок
-		JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TSJS'), 'tsjs');
+		JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TSJS'));
 		//JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TSJS'), 'generic.png');
 
 		// Кнопки
@@ -109,39 +109,33 @@ class TSJViewTSJs extends JView
 
 		if ($this->getLayout() == 'street')
 		{
-			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'street.remove','Delete '.$this->_layout);
-			JToolBarHelper::editListX('street.edit','Edit '.$this->_layout);
-			JToolBarHelper::addNewX('street.add','Add '.$this->_layout);
+			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'street.remove');
+			JToolBarHelper::editListX('street.edit');
+			JToolBarHelper::addNewX('street.add');
 		}
 		else if ($this->getLayout() == 'city')
 		{
-			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'city.remove','Delete '.$this->_layout);
-			JToolBarHelper::editListX('city.edit','Edit '.$this->_layout);
-			JToolBarHelper::addNewX('city.add','Add '.$this->_layout);
+			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'city.remove');
+			JToolBarHelper::editListX('city.edit');
+			JToolBarHelper::addNewX('city.add');
 		}
 		else if ($this->getLayout() == 'address')
 		{
-			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'address.remove','Delete '.$this->_layout);
-			JToolBarHelper::editListX('address.edit','Edit '.$this->_layout);
-			JToolBarHelper::addNewX('address.add','Add '.$this->_layout);
+			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'address.remove');
+			JToolBarHelper::editListX('address.edit');
+			JToolBarHelper::addNewX('address.add');
 		}
 		else if ($this->getLayout() == 'account')
 		{
-			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'account.remove','Delete '.$this->_layout);
-			JToolBarHelper::editListX('account.edit','Edit '.$this->_layout);
-			JToolBarHelper::addNewX('account.add','Add '.$this->_layout);
-		}
-		else
-		{
-			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'tsjs.remove','Delete '.$this->_layout);
-			JToolBarHelper::editListX('tsjs.edit','Edit '.$this->_layout);
-			JToolBarHelper::addNewX('tsjs.add','Add '.$this->_layout);
+			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'account.remove');
+			JToolBarHelper::editListX('account.edit');
+			JToolBarHelper::addNewX('account.add');
 		}
     
 		JToolBarHelper::divider();
 		$toolbar->addButtonPath(JPATH_COMPONENT.'/'.'buttons');
 		$toolbar->loadButtonType('Import', true);
-		$toolbar->appendButton('Import', 'tsjs-import', 'Import', 'tsjs.import');
+		$toolbar->appendButton('Import', 'tsjs-import', 'COM_TSJ_CONFIG_IMPORT', 'tsjs.import');
 
 		$doc = &JFactory::getDocument();
 		//$icon_48_import = " .icon-48-tsjs {background:url(components/com_tsj/images/header/icon-48-importer.png) no-repeat; }";

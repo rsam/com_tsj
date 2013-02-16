@@ -57,8 +57,8 @@ class TSJViewStreet extends JView
    {
       JRequest::setVar('hidemainmenu', true);
       $isNew = ($this->item->street_id == 0);
-      JToolBarHelper::title($isNew ? JText::_('NEW') : JText::_('EDIT'), 'street');
-      JToolBarHelper::save('street.save','Сохранить улицу');
+      JToolBarHelper::title($isNew ? JText::_('NEW') : JText::_('EDIT'));
+      JToolBarHelper::save('street.save');
       JToolBarHelper::cancel('street.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 
       $this->assignRef('street', $this->item);
