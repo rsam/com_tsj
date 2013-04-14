@@ -24,7 +24,7 @@ class TSJControllerWConfig extends JControllerLegacy
 
 		// Initialise variables.
 		$app		= JFactory::getApplication();
-		$model		= $this->getModel('WConfig', 'TSJModel');
+		$model	= $this->getModel('WConfig', 'TSJModel');
 		$data		= JRequest::getVar('jform', array(), 'post', 'array');
 
 		// Validate the posted data.

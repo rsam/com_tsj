@@ -11,10 +11,9 @@ JHtml::_('behavior.tooltip');
 		<tbody><?php echo $this->loadTemplate('body');?></tbody>
 	</table>
 	<div>
-		<input type="hidden" name="task" value="" />
+		<input type="hidden" name="task" value="tsjs.setinnodb" />
 		<input type="hidden" name="boxchecked" value="0" />
-      <input type="hidden" name="view" value="<?=$view?>" />
-      <input type="hidden" name="option" value="<?=$option?>" />
+      <input type="hidden" name="view" value="" />
       <input type="hidden" name="controller" value="tsjs" />
       <input type="hidden" name="layout" value="tsjs" />
 		<?php echo JHtml::_('form.token'); ?>

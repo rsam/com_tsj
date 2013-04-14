@@ -26,7 +26,7 @@ class TSJViewTarif extends JView
       // get the Data
       $item = $this->get('Item');
       $form = $this->get('Form');
-      $script = $this->get('Script');
+      //$script = $this->get('Script');
 
       // Check for errors.
       if (count($errors = $this->get('Errors')))
@@ -38,7 +38,7 @@ class TSJViewTarif extends JView
       // Assign data to the view
       $this->item = $item;
       $this->form = $form;
-      $this->script = $script;
+      //$this->script = $script;
 
       // Set the toolbar
       $this->addToolBar();

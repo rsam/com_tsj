@@ -39,7 +39,7 @@ class TSJViewSNWaters extends JView
 
       if($this->lic == 0){
          // redirect to lic
-         $app->redirect('index.php?option=com_tsj&view=lic'); 
+         $app->redirect('index.php?option=com_tsj&view=lic&task=snwaters'); 
       }
       
       // Assign data to the view

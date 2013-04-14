@@ -45,7 +45,7 @@ class TSJViewWaters extends JView
 
       if($this->lic == 0){
          // redirect to lic
-         $app->redirect('index.php?option=com_tsj&view=lic'); 
+         $app->redirect('index.php?option=com_tsj&view=lic&task=waters'); 
       }
       
       // Получим данные для вида из модели вызвав метод модели getDataOfSN

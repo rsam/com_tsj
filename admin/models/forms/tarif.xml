@@ -30,7 +30,6 @@
 			description="COM_TSJ_TARIF_DESC"
 			size="40"
 			class="inputbox"
-			default="" 
 		/>
 		<field
 			name="tarif_1"
@@ -39,7 +38,6 @@
 			description="COM_TSJ_TARIF_1_DESC"
 			size="40"
 			class="inputbox"
-			default="" 
 		/>
 		<field
 			name="tarif_2"
@@ -48,7 +46,19 @@
 			description="COM_TSJ_TARIF_2_DESC"
 			size="40"
 			class="inputbox"
-			default="" 
+			default=""
 		/>
+		<field
+			name="tarif_type"
+			type="list"
+			label="COM_TSJ_TARIF_LINK_TYPE"
+			description="COM_TSJ_TARIF_LINK_TYPE_DESC"
+			class="inputbox"
+			size="1"
+			default="1">
+			<option value="1">c 1 кв.м.</option>
+			<option value="2">с 1 человека</option>
+			<option value="3">с помещения</option>
+		</field>
 	</fieldset>
 </form>

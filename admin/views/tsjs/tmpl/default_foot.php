@@ -12,7 +12,12 @@ defined('_JEXEC') or die('Restricted Access');
 					if (JRequest::getVar($dbuser, "MySQLi") != "InnoDB") {
 						echo 'Внимание!!! Таблица users базы данных не в формате InnoDB<br>
 						Для работы компонента пожалуйста измените формат таблицы users базы данных.<br>
-						Это можно сделать через phpMyAdmin.';
+						Это можно сделать через phpMyAdmin или нажав кнопку: ';
+						
+						?>
+						<!-- set InnoDB form -->			
+						<input id="submit" type="submit" name="submit" value="Изменить формат таблицы users на InnoDB" />
+						<?php
 					}
 				?>
 			<div class='clr'></div>
@@ -26,7 +31,7 @@ defined('_JEXEC') or die('Restricted Access');
 				</tr>
 				<tr>
 					<td width='40%'><?php echo JText::_('Version'); ?></td>
-					<td width='60%'><?php echo '1.3.0'; ?></td>
+					<td width='60%'><?php echo '2.0.0'; ?></td>
 				</tr>
 				<tr>
 					<td><?php echo JText::_('Copyright'); ?></td>

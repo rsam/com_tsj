@@ -324,4 +324,27 @@ class TSJControllerTSJs extends JControllerAdmin
 		}
 		//$this->setRedirect('index.php?option=com_tsjs');
 	}
+
+	public function setinnodb()
+	{
+      // Get the data from the form POST
+      //$data = JRequest::getVar('submit', array(), 'post', 'array');
+		if( isset($_POST['submit']))
+		{
+			$db =& JFactory::getDBO();
+			if (!$db->connected()) {
+				echo "Нет соединения с сервером баз данных. Повторите запрос позже";
+				jexit();
+			}
+      	// Check for request forgeries.
+      	//JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+      	
+			//$query = $db->getQuery(true);
+			$query="ALTER TABLE `#__users` ENGINE=INNODB;";
+			$db->setQuery($query);
+			$result = $db->query();
+		}
+		
+	}
+	
 }

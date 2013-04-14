@@ -69,4 +69,44 @@
       	filter="safehtml"
       />
 	</fieldset>
+	
+	<fieldset
+		name="waterparams2"
+		label="COM_TSJ_CONFIG_GREETING_SETTINGS_LABEL2"
+		description="COM_TSJ_CONFIG_GREETING_SETTINGS_DESC2" 
+    >
+      <field
+            name="water_notice_third"
+            type="integer"
+            first="0"
+            last="120"
+            step="1"
+            default="30"
+            label="COM_TSJ_CONFIG_THIRD_NOTICE_NAME"
+            description="COM_TSJ_CONFIG_THIRD_NOTICE_NAME_DESC"
+            filter="integer"
+      />
+      <field
+            name="water_notice_second"
+            type="integer"
+            first="0"
+            last="120"
+            step="1"
+            default="60"
+            label="COM_TSJ_CONFIG_SECOND_NOTICE_NAME"
+            description="COM_TSJ_CONFIG_SECOND_NOTICE_NAME_DESC"
+            filter="integer"
+      />
+      <field
+            name="water_notice_first"
+            type="integer"
+            first="0"
+            last="120"
+            step="1"
+            default="0"
+            label="COM_TSJ_CONFIG_FIRST_NOTICE_NAME"
+            description="COM_TSJ_CONFIG_FIRST_NOTICE_NAME_DESC"
+            filter="integer"
+      />
+	</fieldset>
 </form>

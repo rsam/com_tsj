@@ -27,8 +27,8 @@ class TSJModelWConfig extends JModelForm
 	 */
 	protected function populateState()
 	{
-		$app	= JFactory::getApplication('administrator');
-		$user	= JFactory::getUser();
+		//$app	= JFactory::getApplication('administrator');
+		//$user	= JFactory::getUser();
 
 		//$this->setState('user.id', $user->get('id'));
 
@@ -37,6 +37,21 @@ class TSJModelWConfig extends JModelForm
 		$this->setState('params', $params);
 	}
 
+	/*public  function validate($form, $data)
+	{
+		$ret = parent::validate($form, $data);
+
+		if($ret != false)
+		{
+			// Проверка значений на возрастание
+			print_r($form);
+			print_r($data);
+			
+		}
+		
+		return $ret;
+	}*/
+	
 	/**
 	 * Method to get a single record.
 	 *
@@ -98,7 +113,7 @@ class TSJModelWConfig extends JModelForm
 	public function save($data)
 	{
 		$db = $this->getDbo();
-
+		
 		//if ($userId = (int) $this->getState('user.id')) {
 			$db->setQuery(
 				" DELETE FROM #__tsj_cfg WHERE cfg_name = 'water_linksn'
@@ -107,7 +122,10 @@ class TSJModelWConfig extends JModelForm
 								OR cfg_name = 'water_show_rows_sn'
 								OR cfg_name = 'water_show_rows_water'
 								OR cfg_name = 'water_startDay'
-								OR cfg_name = 'water_stopDay'; "
+								OR cfg_name = 'water_stopDay'
+								OR cfg_name = 'water_notice_first'
+								OR cfg_name = 'water_notice_second'
+								OR cfg_name = 'water_notice_third'; "
 			);
 			$db->query();
 			if ($error = $db->getErrorMsg()) {

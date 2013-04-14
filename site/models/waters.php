@@ -116,8 +116,7 @@ class TSJModelWaters extends JModelForm
 		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_stopDay';" );
 		$row =& $this->db->loadResult();
 		$params['water_stopDay'] = $row;
-		 
-
+		
 		return $params;
 	}
 

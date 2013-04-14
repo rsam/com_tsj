@@ -25,6 +25,7 @@ class TSJTableTarif extends JTable
     var $tarif = null;
     var $tarif_1 = null;
     var $tarif_2 = null;
+    var $tarif_type = 1;
       
 	/**
 	 * Constructor
@@ -35,4 +36,21 @@ class TSJTableTarif extends JTable
 	{
 		parent::__construct('#__tsj_tarif', 'tarif_id', $db);
 	}
+	
+	function check() {
+
+      if( !is_numeric( $this->tarif_1) ){
+         $this->tarif_1 = NULL;
+      }
+
+	   if( !is_numeric( $this->tarif_2) ){
+         $this->tarif_2 = NULL;
+      }
+      return parent::check();
+   }
+   
+   function store($updateNulls = false)
+   {
+   	return parent::store(true);
+   }
 }

@@ -17,4 +17,5 @@ $listDirn   = $this->escape($this->state->get('list.direction'));
 	<th><?php echo JText::_('COM_TSJ_TARIF'); ?></th>
 	<th><?php echo JText::_('COM_TSJ_TARIF_1'); ?></th>
 	<th><?php echo JText::_('COM_TSJ_TARIF_2'); ?></th>
+	<th><?php echo JText::_('COM_TSJ_TARIF_LINK_TYPE'); ?></th>
 </tr>

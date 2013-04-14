@@ -25,6 +25,12 @@ class TSJControllerLic extends JControllerForm
        //$this->setRedirect(JRoute::_('index.php?option=com_tsj&view=lic&layout=default&id='.JFactory::getUser()->id, false));
    }*/
    
+   
+   public function settask($tsk)
+   {
+   	$this->tsk = $tsk;
+   }
+   
    /**
     * Method to set a form data.
     *
@@ -44,6 +50,9 @@ class TSJControllerLic extends JControllerForm
 
       // Get the data from the form POST
       $data = JRequest::getVar('checklic', array(), 'post', 'array');
+      $tsk = JRequest::getVar('subtask', array(), 'post');
+
+      
       //$data1 = JRequest::get( 'post' );
       //$checkbox_arr = array_map('intval', $data1);
       // Now update the loaded data to the database via a function in the model
@@ -58,7 +67,11 @@ class TSJControllerLic extends JControllerForm
          
          $upditem        = $model->setDataOfLic($this->lic);
          if($upditem)
-            echo "<h2>Спасибо. Теперь Вы можете пользоваться функциями системы.</h2>";
+         {
+            //echo "<h2>Спасибо. Теперь Вы можете пользоваться функциями системы.</h2>";
+            $this->setRedirect(JRoute::_('index.php?option=com_tsj&view='.$tsk.'&layout=default&id='.JFactory::getUser()->id, false));
+            //$this->setRedirect(JRoute::_(JURI::root().'index.php', false));
+         }
          else
             echo "<h2>Ошибка при сохранении данных.</h2>";
       }

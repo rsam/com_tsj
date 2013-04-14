@@ -29,6 +29,7 @@ class TSJControllerTarif extends JControllerForm
 	function save()
 	{
 		//$model = $this->getModel('tarif');
+		
 		if (parent::save('tarif.save')) {
 			$msg = JText::_( 'tarif Saved!' );
 		} else {
@@ -39,7 +40,7 @@ class TSJControllerTarif extends JControllerForm
 		$link = 'index.php?option=com_tsj&view=tarifs';
 		$this->setRedirect($link, $msg);
 	}
-
+    
 	/**
 	 * remove record(s)
 	 * @return void
