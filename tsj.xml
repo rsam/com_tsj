@@ -50,6 +50,7 @@
    <media destination="com_tsj" folder="media">
       <filename>index.html</filename>
       <folder>images</folder>
+      <folder>js</folder>
    </media>
 
    <administration>
