@@ -1,0 +1,33 @@
+/* datepicker */
+.datepicker {border:1px solid #333; border-right:1px solid #CCC; border-bottom:1px solid #CCC; background:#FFF url(/js/datepicker/bcg-dp.gif) no-repeat 100% 50%; padding:2px 4px; width:86px;}
+
+#datepicker {position:absolute; top:0; left:0; width:201px; border:1px solid #333; border-left:1px solid #CCC; border-top:1px solid #CCC; background:#FFF;}
+#datepicker {font-family:Tahoma, Geneva, sans-serif; font-size:11px; padding:3px 3px 0;}
+
+#dateheader {height:22px; background:#999; position:relative; margin:0 0 3px;}
+* html #dateheader {height:23px;}
+#dateheader span {display:block; padding:4px 0 0; text-align:center; color:#FFF; font-weight:bold;}
+#dateheader a {display:block; position:absolute; width:24px; height:16px; color:#FFF; text-decoration:none; font-family:"Times New Roman", Times, serif; font-size:15px; line-height:17px; border:1px solid #FFF;}
+#dateheader a:hover {background:#FFF; color:#000; padding:1px; border:0;}
+#dateheader b {display:block; text-align:center; font-weight:normal; padding:0;}
+#dpLeft {top:2px; left:2px;}
+#dpRight {top:2px; right:2px;}
+
+#dateweek {overflow:hidden; width:100%; height:25px;}
+#dateweek div {width:210px;}
+#dateweek b {display:block; float:left; border:1px solid #EFEFEF; margin:0 2px 0 0; width:25px; height:20px;}
+#dateweek span {display:block; text-align:center; padding:2px 0 0;}
+
+#dateSp {height:1px; overflow:hidden; clear:both;}
+* html #dateSp {height:3px;}
+
+#dates {width:100%; overflow:hidden;}
+#dates div {width:210px;}
+#dates b {display:block; float:left; border:1px solid #FFF; width:25px; height:20px; margin:0 2px 2px 0;}
+#dates a {display:block; float:left; border:1px solid #CCC; margin:0 2px 2px 0; width:25px; height:20px; text-align:right; color:#666; text-decoration:none;}
+#dates a:hover {border:1px solid #666; color:#000; background:#EFEFEF;}
+#dates span {display:block; text-align:right; padding:3px 3px 0 0;}
+#dates .on {color:#F7931D; border:1px solid #F7931D;}
+
+#dates #currentdate {color:#FF7300; border:1px solid #FFE17F;}
+#dates #currentdate:hover {background:#FFF;}
