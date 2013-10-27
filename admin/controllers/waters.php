@@ -10,14 +10,14 @@ jimport('joomla.application.component.controlleradmin');
  */
 class TSJControllerWaters extends JControllerAdmin
 {
-   /**
-    * Proxy for getModel.
-    * @since	2.5
-    */
-   public function getModel($name = 'Waters', $prefix = 'TSJModel')
-   {
-      $model = parent::getModel($name, $prefix, array('ignore_request' => true));
-      return $model;
-   }
+	/**
+	 * Proxy for getModel.
+	 * @since	2.5
+	 */
+	public function getModel($name = 'Waters', $prefix = 'TSJModel')
+	{
+		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
+		return $model;
+	}
 
 }

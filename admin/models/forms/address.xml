@@ -1,59 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<form
-	addrulepath="/administrator/components/com_tsj/models/rules"
->
+<form addrulepath="/administrator/components/com_tsj/models/rules">
 	<fieldset>
-		<field
-			name="address_id"
-			type="hidden"
-		/>
-      <field
-         name="city_id"
-         type="City"
-         label="COM_TSJ_CITY_HEADING_NAME"
-         description="COM_TSJ_LIST_DESC"
-         size="1"
-         class="inputbox validate-name"
-         validate="int"
-         required="true"
-         default=""
-      >
-      <option value="0">- Выберите город -</option>
-      </field>
-      <field
-         name="street_id"
-         type="Street"
-         label="COM_TSJ_STREET_HEADING_NAME"
-         description="COM_TSJ_LIST_DESC"
-         size="1"
-         class="inputbox validate-name"
-         validate="int"
-         required="true"
-         default=""
-      >
-      <option value="0">- Выберите улицу -</option>
-      </field>
-		<field
-			name="house"
-			type="text"
-			label="COM_TSJ_ADDRESS_HEADING_HOUSE"
-			description="COM_TSJ_ADDRESS_HEADING_HOUSE_DESC"
-			size="40"
-			class="inputbox validate-name"
-			validate="address"
-			required="true"
-			default=""
-		/>
-      <field
-         name="office"
-         type="text"
-         label="COM_TSJ_ADDRESS_HEADING_OFFICE"
-         description="COM_TSJ_ADDRESS_HEADING_OFFICE_DESC"
-         size="40"
-         class="inputbox validate-name"
-         validate="address"
-         required="false"
-         default=""
-      />
+		<field name="address_id" type="hidden" />
+		<field name="city_id" type="City" label="COM_TSJ_CITY_HEADING_NAME"
+			description="COM_TSJ_LIST_DESC" size="1" class="inputbox validate-name"
+			validate="int" required="true" default="">
+			<option value="0">COM_TSJ_STREET_CITY_LIST</option>
+		</field>
+		<field name="street_id" type="Street" label="COM_TSJ_STREET_HEADING_NAME"
+			description="COM_TSJ_LIST_DESC" size="1" class="inputbox validate-name"
+			validate="int" required="true" default="">
+			<option value="0">COM_TSJ_STREET_STREET_LIST</option>
+		</field>
+		<field name="house" type="text" label="COM_TSJ_ADDRESS_HEADING_HOUSE"
+			description="COM_TSJ_ADDRESS_HEADING_HOUSE_DESC" size="40"
+			class="inputbox validate-name" validate="address" required="true"
+			default="" />
+		<field name="office" type="text" label="COM_TSJ_ADDRESS_HEADING_OFFICE"
+			description="COM_TSJ_ADDRESS_HEADING_OFFICE_DESC" size="40"
+			class="inputbox validate-name" validate="address" required="false"
+			default="" />
 	</fieldset>
 </form>

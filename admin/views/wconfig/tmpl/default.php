@@ -54,24 +54,24 @@ Joomla.submitbutton = function(task) {
 <form action="<?php echo JRoute::_('index.php?option=com_tsj'); ?>"
 	method="post" name="adminForm" id="wconfig-form" autocomplete="off"
 	class="form-validate">
-	
+
 	<fieldset>
-	
+
 		<div class="fltrt">
 			<button type="button"
 				onclick="Joomla.submitform('wconfig.save', this.form);window.top.setTimeout('window.parent.SqueezeBox.close()', 100);">
 				<?php echo JText::_('JSAVE');?>
 			</button>
-			
+
 			<button type="button" onclick="window.parent.SqueezeBox.close();">
 			<?php echo JText::_('JCANCEL');?>
 			</button>
 		</div>
-		
+
 		<div class="configuration">
-		<?php echo JText::_('Настройки компонента COM_TSJ') ?>
+		<?php echo JText::_('COM_TSJ_HEADER_SETTINGS') ?>
 		</div>
-		
+
 	</fieldset>
 
 	<?php
@@ -79,43 +79,39 @@ Joomla.submitbutton = function(task) {
 	$fieldSets = $this->form->getFieldsets();
 
 	foreach ($fieldSets as $name => $fieldSet) :
-		$label = empty($fieldSet->label) ? 'COM_TSJ_'.$name.'_FIELDSET_LABEL' : $fieldSet->label;
-	
-		echo JHtml::_('tabs.panel', JText::_($label), 'publishing-details');
-	
-		if (isset($fieldSet->description) && !empty($fieldSet->description)) :
-			echo '<p class="tab-description">'.JText::_($fieldSet->description).'</p>';
-		endif;
-		?>
-		
-		<ul class="config-option-list">
+	$label = empty($fieldSet->label) ? 'COM_TSJ_'.$name.'_FIELDSET_LABEL' : $fieldSet->label;
 
-		<?php
-		if($name == 'waterparams'){
-			echo "<h3>Для того чтобы форма ввода показаний счетчиков была доступна всегда необходимо:<br>
-				 установить 'День начала сдачи показаний' и 'День окончания сдачи показаний':
-				 с 1 по 31, с 2 по 1, с 25 по 24 и т.п.</h3>";
-		}
-		
-		foreach ($this->form->getFieldset($name) as $field):
-		?>
-		
-			<li>
-			<?php 
-			if (!$field->hidden) :
-				echo $field->label;
-			endif;
+	echo JHtml::_('tabs.panel', JText::_($label), 'publishing-details');
+
+	if (isset($fieldSet->description) && !empty($fieldSet->description)) :
+	echo '<p class="tab-description">'.JText::_($fieldSet->description).'</p>';
+	endif;
+	?>
+
+	<ul class="config-option-list">
+
+	<?php
+	if($name == 'waterparams'){
+		echo JText::_('COM_TSJ_MSG_FORM1');
+	}
+
+	foreach ($this->form->getFieldset($name) as $field):
+	?>
+
+		<li><?php 
+		if (!$field->hidden) :
+		echo $field->label;
+		endif;
 			
-			echo $field->input;
-			?>
-			</li>
-			
+		echo $field->input;
+		?></li>
+
 		<?php
 		endforeach;
 		?>
-		</ul>
-	
-		<div class="clr"></div>
+	</ul>
+
+	<div class="clr"></div>
 	<?php
 	endforeach;
 
@@ -123,10 +119,11 @@ Joomla.submitbutton = function(task) {
 	?>
 
 	<div>
-		<input type="hidden" name="id" value="<?php echo $this->component->id;?>" />
-		<input type="hidden"	name="component" value="<?php echo $this->component->option;?>" />
-		<input type="hidden" name="task" value="" />
-		<?php echo JHtml::_('form.token'); ?>
+		<input type="hidden" name="id"
+			value="<?php echo $this->component->id;?>" /> <input type="hidden"
+			name="component" value="<?php echo $this->component->option;?>" /> <input
+			type="hidden" name="task" value="" />
+			<?php echo JHtml::_('form.token'); ?>
 	</div>
-	
+
 </form>

@@ -1,7 +1,7 @@
 <?php
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
- 
+
 // import Joomla modelform library
 jimport('joomla.application.component.modeladmin');
 jimport( 'joomla.application.component.view' );
@@ -11,10 +11,10 @@ jimport( 'joomla.application.component.view' );
  */
 class TSJModelTSJ extends JModelAdmin
 {
-   public $lout;
-   
-      public $my_var3;
-   
+	public $lout;
+	 
+	public $my_var3;
+	 
 	/**
 	 * Returns a reference to the a Table object, always creating it.
 	 *
@@ -24,9 +24,9 @@ class TSJModelTSJ extends JModelAdmin
 	 * @return	JTable	A database object
 	 * @since	2.5
 	 */
-	public function getTable($type = 'TSJ', $prefix = 'TSJTable', $config = array()) 
+	public function getTable($type = 'TSJ', $prefix = 'TSJTable', $config = array())
 	{
-	   //echo 'tsj getTable ';
+		//echo 'tsj getTable ';
 		return JTable::getInstance($type, $prefix, $config);
 	}
 	/**
@@ -37,14 +37,14 @@ class TSJModelTSJ extends JModelAdmin
 	 * @return	mixed	A JForm object on success, false on failure
 	 * @since	2.5
 	 */
-	public function getForm($data = array(), $loadData = true) 
+	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
-	// Check for layout override
-      //echo 'tsj getFormCity '. $this->type;
+		// Check for layout override
+		//echo 'tsj getFormCity '. $this->type;
 		$form = $this->loadForm('com_tsj.city', 'city',
-		                        array('control' => 'jform', 'load_data' => $loadData));
-		if (empty($form)) 
+		array('control' => 'jform', 'load_data' => $loadData));
+		if (empty($form))
 		{
 			return false;
 		}
@@ -56,7 +56,7 @@ class TSJModelTSJ extends JModelAdmin
 	 *
 	 * @return string	Script files
 	 */
-	public function getScript() 
+	public function getScript()
 	{
 		return 'administrator/components/com_tsj/models/forms/tsj.js';
 	}
@@ -66,13 +66,13 @@ class TSJModelTSJ extends JModelAdmin
 	 * @return	mixed	The data for the form.
 	 * @since	2.5
 	 */
-	protected function loadFormData() 
+	protected function loadFormData()
 	{
-	   
+
 		// Check the session for previously entered form data.
 		$data = JFactory::getApplication()->getUserState('com_tsj.edit.city.data', array());
 		//echo 'tsj loadFormData ';
-		if (empty($data)) 
+		if (empty($data))
 		{
 			$data = $this->getItem();
 		}

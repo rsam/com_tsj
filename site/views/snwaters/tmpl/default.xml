@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="COM_TSJ_SN_VIEW_DEFAULT_TITLE">
-		<message><![CDATA[COM_TSJ_SN_VIEW_DEFAULT_DESC]]></message>
+	<layout title="COM_TSJ_SNWATER_VIEW_DEFAULT_TITLE">
+		<message><![CDATA[COM_TSJ_SNWATER_VIEW_DEFAULT_DESC]]></message>
 	</layout>
 
 	<fields name="snwaterlink" addfieldpath="/administrator/components/com_tsj/models/fields">

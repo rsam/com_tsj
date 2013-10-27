@@ -6,7 +6,6 @@ JHtml::_('behavior.keepalive');
 ?>
 
 <tr>
-	<td>
-	  Для настроек выберите пункт "Мои Настройки" в панели инструментов.
+	<td><?php echo JText::_('COM_TSJ_MY_SETTINGS'); ?>
 	</td>
 </tr>

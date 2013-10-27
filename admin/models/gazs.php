@@ -2,27 +2,33 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 // import the Joomla modellist library
-jimport('joomla.application.component.modellist');
+//jimport('joomla.application.component.modellist');
+
+// Include dependancy of the main model form
+jimport( 'joomla.application.component.modeladmin' );
+// import Joomla modelitem library
+//jimport('joomla.application.component.modelitem');
+// Include dependancy of the dispatcher
+//jimport('joomla.event.dispatcher');
+
 /**
  * TSJList Model
  */
-class TSJModelGazs extends JModelList
+class TSJModelGazs extends JModelAdmin
 {
 	/**
-	 * Method to build an SQL query to load the list data.
-	 *
-	 * @return	string	An SQL query
+	 * Get the data for a new qualification
 	 */
-	protected function getListQuery()
+	public function getForm($data = array(), $loadData = true)
 	{
-		// Create a new query object.		
-		$db = JFactory::getDBO();
-		$query = $db->getQuery(true);
-		// Select some fields
-		$query->select('gaz_id,gaz_counter_id');
-		// From the table
-		$query->from('#__tsj_gaz');
-        //$query = 'gaz';
-		return $query;
+		//$app = JFactory::getApplication('site');
+
+		// Get the form.
+		$form = $this->loadForm('com_tsj.gazs', 'gazs', array('control' => 'prefix_text', 'load_data' => true));
+		if (empty($form)) {
+			return false;
+		}
+		return $form;
+
 	}
 }

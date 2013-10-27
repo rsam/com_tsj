@@ -1,84 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<form
-	addrulepath="/administrator/components/com_tsj/models/rules"
->
+<form addrulepath="/administrator/components/com_tsj/models/rules">
 	<fieldset>
-		<field
-			name="account_id"
-			type="hidden"
-		/>
-		<field
-			name="address_id"
-			type="Address"
-			label="COM_TSJ_ADDRESS_HEADING_NAME"
-			description="COM_TSJ_LIST_DESC"
-			size="1"
-			class="inputbox validate-name"
-			validate="account"
-			required="true"
-			default=""
-		/>
-      <field
-         name="user_id"
-         type="User"
-         label="COM_TSJ_REG_USER"
-         description="COM_TSJ_LIST_DESC"
-         size="80"
-         class="inputbox validate-name"
-         validate="account"
-         required="true"
-         default=""
-      />
-      <field
-         name="account_num"
-         type="text"
-         label="COM_TSJ_ACCOUNT_NAME"
-         description="COM_TSJ_ACCOUNT_NAME_DESC"
-         size="40"
-         class="inputbox validate-name"
-         validate="account"
-         required="true"
-         default=""
-      />
-      <field
-         name="tel"
-         type="text"
-         label="COM_TSJ_TEL_NAME"
-         description="COM_TSJ_TEL_NAME_DESC"
-         size="40"
-         class="inputbox validate-name"
-         validate="phone"
-         required="false"
-         default=""
-      />
-      <field
-         name="sq"
-         type="text"
-         label="COM_TSJ_OFFICE_SQUARE"
-         description="COM_TSJ_OFFICE_SQUARE_DESC"
-         size="40"
-         class="inputbox validate-name"
-         validate="account"
-         required="true"
-         default=""
-      />
-      <field
-         name="cat"
-         type="text"
-         label="COM_TSJ_CATEGORY_NAME"
-         description="COM_TSJ_CATEGORY_NAME_DESC"
-         size="1"
-         class="inputbox validate-name"
-         validate="account"
-         required="true"
-         default="0"
-      />
-     <field
-         name="lic"
-         type="checkbox"
-         label="COM_TSJ_LIC_NAME"
-         description="COM_TSJ_LIC_NAME_DESC"
-         value="1"
-      />
+		<field name="account_id" type="hidden" />
+		<field name="address_id" type="Address" label="COM_TSJ_ADDRESS_HEADING_NAME"
+			description="COM_TSJ_LIST_DESC" size="1" class="inputbox validate-name"
+			validate="account" required="true" default="" />
+		<field name="user_id" type="User" label="COM_TSJ_REG_USER"
+			description="COM_TSJ_LIST_DESC" size="80" class="inputbox validate-name"
+			validate="account" required="true" default="" />
+		<field name="account_num" type="text" label="COM_TSJ_ACCOUNT_NAME"
+			description="COM_TSJ_ACCOUNT_NAME_DESC" size="40" class="inputbox validate-name"
+			validate="account" required="true" default="" />
+		<field name="tel" type="text" label="COM_TSJ_TEL_NAME"
+			description="COM_TSJ_TEL_NAME_DESC" size="40" class="inputbox validate-name"
+			validate="phone" required="false" default="" />
+		<field name="sq" type="text" label="COM_TSJ_OFFICE_SQUARE"
+			description="COM_TSJ_OFFICE_SQUARE_DESC" size="40"
+			class="inputbox validate-name" validate="account" required="true"
+			default="" />
+		<field name="cat" type="text" label="COM_TSJ_CATEGORY_NAME"
+			description="COM_TSJ_CATEGORY_NAME_DESC" size="1"
+			class="inputbox validate-name" validate="account" required="true"
+			default="0" />
+		<field name="lic" type="checkbox" label="COM_TSJ_LIC_NAME"
+			description="COM_TSJ_LIC_NAME_DESC" value="1" />
 	</fieldset>
 </form>

@@ -5,6 +5,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.modellist');
 // import Joomla modelform library
 jimport('joomla.application.component.modeladmin');
+define('Engine','Engine');
 
 /**
  * TSJList Model
@@ -22,6 +23,7 @@ class TSJModelTSJs extends JModelList
 	var $_address;
 	var $_office;
 	var $_acount;
+	var $dbuser;
 
 	protected function getListQuery()
 	{
@@ -74,9 +76,9 @@ class TSJModelTSJs extends JModelList
 		$query = $db->getQuery(true);
 		$query="SHOW TABLE STATUS LIKE '%_users%';";
 		$db->setQuery((string)$query);
-		$row =& $db->loadAssocList();
+		$row = $db->loadAssocList();
 		if($row[0][Engine] == 'InnoDB'){
-			JRequest::setVar($dbuser,'InnoDB');
+			JRequest::setVar($this->dbuser,'InnoDB');
 		}
 
 		//echo "layout=".$layout."<br>";
@@ -130,7 +132,7 @@ class TSJModelTSJs extends JModelList
 
 			$listOrder = $this->state->get('list.ordering','address_id');
 			$listDirn = $this->state->get('list.direction','asc');
-				
+
 			//echo "lim=".$this->limit;
 			//echo "start=".$this->limitstart . "<br>";
 			$query->order($listOrder . ' ' . $listDirn);

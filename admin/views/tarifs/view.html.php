@@ -16,7 +16,7 @@ class TSJViewTarifs extends JView
 	protected $items;
 	//объект постраничной навигации
 	protected $pagination;
-	 
+
 	/**
 	 * Tarifs view display method
 	 * @return void
@@ -56,7 +56,7 @@ class TSJViewTarifs extends JView
 	 */
 	protected function addToolBar()
 	{
-      JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TARIF'));
+		JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TARIF'));
 
 		//Выводим кнопку настройки
 		/*if (JFactory::getUser()->authorise('core.admin', 'com_tsj')) {

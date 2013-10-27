@@ -15,14 +15,14 @@ class TSJModelPayments extends JModelList
 	 */
 	protected function getListQuery()
 	{
-		// Create a new query object.		
-/*		$db = JFactory::getDBO();
+		// Create a new query object.
+		/*		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		// Select some fields
 		$query->select('payment_id,payment_name');
 		// From the table
 		$query->from('#__tsj_payment');*/
-        $query = 'payment';
+		$query = 'payment';
 		return $query;
 	}
 }

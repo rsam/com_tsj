@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="sngazs">
+	<fieldset name="sngazs">
+
+		<field name="gname1" type="text" description="" label="" id="gname1"
+			required="false" maxlength="30" size="30" />
+		<field name="sngaz1" type="text" description="" label=""
+			id="sngaz1" required="true" maxlength="20" size="20" />
+		<field name="dategaz1" type="calendar" description="" label=""
+			id="dategaz1" format="%d-%m-%Y" />
+
+		<field name="gname2" type="text" description="" label="" id="gname2"
+			required="false" maxlength="30" size="30" />
+		<field name="sngaz2" type="text" description="" label=""
+			id="sngaz2" required="false" maxlength="20" size="20" />
+		<field name="dategaz2" type="calendar" description="" label=""
+			id="dategaz2" format="%d-%m-%Y" />
+
+		<field name="gname3" type="text" description="" label="" id="gname3"
+			required="false" maxlength="30" size="30" />
+		<field name="sngaz3" type="text" description="" label=""
+			id="sngaz3" required="false" maxlength="20" size="20" />
+		<field name="dategaz3" type="calendar" description="" label=""
+			id="dategaz3" format="%d-%m-%Y" />
+	</fieldset>
+</form>

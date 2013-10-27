@@ -1,11 +1,11 @@
 <?php
 // No direct access to this file
 defined('_JEXEC') or die;
- 
+
 // import the list field type
 jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
- 
+
 /**
  * TSJ Form Field class for the TSJ component
  */
@@ -17,13 +17,13 @@ class JFormFieldTSJs extends JFormFieldList
 	 * @var		string
 	 */
 	protected $type = 'TSJs';
- 
+
 	/**
 	 * Method to get a list of options for a list input.
 	 *
 	 * @return	array		An array of JHtml options.
 	 */
-	protected function getOptions() 
+	protected function getOptions()
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
@@ -34,7 +34,7 @@ class JFormFieldTSJs extends JFormFieldList
 		$options = array();
 		if ($messages)
 		{
-			foreach($messages as $message) 
+			foreach($messages as $message)
 			{
 				$options[] = JHtml::_('select.option', $message->city_id, $message->city);
 			}

@@ -16,9 +16,11 @@ class TSJViewTSJs extends JView
 	//public $layout='';
 
 	//список записей
-   protected $items;
-   //объект постраничной навигации
-   protected $pagination;
+	protected $items;
+	//объект постраничной навигации
+	protected $pagination;
+
+	protected $dbuser;
 
 	/**
 	 * TSJs view display method
@@ -76,7 +78,7 @@ class TSJViewTSJs extends JView
 			//$layout = 'tsjs';
 			//$this->items = $this->get('Item');
 			//$this->setLayout('tsjs');
-			
+				
 		}
 
 		//$this->sortDirection = $state->get('filter_order_Dir');
@@ -105,7 +107,7 @@ class TSJViewTSJs extends JView
 		//JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TSJS'), 'generic.png');
 
 		// Кнопки
-		$toolbar = &JToolBar::getInstance('toolbar');
+		$toolbar = JToolBar::getInstance('toolbar');
 
 		if ($this->getLayout() == 'street')
 		{
@@ -131,26 +133,26 @@ class TSJViewTSJs extends JView
 			JToolBarHelper::editListX('account.edit');
 			JToolBarHelper::addNewX('account.add');
 		}
-    
+
 		JToolBarHelper::divider();
 		$toolbar->addButtonPath(JPATH_COMPONENT.'/'.'buttons');
 		$toolbar->loadButtonType('Import', true);
 		$toolbar->appendButton('Import', 'tsjs-import', 'COM_TSJ_CONFIG_IMPORT', 'tsjs.import');
 
-		$doc = &JFactory::getDocument();
+		$doc = JFactory::getDocument();
 		//$icon_48_import = " .icon-48-tsjs {background:url(components/com_tsj/images/header/icon-48-importer.png) no-repeat; }";
 		//$doc->addStyleDeclaration($icon_48_import);
 		$icon_32_import = " .icon-32-tsjs-import {background:url(components/com_tsj/images/importer.png) no-repeat; }";
 		$doc->addStyleDeclaration($icon_32_import);
 		JToolBarHelper::divider();
-		
+
 		// Options button.
-	   if (JFactory::getUser()->authorise('core.admin', 'com_tsj')) 
-	   {
+		if (JFactory::getUser()->authorise('core.admin', 'com_tsj'))
+		{
 			JToolBarHelper::preferences('com_tsj');
-	   	JToolBarHelper::divider();
-	   }
-	   
+			JToolBarHelper::divider();
+		}
+
 		JToolBarHelper::help( 'Components_TSJ', true );
 	}
 

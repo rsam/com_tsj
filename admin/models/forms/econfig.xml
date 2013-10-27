@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_tsj/models/rules">
+	<fieldset name="electroparams" label="COM_TSJ_CONFIG_ELECTRO_GREETING_SETTINGS_LABEL"
+		description="COM_TSJ_CONFIG_ELECTRO_GREETING_SETTINGS_DESC">
+		<field name="electro_show_rows_sn" type="checkbox" label="COM_TSJ_CONFIG_ELECTRO_SN_LABEL"
+			description="COM_TSJ_CONFIG_ELECTRO_FIELD_SHOW_CATEGORY_DESC" value="1">
+		</field>
+		<field name="electro_show_rows_electro" type="checkbox"
+			label="COM_TSJ_CONFIG_ELECTRO_CONSUMPTION" description="COM_TSJ_CONFIG_ELECTRO_FIELD_SHOW_CATEGORY_DESC"
+			value="1">
+		</field>
+		<field name="electro_startDay" type="integer" first="1" last="31"
+			step="1" default="1" label="COM_TSJ_CONFIG_ELECTRO_START_DAY_NAME"
+			description="COM_TSJ_CONFIG_ELECTRO_START_DAY_NAME_DESC" filter="integer" />
+		<field name="electro_stopDay" type="integer" first="1" last="31"
+			step="1" default="5" label="COM_TSJ_CONFIG_ELECTRO_STOP_DAY_NAME"
+			description="COM_TSJ_CONFIG_ELECTRO_STOP_DAY_NAME_DESC" filter="integer" />
+		<field name="electro_linksn" type="text" default="" size="80"
+			maxlength="100" label="COM_TSJ_CONFIG_ELECTRO_SNPAGE_LINC_NAME" description="COM_TSJ_CONFIG_ELECTRO_SNPAGE_LINC_NAME_DESC" />
+	</fieldset>
+
+	<fieldset name="electroparams1" label="COM_TSJ_CONFIG_GREETING_SETTINGS_LABEL1"
+		description="COM_TSJ_CONFIG_GREETING_SETTINGS_DESC1">
+		<field name="electro_prefix_text" label="COM_TSJ_CONFIG_ELECTRO_GREETING_LABEL"
+			type="editor" width="300" filter="safehtml" />
+	</fieldset>
+
+	<fieldset name="electroparams2" label="COM_TSJ_CONFIG_GREETING_SETTINGS_LABEL2"
+		description="COM_TSJ_CONFIG_GREETING_SETTINGS_DESC2">
+		<field name="electro_notice_third" type="integer" first="0" last="120"
+			step="1" default="30" label="COM_TSJ_CONFIG_THIRD_NOTICE_NAME"
+			description="COM_TSJ_CONFIG_THIRD_NOTICE_NAME_DESC" filter="integer" />
+		<field name="electro_notice_second" type="integer" first="0" last="120"
+			step="1" default="60" label="COM_TSJ_CONFIG_SECOND_NOTICE_NAME"
+			description="COM_TSJ_CONFIG_SECOND_NOTICE_NAME_DESC" filter="integer" />
+		<field name="electro_notice_first" type="integer" first="0" last="120"
+			step="1" default="0" label="COM_TSJ_CONFIG_FIRST_NOTICE_NAME"
+			description="COM_TSJ_CONFIG_FIRST_NOTICE_NAME_DESC" filter="integer" />
+	</fieldset>
+</form>

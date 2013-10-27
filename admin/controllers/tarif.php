@@ -17,7 +17,7 @@ class TSJControllerTarif extends JControllerForm
 	function __construct()
 	{
 		parent::__construct();
-		 
+			
 		// Регистрация дополнительных задач
 		//$this->registerTask('add', 'edit');
 	}
@@ -29,7 +29,7 @@ class TSJControllerTarif extends JControllerForm
 	function save()
 	{
 		//$model = $this->getModel('tarif');
-		
+
 		if (parent::save('tarif.save')) {
 			$msg = JText::_( 'tarif Saved!' );
 		} else {
@@ -40,7 +40,7 @@ class TSJControllerTarif extends JControllerForm
 		$link = 'index.php?option=com_tsj&view=tarifs';
 		$this->setRedirect($link, $msg);
 	}
-    
+
 	/**
 	 * remove record(s)
 	 * @return void
@@ -53,7 +53,7 @@ class TSJControllerTarif extends JControllerForm
 		} else {
 			$msg = JText::_( 'tarif(s) Deleted' );
 		}
-		 
+			
 		$this->setRedirect( 'index.php?option=com_tsj&view=tarifs', $msg );
 	}
 

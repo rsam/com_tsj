@@ -22,6 +22,7 @@ class TSJViewWConfig extends JViewLegacy
 	protected $form;
 	protected $item;
 	protected $state;
+	protected $component;
 
 	/**
 	 * Display the view

@@ -15,14 +15,14 @@ class TSJModelHSCs extends JModelList
 	 */
 	protected function getListQuery()
 	{
-		// Create a new query object.		
-/*		$db = JFactory::getDBO();
+		// Create a new query object.
+		/*		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		// Select some fields
 		$query->select('hsc_id,hsc_counter_id');
 		// From the table
 		$query->from('#__tsj_hsc');*/
-        $query = 'hsc';
+		$query = 'hsc';
 		return $query;
 	}
 }

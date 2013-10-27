@@ -10,21 +10,21 @@ jimport('joomla.application.component.controller');
  */
 class TSJController extends JController
 {
-   /**
-    * display task
-    *
-    * @return void
-    */
-   function display($cachable = false)
-   {
-      $view = JRequest::getCmd('view', 'TSJs');
-      //$layout = JRequest::getCmd('layout', 'main');
-      //$id      = JRequest::getInt('id');
-      
-      // set default view if not set
-      JRequest::setVar('view', $view);
+	/**
+	 * display task
+	 *
+	 * @return void
+	 */
+	function display($cachable = false, $urlparams = false)
+	{
+		$view = JRequest::getCmd('view', 'TSJs');
+		//$layout = JRequest::getCmd('layout', 'main');
+		//$id      = JRequest::getInt('id');
 
-      // call parent behavior
-      parent::display($cachable);
-   }
+		// set default view if not set
+		JRequest::setVar('view', $view);
+
+		// call parent behavior
+		parent::display($cachable,$urlparams);
+	}
 }

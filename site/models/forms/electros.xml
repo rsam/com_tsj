@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form name="electros">
+	<fieldset name="data">
+		<field name="electro1" type="text" description="" label=""
+			required="true" maxlength="10" size="10" />
+		<field name="electro2" type="text" description="" label=""
+			required="true" maxlength="10" size="10" />
+		<field name="electro3" type="text" description="" label=""
+			required="true" maxlength="10" size="10" />
+
+	</fieldset>
+</form>

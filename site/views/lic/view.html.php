@@ -11,24 +11,24 @@ jimport('joomla.application.component.view');
 class TSJViewLic extends JView
 {
 	public $tsk = null;
-	
-   // Переопределяем JView display метод
-   function display($tpl = null)
-   {
-      // Вызываем из модели метод getMsg и получим данные
-      //$this->msg = $this->get('Msg');
-      $this->assign('form', $this->get('Form'));
-      
-      $this->tsk = JRequest::getVar( 'task', 'water' );
-      
-      // Проверка на ошибки
-      if (count($errors = $this->get('Errors')))
-      {
-         JError::raiseError(500, implode('<br />', $errors));
-         return false;
-      }
 
-      // Вызываем метод родителя, отображаем вид
-      parent::display($tpl);
-   }
+	// Переопределяем JView display метод
+	function display($tpl = null)
+	{
+		// Вызываем из модели метод getMsg и получим данные
+		//$this->msg = $this->get('Msg');
+		$this->assign('form', $this->get('Form'));
+
+		$this->tsk = JRequest::getVar( 'task', 'water' );
+
+		// Проверка на ошибки
+		if (count($errors = $this->get('Errors')))
+		{
+			JError::raiseError(500, implode('<br />', $errors));
+			return false;
+		}
+
+		// Вызываем метод родителя, отображаем вид
+		parent::display($tpl);
+	}
 }

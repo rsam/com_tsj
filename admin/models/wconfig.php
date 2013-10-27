@@ -38,20 +38,20 @@ class TSJModelWConfig extends JModelForm
 	}
 
 	/*public  function validate($form, $data)
-	{
+	 {
 		$ret = parent::validate($form, $data);
 
 		if($ret != false)
 		{
-			// Проверка значений на возрастание
-			print_r($form);
-			print_r($data);
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		print_r($form);
+		print_r($data);
 			
 		}
-		
+
 		return $ret;
-	}*/
-	
+		}*/
+
 	/**
 	 * Method to get a single record.
 	 *
@@ -113,11 +113,10 @@ class TSJModelWConfig extends JModelForm
 	public function save($data)
 	{
 		$db = $this->getDbo();
-		
+
 		//if ($userId = (int) $this->getState('user.id')) {
-			$db->setQuery(
+		$db->setQuery(
 				" DELETE FROM #__tsj_cfg WHERE cfg_name = 'water_linksn'
-								OR cfg_name = 'water_prefix_text'
 								OR cfg_name = 'water_prefix_text'
 								OR cfg_name = 'water_show_rows_sn'
 								OR cfg_name = 'water_show_rows_water'
@@ -126,34 +125,34 @@ class TSJModelWConfig extends JModelForm
 								OR cfg_name = 'water_notice_first'
 								OR cfg_name = 'water_notice_second'
 								OR cfg_name = 'water_notice_third'; "
-			);
-			$db->query();
-			if ($error = $db->getErrorMsg()) {
-				$this->setError($error);
-				return false;
-			}
+								);
+								$db->query();
+								if ($error = $db->getErrorMsg()) {
+									$this->setError($error);
+									return false;
+								}
 
-			$tuples = array();
-			foreach ($data as $k => $v) {
-				$tuples[] =  '('.$db->Quote($k).', '.$db->Quote($v).')';
-			}
+								$tuples = array();
+								foreach ($data as $k => $v) {
+									$tuples[] =  '('.$db->Quote($k).', '.$db->Quote($v).')';
+								}
 
-			if ($tuples) {
-				$db->setQuery(
+								if ($tuples) {
+									$db->setQuery(
 					'INSERT INTO #__tsj_cfg'.
 					' (cfg_name, cfg_value)'.
 					' VALUES '.implode(',', $tuples)
-				);
-				$db->query();
-				if ($error = $db->getErrorMsg()) {
-					$this->setError($error);
-					return false;
-				}
-			}
-			return true;
-		//} else {
-		//	$this->setError('COM_TSJ_ERR_INVALID_USER');
-		//	return false;
-		//}
+									);
+									$db->query();
+									if ($error = $db->getErrorMsg()) {
+										$this->setError($error);
+										return false;
+									}
+								}
+								return true;
+								//} else {
+								//	$this->setError('COM_TSJ_ERR_INVALID_USER');
+								//	return false;
+								//}
 	}
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="snelectros">
+	<fieldset name="snelectros">
+
+		<field name="ename1" type="text" description="" label="" id="ename1"
+			required="false" maxlength="30" size="30" />
+		<field name="snelectro1" type="text" description="" label=""
+			id="snelectro1" required="true" maxlength="20" size="20" />
+		<field name="dateelectro1" type="calendar" description="" label=""
+			id="dateelectro1" format="%d-%m-%Y" />
+
+		<field name="ename2" type="text" description="" label="" id="ename2"
+			required="false" maxlength="30" size="30" />
+		<field name="snelectro2" type="text" description="" label=""
+			id="snelectro2" required="false" maxlength="20" size="20" />
+		<field name="dateelectro2" type="calendar" description="" label=""
+			id="dateelectro2" format="%d-%m-%Y" />
+
+		<field name="ename3" type="text" description="" label="" id="ename3"
+			required="false" maxlength="30" size="30" />
+		<field name="snelectro3" type="text" description="" label=""
+			id="snelectro3" required="false" maxlength="20" size="20" />
+		<field name="dateelectro3" type="calendar" description="" label=""
+			id="dateelectro3" format="%d-%m-%Y" />
+	</fieldset>
+</form>

@@ -1,64 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
 	<fieldset>
-		<field
-			name="tarif_id"
-			type="hidden"
-		/>
-		<field
-			name="tarif_name_short"
-			type="text"
-			label="COM_TSJ_TARIF_NAME_SHORT"
-			description="COM_TSJ_TARIF_NAME_SHORT_DESC"
-			size="40"
-			class="inputbox"
-			default="" 
-		/>
-		<field
-			name="tarif_name"
-			type="text"
-			label="COM_TSJ_TARIF_NAME"
-			description="COM_TSJ_TARIF_NAME_DESC"
-			size="40"
-			class="inputbox"
-			default="" 
-		/>
-		<field
-			name="tarif"
-			type="text"
-			label="COM_TSJ_TARIF"
-			description="COM_TSJ_TARIF_DESC"
-			size="40"
-			class="inputbox"
-		/>
-		<field
-			name="tarif_1"
-			type="text"
-			label="COM_TSJ_TARIF_1"
-			description="COM_TSJ_TARIF_1_DESC"
-			size="40"
-			class="inputbox"
-		/>
-		<field
-			name="tarif_2"
-			type="text"
-			label="COM_TSJ_TARIF_2"
-			description="COM_TSJ_TARIF_2_DESC"
-			size="40"
-			class="inputbox"
-			default=""
-		/>
-		<field
-			name="tarif_type"
-			type="list"
-			label="COM_TSJ_TARIF_LINK_TYPE"
-			description="COM_TSJ_TARIF_LINK_TYPE_DESC"
-			class="inputbox"
-			size="1"
+		<field name="tarif_id" type="hidden" />
+		<field name="tarif_name_short" type="text" label="COM_TSJ_TARIF_NAME_SHORT"
+			description="COM_TSJ_TARIF_NAME_SHORT_DESC" size="40" class="inputbox"
+			default="" />
+		<field name="tarif_name" type="text" label="COM_TSJ_TARIF_NAME"
+			description="COM_TSJ_TARIF_NAME_DESC" size="40" class="inputbox"
+			default="" />
+		<field name="tarif" type="text" label="COM_TSJ_TARIF"
+			description="COM_TSJ_TARIF_DESC" size="40" class="inputbox" />
+		<field name="tarif_1" type="text" label="COM_TSJ_TARIF_1"
+			description="COM_TSJ_TARIF_1_DESC" size="40" class="inputbox" />
+		<field name="tarif_2" type="text" label="COM_TSJ_TARIF_2"
+			description="COM_TSJ_TARIF_2_DESC" size="40" class="inputbox"
+			default="" />
+		<field name="tarif_type" type="list" label="COM_TSJ_TARIF_LINK_TYPE"
+			description="COM_TSJ_TARIF_LINK_TYPE_DESC" class="inputbox" size="1"
 			default="1">
-			<option value="1">c 1 кв.м.</option>
-			<option value="2">с 1 человека</option>
-			<option value="3">с помещения</option>
+			<option value="1">COM_TSJ_TARIF_TYPE_VALUE_1</option>
+			<option value="2">COM_TSJ_TARIF_TYPE_VALUE_2</option>
+			<option value="3">COM_TSJ_TARIF_TYPE_VALUE_3</option>
 		</field>
 	</fieldset>
 </form>

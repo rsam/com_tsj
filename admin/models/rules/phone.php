@@ -10,12 +10,12 @@ jimport('joomla.form.formrule');
  */
 class JFormRulePhone extends JFormRule
 {
-   /**
-    * The regular expression.
-    *
-    * @access  protected
-    * @var     string
-    * @since   2.5
-    */
-   protected $regex = '^[0-9()+\s]+$|^$';
+	/**
+	 * The regular expression.
+	 *
+	 * @access  protected
+	 * @var     string
+	 * @since   2.5
+	 */
+	protected $regex = '^[0-9()+\s]+$|^$';
 }

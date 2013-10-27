@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<form
-	addrulepath="/administrator/components/com_tsj/models/rules"
->
+<form addrulepath="/administrator/components/com_tsj/models/rules">
 	<fieldset>
-		<field
-			name="street_id"
-			type="hidden"
-		/>
-		<field
-			name="street"
-			type="text"
-			label="COM_TSJ_STREET_HEADING_NAME"
-			description="COM_TSJ_STREET_HEADING_NAME_DESC"
-			size="40"
-			class="inputbox validate-name"
-			validate="street"
-			required="true"
-			default=""
-		/>
+		<field name="street_id" type="hidden" />
+		<field name="street" type="text" label="COM_TSJ_STREET_HEADING_NAME"
+			description="COM_TSJ_STREET_HEADING_NAME_DESC" size="40"
+			class="inputbox validate-name" validate="street" required="true"
+			default="" />
 	</fieldset>
 </form>

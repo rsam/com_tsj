@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5.0" method="upgrade">
 
-   <name>com_tsj</name>
+   <name>COM_TSJ</name>
    <!-- The following elements are optional and free of formatting constraints -->
    <creationDate>January 2013</creationDate>
    <author>Shibin Roman</author>
    <authorEmail>rsa_m@mail.ru</authorEmail>
-   <authorUrl>http://tsj47.ru</authorUrl>
+   <authorUrl>http://resea.ru</authorUrl>
    <copyright>Copyright 2012-2013 Shibin Roman</copyright>
    <license>GNU/GPL3</license>
    <!-- The version string is recorded in the components table -->

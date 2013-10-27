@@ -29,6 +29,30 @@ VALUES ('water_startDay','1');
 INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
 VALUES ('water_stopDay','31');
 
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('gaz_linksn','');
+
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('gaz_prefix_text','');
+
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('gaz_startDay','1');
+
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('gaz_stopDay','31');
+
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('electro_linksn','');
+
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('electro_prefix_text','');
+
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('electro_startDay','1');
+
+INSERT INTO `#__tsj_cfg`(`cfg_name`, `cfg_value`)
+VALUES ('electro_stopDay','31');
+
 /* User Account System*/
 /* User Account System: City Table*/
 DROP TABLE IF EXISTS `#__tsj_city`;
@@ -147,14 +171,83 @@ AUTO_INCREMENT=1
 DEFAULT CHARSET=utf8
 ENGINE=InnoDB;
 
-
 /* Gaz Counters System */
+/* Gaz Counters System: Office Counters Table */
 DROP TABLE IF EXISTS `#__tsj_gaz_office`;
-DROP TABLE IF EXISTS `#__tsj_gaz_data`;
+CREATE TABLE `#__tsj_gaz_office`(
+	`office_counter_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+	`account_id` INT(11) NOT NULL COMMENT 'FK to #__tsj_office.office_id',
+	`counts` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' COMMENT 'Count of point with gaz-counters',
+	`gaz_name_1` VARCHAR(50) NULL DEFAULT 'Кухня' COMMENT 'Название точки 1',
+	`date_in_p1` DATE NULL DEFAULT NULL COMMENT 'дата ввода в эксп. счетчика',
+	`ser_num_p1` VARCHAR(50) NULL DEFAULT NULL COMMENT 'Серийный номер',
+	`gaz_name_2` VARCHAR(50) NULL DEFAULT 'Газовая колонка 1' COMMENT 'Название точки 2',
+	`date_in_p2` DATE NULL DEFAULT NULL COMMENT 'дата ввода в эксп. счетчика',
+	`ser_num_p2` VARCHAR(50) NULL DEFAULT NULL COMMENT 'Серийный номер',
+	`gaz_name_3` VARCHAR(50) NULL DEFAULT 'Газовая колонка 2' COMMENT 'Название точки 3',
+	`date_in_p3` DATE NULL DEFAULT NULL COMMENT 'дата ввода в эксп. счетчика',
+	`ser_num_p3` VARCHAR(50) NULL DEFAULT NULL COMMENT 'Серийный номер',
+	PRIMARY KEY (`office_counter_id`)
+)
+COLLATE='utf8_unicode_ci'
+AUTO_INCREMENT=1
+DEFAULT CHARSET=utf8
+ENGINE=InnoDB;
 
-/* Electrocity Counters System */
+/* Gaz Counters System: Gaz Table */
+DROP TABLE IF EXISTS `#__tsj_gaz_data`;
+CREATE TABLE `#__tsj_gaz_data`(
+	`gaz_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+	`office_counter_id` INT(11) NOT NULL COMMENT 'FK to #__tsj_gaz_counter.gaz_counter_id',
+	`data_c1` DOUBLE NULL DEFAULT NULL COMMENT 'Data gaz counter m3',
+	`data_c2` DOUBLE NULL DEFAULT NULL COMMENT 'Date of delivery',
+	`data_c3` DOUBLE NULL DEFAULT NULL COMMENT 'Date of delivery',
+	`date_in` DATE NULL DEFAULT NULL COMMENT 'Date of delivery',
+	PRIMARY KEY (`gaz_id`)
+)
+COLLATE='utf8_unicode_ci'
+AUTO_INCREMENT=1
+DEFAULT CHARSET=utf8
+ENGINE=InnoDB;
+
+/* Electro Counters System */
+/* Electro Counters System: Office Counters Table */
 DROP TABLE IF EXISTS `#__tsj_electro_office`;
+CREATE TABLE `#__tsj_electro_office`(
+	`office_counter_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+	`account_id` INT(11) NOT NULL COMMENT 'FK to #__tsj_office.office_id',
+	`counts` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' COMMENT 'Count of point with electro-counters',
+	`electro_name_1` VARCHAR(50) NULL DEFAULT 'Щитовая 1' COMMENT 'Название точки 1',
+	`date_in_p1` DATE NULL DEFAULT NULL COMMENT 'дата ввода в эксп. счетчика',
+	`ser_num_p1` VARCHAR(50) NULL DEFAULT NULL COMMENT 'Серийный номер',
+	`electro_name_2` VARCHAR(50) NULL DEFAULT 'Щитовая 2' COMMENT 'Название точки 2',
+	`date_in_p2` DATE NULL DEFAULT NULL COMMENT 'дата ввода в эксп. счетчика',
+	`ser_num_p2` VARCHAR(50) NULL DEFAULT NULL COMMENT 'Серийный номер',
+	`electro_name_3` VARCHAR(50) NULL DEFAULT 'Щитовая 3' COMMENT 'Название точки 3',
+	`date_in_p3` DATE NULL DEFAULT NULL COMMENT 'дата ввода в эксп. счетчика',
+	`ser_num_p3` VARCHAR(50) NULL DEFAULT NULL COMMENT 'Серийный номер',
+	PRIMARY KEY (`office_counter_id`)
+)
+COLLATE='utf8_unicode_ci'
+AUTO_INCREMENT=1
+DEFAULT CHARSET=utf8
+ENGINE=InnoDB;
+
+/* Electro Counters System: electro Table */
 DROP TABLE IF EXISTS `#__tsj_electro_data`;
+CREATE TABLE `#__tsj_electro_data`(
+	`electro_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+	`office_counter_id` INT(11) NOT NULL COMMENT 'FK to #__tsj_electro_counter.electro_counter_id',
+	`data_c1` DOUBLE NULL DEFAULT NULL COMMENT 'Data electro counter m3',
+	`data_c2` DOUBLE NULL DEFAULT NULL COMMENT 'Date of delivery',
+	`data_c3` DOUBLE NULL DEFAULT NULL COMMENT 'Date of delivery',
+	`date_in` DATE NULL DEFAULT NULL COMMENT 'Date of delivery',
+	PRIMARY KEY (`electro_id`)
+)
+COLLATE='utf8_unicode_ci'
+AUTO_INCREMENT=1
+DEFAULT CHARSET=utf8
+ENGINE=InnoDB;
 
 /* Tarifs System */
 /* Tarifs System: Tarifs Table */

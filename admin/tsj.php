@@ -4,7 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 // Set some global property
 
 // Access check.
-if (!JFactory::getUser()->authorise('core.manage', 'com_tsj')) 
+if (!JFactory::getUser()->authorise('core.manage', 'com_tsj'))
 {
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form name="gazs">
+	<fieldset name="data">
+		<field name="gaz1" type="text" description="" label=""
+			required="true" maxlength="10" size="10" />
+		<field name="gaz2" type="text" description="" label=""
+			required="true" maxlength="10" size="10" />
+		<field name="gaz3" type="text" description="" label=""
+			required="true" maxlength="10" size="10" />
+
+	</fieldset>
+</form>

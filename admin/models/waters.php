@@ -16,19 +16,19 @@ jimport( 'joomla.application.component.modeladmin' );
  */
 class TSJModelWaters extends JModelAdmin
 {
-   /**
-    * Get the data for a new qualification
-    */
-   public function getForm($data = array(), $loadData = true)
-   {
-      //$app = JFactory::getApplication('site');
+	/**
+	 * Get the data for a new qualification
+	 */
+	public function getForm($data = array(), $loadData = true)
+	{
+		//$app = JFactory::getApplication('site');
 
-      // Get the form.
-      $form = $this->loadForm('com_tsj.waters', 'waters', array('control' => 'prefix_text', 'load_data' => true));
-      if (empty($form)) {
-         return false;
-      }
-      return $form;
+		// Get the form.
+		$form = $this->loadForm('com_tsj.waters', 'waters', array('control' => 'prefix_text', 'load_data' => true));
+		if (empty($form)) {
+			return false;
+		}
+		return $form;
 
-   }
+	}
 }

@@ -3,7 +3,7 @@
 	<fieldset name="snwaters">
 
 		<field name="wname1" type="text" description="" label="" id="wname1"
-         required="false" maxlength="30" size="30" />
+			required="false" maxlength="30" size="30" />
 		<field name="sncwater1" type="text" description="" label=""
 			id="sncwater1" required="true" maxlength="20" size="20" />
 		<field name="snhwater1" type="text" description="" label=""

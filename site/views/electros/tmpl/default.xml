@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+
+	<layout title="COM_TSJ_ELECTRO_VIEW_DEFAULT_TITLE">
+		<message><![CDATA[COM_TSJ_ELECTRO_VIEW_DEFAULT_DESC]]></message>
+	</layout>
+
+	<fields name="electrolink" addfieldpath="/administrator/components/com_tsj/models/fields">
+		<fieldset name="request">
+			<field name="electro_id" type="text" label="COM_TSJ_ELECTRO_FIELD_NAME_LABEL"
+				description="COM_TSJ_ELECTRO_FIELD_NAME_DESC" />
+		</fieldset>
+	</fields>
+
+</metadata>

@@ -21,15 +21,15 @@ class TSJControllerTSJs extends JControllerAdmin
 		$iv = mcrypt_create_iv(mcrypt_get_iv_size($cipher, $mode), MCRYPT_RAND);
 		return base64_encode( mcrypt_encrypt ($cipher,$key,$data,$mode,$iv)	);
 	}
-	
+
 	private function decrypt($data,  $key,  $cipher, $mode)
 	{
 		return $data;
 		return mcrypt_decrypt ($cipher,
-								substr(md5($key),0,mcrypt_get_key_size($cipher,  $mode)), base64_decode($data) , $mode,
-								substr(md5($key),O,mcrypt_get_block_size($cipher,  $mode)) ) ;
+		substr(md5($key),0,mcrypt_get_key_size($cipher,  $mode)), base64_decode($data) , $mode,
+		substr(md5($key),O,mcrypt_get_block_size($cipher,  $mode)) ) ;
 	}
-	
+
 	/**
 	 * Proxy for getModel.
 	 * @since	2.5
@@ -95,7 +95,7 @@ class TSJControllerTSJs extends JControllerAdmin
 					return false;
 				}
 			}
-			
+				
 			fseek($handle, 0);
 			// Пишем в базу.
 			$city_id = 0;
@@ -233,10 +233,10 @@ class TSJControllerTSJs extends JControllerAdmin
 				else {
 					echo "Для записи с лицевым счетом ". trim($data[0]) . " не создан пользователь с таким же логином.<br>";
 					//continue;
-					
+						
 					// Это регулярное выражение оставит только латиницу, цифры _ и -
 					//$user_id = preg_replace('/[^a-zA-Z0-9\-_]/', '',$data[0]);
-					
+						
 					// Это регулярное выражение удалит: пробелы и <>"'%;()&
 					$user_id = preg_replace('/[ <>\"\'%;()]+/i', '', $data[0]);
 					// проверка на размер логина. Должен быть более 2х символов
@@ -244,12 +244,12 @@ class TSJControllerTSJs extends JControllerAdmin
 						echo "Ошибка. Логин должен быть не менее 2х символов.<br><br>";
 						continue;
 					}
-					
+						
 					// Добавляем пользователя
 					//echo "login = ".$user_id. "<br>";
 					$currentdate = JFactory::getDate();
 					echo "Пользователь добавлен автоматически ". $currentdate .".<br><br>";
-					
+						
 					$sql = " INSERT INTO #__users
 								(name, username, email, password, block, sendEmail, registerDate)
                   		VALUES ('$data[5]','$user_id','$user_id". '@test.ru' ."','" . md5($user_id) . "','0','1','$currentdate');";
@@ -263,7 +263,7 @@ class TSJControllerTSJs extends JControllerAdmin
 					}
 					$user_id = $this->db->insertid();
 				}
-				
+
 				// Ищем в таблице Лицевые_счета номер лицевого счета.
 				// Если записи с лицевым счетом нет, то добавляем запись в таблицу Лицевые_счета. И добавляем площадь и номер телефона.
 				// Если запись с лицевым счетом есть, то обновляем остальные данные в таблице (считая что данные изменились).
@@ -279,7 +279,7 @@ class TSJControllerTSJs extends JControllerAdmin
 					fclose($handle);
 					return false;
 				}
-				
+
 				// Тут должно быть кодирование телефона чтобы его нельзя было посмотреть в прямую из базы.
 				//$cipher = "MCRYPT_CAST_256";
 				//$mode = "MCRYPT_MODE_ECB";
@@ -307,7 +307,7 @@ class TSJControllerTSJs extends JControllerAdmin
                         		sq='$data[6]', tel='" .$this->encrypt($data[7], $key,  $cipher, $mode). "',
                         		cat='$data[8]', lic='$data[9]'
                   		WHERE account_num='$data[0]'";
-					
+						
 					$this->db->setQuery( $sql );
 
 					if (!$result = $this->db->query()) {
@@ -316,7 +316,7 @@ class TSJControllerTSJs extends JControllerAdmin
 						return false;
 					}
 				}
-				
+
 			}
 
 			echo '<br>Импорт закончен.<br>';
@@ -327,8 +327,8 @@ class TSJControllerTSJs extends JControllerAdmin
 
 	public function setinnodb()
 	{
-      // Get the data from the form POST
-      //$data = JRequest::getVar('submit', array(), 'post', 'array');
+		// Get the data from the form POST
+		//$data = JRequest::getVar('submit', array(), 'post', 'array');
 		if( isset($_POST['submit']))
 		{
 			$db =& JFactory::getDBO();
@@ -336,15 +336,15 @@ class TSJControllerTSJs extends JControllerAdmin
 				echo "Нет соединения с сервером баз данных. Повторите запрос позже";
 				jexit();
 			}
-      	// Check for request forgeries.
-      	//JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-      	
+			// Check for request forgeries.
+			//JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+			 
 			//$query = $db->getQuery(true);
 			$query="ALTER TABLE `#__users` ENGINE=INNODB;";
 			$db->setQuery($query);
 			$result = $db->query();
 		}
-		
+
 	}
-	
+
 }

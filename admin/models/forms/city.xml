@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<form
-	addrulepath="/administrator/components/com_tsj/models/rules"
->
+<form addrulepath="/administrator/components/com_tsj/models/rules">
 	<fieldset>
-		<field
-			name="city_id"
-			type="hidden"
-		/>
-		<field
-			name="city"
-			type="text"
-			label="COM_TSJ_CITY_HEADING_NAME"
-			description="COM_TSJ_CITY_HEADING_NAME_DESC"
-			size="40"
-			class="inputbox validate-name"
-			validate="city"
-			required="true"
-			default=""
-		/>
+		<field name="city_id" type="hidden" />
+		<field name="city" type="text" label="COM_TSJ_CITY_HEADING_NAME"
+			description="COM_TSJ_CITY_HEADING_NAME_DESC" size="40"
+			class="inputbox validate-name" validate="city" required="true"
+			default="" />
 	</fieldset>
 </form>

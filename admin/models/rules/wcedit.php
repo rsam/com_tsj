@@ -10,12 +10,12 @@ jimport('joomla.form.formrule');
  */
 class JFormRuleWCEdit extends JFormRule
 {
-   /**
-    * The regular expression.
-    *
-    * @access	protected
-    * @var		string
-    * @since	2.5
-    */
-   protected $regex = '^+[A-zА-я0-9_^\,./-\s]$';
+	/**
+	 * The regular expression.
+	 *
+	 * @access	protected
+	 * @var		string
+	 * @since	2.5
+	 */
+	protected $regex = '^+[A-zА-я0-9_^\,./-\s]$';
 }

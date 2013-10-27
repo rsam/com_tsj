@@ -67,15 +67,15 @@ class TSJModelTarifs extends JModelList
 			$query->order($listOrder . ' ' . $listDirn);
 
 			/*echo "lim=".$this->limit;
-			echo "start=".$this->limitstart . "<br>";
-			echo "orderCol=".$listOrder;
-			echo "orderDirn=".$listDirn."<br>";*/
-			
+			 echo "start=".$this->limitstart . "<br>";
+			 echo "orderCol=".$listOrder;
+			 echo "orderDirn=".$listDirn."<br>";*/
+				
 			// Пагинация. Возвразщаем в массив нужное количество с нужной страницы
 			if($this->limit == 0)
-				$this->_tarif = $this->_getList( $query );
+			$this->_tarif = $this->_getList( $query );
 			else
-				$this->_tarif = $this->_getList( $query, $this->limitstart, $this->limit);
+			$this->_tarif = $this->_getList( $query, $this->limitstart, $this->limit);
 		}
 
 		return $this->_tarif;
