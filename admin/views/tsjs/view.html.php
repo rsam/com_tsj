@@ -21,6 +21,8 @@ class TSJViewTSJs extends JView
 	protected $pagination;
 
 	protected $dbuser;
+	
+	public $param;
 
 	/**
 	 * TSJs view display method
@@ -33,7 +35,8 @@ class TSJViewTSJs extends JView
 		$item = $this->get('Item');
 		$state = $this->get('State');
 		$pagination = $this->get('Pagination');
-
+		$this->param = $this->get('Params');
+		
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{

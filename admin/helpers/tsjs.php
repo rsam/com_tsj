@@ -22,7 +22,7 @@ class TSJsHelper
 	{
 		JSubMenuHelper::addEntry(
 		JText::_('COM_TSJS_SUBMENU_MAIN'),
-         'index.php?option=com_tsj&view=tsjs&layout=main',
+         'index.php?option=com_tsj&view=tsjs&layout=tsjs',
 		$vName == 'main'
 		);
 

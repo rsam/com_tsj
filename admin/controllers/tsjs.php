@@ -346,5 +346,24 @@ class TSJControllerTSJs extends JControllerAdmin
 		}
 
 	}
+	
+	public function setconfig()
+	{
+		// Проверка токена
+		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		// Инициализация переменных
+		//$app    = JFactory::getApplication();
+		$model  = $this->getModel('tsjs');
+
+		// Получение данных формы configForm (configForm.xml) POST
+		$data['water'] = JRequest::getVar('water', '2', 'post', 'integer');
+		$data['gaz'] = JRequest::getVar('gaz', '2', 'post', 'integer');
+		$data['electro'] = JRequest::getVar('electro', '2', 'post', 'integer');
+
+		// Сохраним данные из формы в базе данных через метод модели setDataOfConfig
+		$upditem        = $model->setDataOfConfig($data);
+
+	}
 
 }

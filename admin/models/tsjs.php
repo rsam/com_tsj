@@ -286,5 +286,100 @@ class TSJModelTSJs extends JModelList
 		//parent::populateState($ordering, $direction);
 	}
 
+	function getParams()
+	{
+		$params = array();
 
+		$db	=& JFactory::getDBO();
+		
+		$db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_on';" );
+		$row =& $db->loadResult();
+		// РџСЂРѕРІРµСЂРєР° РЅР° РѕС€РёР±РєРё
+		if (!$result = $db->query()) {
+			//echo $this->db->stderr();
+			return false;
+		}
+		$params['water_on'] = $row;
+		
+		$db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'gaz_on';" );
+		$row =& $db->loadResult();
+		// РџСЂРѕРІРµСЂРєР° РЅР° РѕС€РёР±РєРё
+		if (!$result = $db->query()) {
+			//echo $this->db->stderr();
+			return false;
+		}
+		$params['gaz_on'] = $row;
+		
+		$db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'electro_on';" );
+		$row =& $db->loadResult();
+		// РџСЂРѕРІРµСЂРєР° РЅР° РѕС€РёР±РєРё
+		if (!$result = $db->query()) {
+			//echo $this->db->stderr();
+			return false;
+		}
+		$params['electro_on'] = $row;
+		
+	return $params;
+	}
+	
+	public function setDataOfConfig($data)
+	{
+			// Get the data from the form POST
+		//$data = JRequest::getVar('submit', array(), 'post', 'array');
+
+			$db =& JFactory::getDBO();
+			if (!$db->connected()) {
+				echo "Нет соединения с сервером баз данных. Повторите запрос позже";
+				jexit();
+			}
+			// Check for request forgeries.
+			//JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+			$db->setQuery(" DELETE FROM #__tsj_cfg WHERE cfg_name = 'water_on'");
+			$db->query();
+			if ($error = $db->getErrorMsg()) {
+				$this->setError($error);
+				return false;
+			}
+				
+			$db->setQuery("INSERT INTO #__tsj_cfg (cfg_name, cfg_value) 
+						VALUES ('water_on'," . $data['water'] . ")" );
+			$db->query();
+			if ($error = $db->getErrorMsg()) {
+				$this->setError($error);
+				return false;
+			}
+				
+				$db->setQuery(" DELETE FROM #__tsj_cfg WHERE cfg_name = 'gaz_on'");
+			$db->query();
+			if ($error = $db->getErrorMsg()) {
+				$this->setError($error);
+				return false;
+			}
+				
+			$db->setQuery("INSERT INTO #__tsj_cfg (cfg_name, cfg_value) 
+						VALUES ('gaz_on'," . $data['gaz'] . ")" );
+			$db->query();
+			if ($error = $db->getErrorMsg()) {
+				$this->setError($error);
+				return false;
+			}
+			
+			$db->setQuery(" DELETE FROM #__tsj_cfg WHERE cfg_name = 'electro_on'");
+			$db->query();
+			if ($error = $db->getErrorMsg()) {
+				$this->setError($error);
+				return false;
+			}
+				
+			$db->setQuery("INSERT INTO #__tsj_cfg (cfg_name, cfg_value) 
+						VALUES ('electro_on'," . $data['electro'] . ")" );
+			$db->query();
+			if ($error = $db->getErrorMsg()) {
+				$this->setError($error);
+				return false;
+			}
+			
+			return true;
+		}
 }
