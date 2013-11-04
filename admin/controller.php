@@ -8,7 +8,7 @@ jimport('joomla.application.component.controller');
 /**
  * General Controller of TSJ component
  */
-class TSJController extends JController
+class TSJController extends JControllerLegacy
 {
 	/**
 	 * display task

@@ -39,9 +39,9 @@ JHtml::_('behavior.tooltip');
 						<table style="width: 100%;">
 							<tr>
 								<td style="float: right;"><?php 
-								$state_water[] = JHTML::_('select.option', '1', 'Âêëþ÷èòü');
-								$state_water[] = JHTML::_('select.option', '2', 'Âûêëþ÷èòü');
-								echo JText::_("Îïöèÿ ñäà÷è ïîêàçàíèé ñ÷åò÷èêîâ âîäû: ");?>
+								$state_water[] = JHTML::_('select.option', '1', 'Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ');
+								$state_water[] = JHTML::_('select.option', '2', 'Ð’Ñ‹ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ');
+								echo JText::_("ÐžÐ¿Ñ†Ð¸Ñ ÑÐ´Ð°Ñ‡Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ð¸Ð¹ ÑÑ‡ÐµÑ‚Ñ‡Ð¸ÐºÐ¾Ð² Ð²Ð¾Ð´Ñ‹: ");?>
 								</td>
 								<td><?php 
 								if($this->param['water_on'] == '1'){
@@ -53,9 +53,9 @@ JHtml::_('behavior.tooltip');
 							</tr>
 							<tr>
 								<td style="float: right;"><?php 
-								$state_gaz[] = JHTML::_('select.option', '1', 'Âêëþ÷èòü');
-								$state_gaz[] = JHTML::_('select.option', '2', 'Âûêëþ÷èòü');
-								echo JText::_("Îïöèÿ ñäà÷è ïîêàçàíèé ñ÷åò÷èêîâ ãàçà: ");?>
+								$state_gaz[] = JHTML::_('select.option', '1', 'Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ');
+								$state_gaz[] = JHTML::_('select.option', '2', 'Ð’Ñ‹ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ');
+								echo JText::_("ÐžÐ¿Ñ†Ð¸Ñ ÑÐ´Ð°Ñ‡Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ð¸Ð¹ ÑÑ‡ÐµÑ‚Ñ‡Ð¸ÐºÐ¾Ð² Ð³Ð°Ð·Ð°: ");?>
 								</td>
 								<td><?php 
 								if($this->param['gaz_on'] == '1')
@@ -67,9 +67,9 @@ JHtml::_('behavior.tooltip');
 							</tr>
 							<tr>
 								<td style="float: right;"><?php 
-								$state_electro[] = JHTML::_('select.option', '1', 'Âêëþ÷èòü');
-								$state_electro[] = JHTML::_('select.option', '2', 'Âûêëþ÷èòü');
-								echo JText::_("Îïöèÿ ñäà÷è ïîêàçàíèé ñ÷åò÷èêîâ ýëåêòðîýíåðãèè: ");?>
+								$state_electro[] = JHTML::_('select.option', '1', 'Ð’ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ');
+								$state_electro[] = JHTML::_('select.option', '2', 'Ð’Ñ‹ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ');
+								echo JText::_("ÐžÐ¿Ñ†Ð¸Ñ ÑÐ´Ð°Ñ‡Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ð¸Ð¹ ÑÑ‡ÐµÑ‚Ñ‡Ð¸ÐºÐ¾Ð² ÑÐ»ÐµÐºÑ‚Ñ€Ð¾ÑÐ½ÐµÑ€Ð³Ð¸Ð¸: ");?>
 								</td>
 								<td><?php 
 								if($this->param['electro_on'] == '1')
@@ -81,7 +81,7 @@ JHtml::_('behavior.tooltip');
 							</tr>
 							<tr>
 								<td style="float: right;"><input id="setconfig" type="submit"
-									name="setconfig" value="Ïðèìåíèòü" />
+									name="setconfig" value="ÐŸÑ€Ð¸Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ" />
 								</td>
 							</tr>
 						</table>

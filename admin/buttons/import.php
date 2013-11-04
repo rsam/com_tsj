@@ -23,13 +23,13 @@ class JButtonImport extends JButton
 		$html = "";
 		$html .= "<form name=\"".$text."Form\" method=\"post\" enctype=\"multipart/form-data\" action=\"$doAction\" style=\"float:left\">\n";
 		$html .= "<input type=\"file\" name=\"file_upload\">&nbsp;<br/><br/>\n";
-		$path		= JPATH_COMPONENT_ADMINISTRATOR.DS.'files';
+		$path		= JPATH_COMPONENT_ADMINISTRATOR.DIRECTORY_SEPARATOR.'files';
 		if (JFolder::exists($path))
 		{
 			$files = JFolder::files($path,'\.csv$',true,true);
 			if (is_array($files) && (count($files) > 0))
 			{
-				$filenames = str_replace($path.DS, '', $files);
+				$filenames = str_replace($path.DIRECTORY_SEPARATOR, '', $files);
 				$options = array ();
 				$options[] = JHTML::_('select.option', '', '- '.JText::_('Select a file').' -');
 				foreach ($filenames as $file)

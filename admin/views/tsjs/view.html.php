@@ -11,7 +11,7 @@ JLoader::register('TSJsHelper', JPATH_COMPONENT.'/helpers/tsjs.php');
 /**
  * TSJs View
  */
-class TSJViewTSJs extends JView
+class TSJViewTSJs extends JViewLegacy
 {
 	//public $layout='';
 

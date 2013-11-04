@@ -16,7 +16,8 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_tsj'))
 jimport('joomla.application.component.controller');
 
 // Get an instance of the controller prefixed by TSJ
-$controller = JController::getInstance('TSJ');
+$controller = JControllerLegacy::getInstance('TSJ');
+//$controller = JController::getInstance('TSJ');
 
 // Perform the Request task
 $input = JFactory::getApplication()->input;
