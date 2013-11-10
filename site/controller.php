@@ -8,7 +8,7 @@ jimport('joomla.application.component.controller');
 /**
  * TSJ Component Controller
  */
-class TSJController extends JController
+class TSJController extends JControllerLegacy
 {
 	public $lic = -1;
 	 

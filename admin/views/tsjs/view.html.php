@@ -114,27 +114,27 @@ class TSJViewTSJs extends JViewLegacy
 
 		if ($this->getLayout() == 'street')
 		{
-			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'street.remove');
-			JToolBarHelper::editListX('street.edit');
-			JToolBarHelper::addNewX('street.add');
+			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'street.remove');
+			JToolBarHelper::editList('street.edit');
+			JToolBarHelper::addNew('street.add');
 		}
 		else if ($this->getLayout() == 'city')
 		{
-			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'city.remove');
-			JToolBarHelper::editListX('city.edit');
-			JToolBarHelper::addNewX('city.add');
+			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'city.remove');
+			JToolBarHelper::editList('city.edit');
+			JToolBarHelper::addNew('city.add');
 		}
 		else if ($this->getLayout() == 'address')
 		{
-			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'address.remove');
-			JToolBarHelper::editListX('address.edit');
-			JToolBarHelper::addNewX('address.add');
+			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'address.remove');
+			JToolBarHelper::editList('address.edit');
+			JToolBarHelper::addNew('address.add');
 		}
 		else if ($this->getLayout() == 'account')
 		{
-			JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'account.remove');
-			JToolBarHelper::editListX('account.edit');
-			JToolBarHelper::addNewX('account.add');
+			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'account.remove');
+			JToolBarHelper::editList('account.edit');
+			JToolBarHelper::addNew('account.add');
 		}
 
 		JToolBarHelper::divider();

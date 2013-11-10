@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * TSJ View
  */
-class TSJViewTSJ extends JView
+class TSJViewTSJ extends JViewLegacy
 {
 	 
 	public $my_var6;

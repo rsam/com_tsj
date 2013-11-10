@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * HTML View class for the tsj Component
  */
-class TSJViewTSJ extends JView
+class TSJViewTSJ extends JViewLegacy
 {
 	// Переопределяем JView display метод
 	function display($tpl = null)

@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * HTML View class for the TSJ Component, Gaz
  */
-class TSJViewGazs extends JView
+class TSJViewGazs extends JViewLegacy
 {
 	public $dataofsn;
 	public $dataofcounter;

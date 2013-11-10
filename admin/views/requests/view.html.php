@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * TSJs View
  */
-class TSJViewRequests extends JView
+class TSJViewRequests extends JViewLegacy
 {
 	/**
 	 * Requests view display method

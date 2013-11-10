@@ -290,10 +290,10 @@ class TSJModelTSJs extends JModelList
 	{
 		$params = array();
 
-		$db	=& JFactory::getDBO();
+		$db	= JFactory::getDBO();
 		
 		$db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_on';" );
-		$row =& $db->loadResult();
+		$row = $db->loadResult();
 		// РџСЂРѕРІРµСЂРєР° РЅР° РѕС€РёР±РєРё
 		if (!$result = $db->query()) {
 			//echo $this->db->stderr();
@@ -302,7 +302,7 @@ class TSJModelTSJs extends JModelList
 		$params['water_on'] = $row;
 		
 		$db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'gaz_on';" );
-		$row =& $db->loadResult();
+		$row = $db->loadResult();
 		// РџСЂРѕРІРµСЂРєР° РЅР° РѕС€РёР±РєРё
 		if (!$result = $db->query()) {
 			//echo $this->db->stderr();
@@ -311,7 +311,7 @@ class TSJModelTSJs extends JModelList
 		$params['gaz_on'] = $row;
 		
 		$db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'electro_on';" );
-		$row =& $db->loadResult();
+		$row = $db->loadResult();
 		// РџСЂРѕРІРµСЂРєР° РЅР° РѕС€РёР±РєРё
 		if (!$result = $db->query()) {
 			//echo $this->db->stderr();
@@ -327,7 +327,7 @@ class TSJModelTSJs extends JModelList
 			// Get the data from the form POST
 		//$data = JRequest::getVar('submit', array(), 'post', 'array');
 
-			$db =& JFactory::getDBO();
+			$db = JFactory::getDBO();
 			if (!$db->connected()) {
 				echo "Нет соединения с сервером баз данных. Повторите запрос позже";
 				jexit();

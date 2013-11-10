@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * HTML View class for the TSJ Serial Number Component, Water
  */
-class TSJViewSNWaters extends JView
+class TSJViewSNWaters extends JViewLegacy
 {
 	public $dataofsn;
 	public $params;

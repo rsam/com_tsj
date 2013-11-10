@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * HTML View class for the TSJ Component, Electro
  */
-class TSJViewElectros extends JView
+class TSJViewElectros extends JViewLegacy
 {
 	public $dataofsn;
 	public $dataofcounter;
@@ -35,7 +35,7 @@ class TSJViewElectros extends JView
 
 	}
 	 
-	// Переопределяем JView display метод
+	// Переопределяем JViewLegacy display метод
 	function display($tpl = null)
 	{
 		$app = &JFactory::getApplication();

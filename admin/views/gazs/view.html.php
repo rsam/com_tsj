@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * TSJs View
  */
-class TSJViewGazs extends JView
+class TSJViewGazs extends JViewLegacy
 {
 	/**
 	 * Water view display method

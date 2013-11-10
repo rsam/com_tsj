@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * HTML View class for the tsj Component
  */
-class TSJViewLic extends JView
+class TSJViewLic extends JViewLegacy
 {
 	public $tsk = null;
 

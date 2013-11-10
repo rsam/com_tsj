@@ -10,7 +10,7 @@ jimport( 'joomla.html.toolbar' );
 /**
  * TSJs View
  */
-class TSJViewTarifs extends JView
+class TSJViewTarifs extends JViewLegacy
 {
 	//список записей
 	protected $items;
@@ -64,9 +64,9 @@ class TSJViewTarifs extends JView
 		JToolBarHelper::divider();
 		}*/
 
-		JToolBarHelper::deleteListX('Вы действительно хотите удалить выбранные записи ?', 'tarif.remove');
-		JToolBarHelper::editListX('tarif.edit');
-		JToolBarHelper::addNewX('tarif.add');
+		JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'tarif.remove');
+		JToolBarHelper::editList('tarif.edit');
+		JToolBarHelper::addNew('tarif.add');
 
 		JToolBarHelper::help( 'com_tsj', true );
 	}
