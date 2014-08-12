@@ -95,7 +95,7 @@ JHtml::_('behavior.tooltip');
 
 								<?php echo JHtml::_('form.token'); ?>
 						</div>
-				
+				    </form>
 				</td>
 				<td valign='top' width='50%' style='padding: 0px 0px 0px 0px'>
 					<table class='adminlist'>
