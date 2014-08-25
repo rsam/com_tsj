@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="2.5.0" method="upgrade">
+<extension type="component" version="3.3.0" method="upgrade">
 
    <name>COM_TSJ</name>
    <!-- The following elements are optional and free of formatting constraints -->
@@ -7,10 +7,10 @@
    <author>Shibin Roman</author>
    <authorEmail>rsa_m@mail.ru</authorEmail>
    <authorUrl>http://resea.ru</authorUrl>
-   <copyright>Copyright 2012-2013 Shibin Roman</copyright>
+   <copyright>Copyright 2012-2014 Shibin Roman</copyright>
    <license>GNU/GPL3</license>
    <!-- The version string is recorded in the components table -->
-   <version>2.0.0</version>
+   <version>3.0.0</version>
    <!-- The description is optional and defaults to the name -->
    <description>COM_TSJ_DESCRIPTION</description>
 

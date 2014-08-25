@@ -2,9 +2,18 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
 // load tooltip behavior
-JHtml::_('behavior.tooltip');
+if (version_compare(JPlatform::RELEASE, '12', '<'))
+{
+	JHtml::_('behavior.tooltip');
+}
+else
+{
+	JHtml::_('bootstrap.tooltip');
+	JHtml::_('formbehavior.chosen', 'select');	
+}
+JHtml::_('behavior.multiselect');
 ?>
-	<table class="adminlist">
+	<table width=100% class="table table-striped adminlist" id="tsjsList">
 		<thead>
 		<?php echo $this->loadTemplate('head');?>
 		</thead>

@@ -10,7 +10,7 @@ jimport( 'joomla.html.toolbar' );
 /**
  * TSJs View
  */
-class TSJViewTarifs extends JViewLegacy
+class TSJViewTarifs extends JViewAbstract
 {
 	//список записей
 	protected $items;

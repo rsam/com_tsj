@@ -9,6 +9,7 @@ defined('_JEXEC') or die;
 // import Joomla view library
 //jimport('joomla.application.component.view');
 JLoader::register('TSJsHelper', JPATH_COMPONENT.'/helpers/tsjs.php');
+jimport('joomla.html.html.tabs');
 
 /**
  * View to edit messages user configuration.
@@ -17,7 +18,7 @@ JLoader::register('TSJsHelper', JPATH_COMPONENT.'/helpers/tsjs.php');
  * @subpackage	com_tsj
  * @since		1.6
  */
-class TSJViewWConfig extends JViewLegacy
+class TSJViewWConfig extends JViewAbstract
 {
 	protected $form;
 	protected $item;

@@ -24,10 +24,10 @@ JHtml::_('behavior.formvalidation');
 	</fieldset>
 
 	<div>
-		<input type="hidden" name="task" value="city.edit" /> <input
-			type="hidden" name="option" value="com_tsj" /> <input type="hidden"
-			name="city_id" value="<?php echo $this->item->city_id; ?>" /> <input
-			type="hidden" name="controller" value="city" />
-			<?php echo JHtml::_('form.token'); ?>
+		<input type="hidden" name="task" value="city.edit" />
+		<input type="hidden" name="option" value="com_tsj" />
+		<input type="hidden" name="city_id" value="<?php echo $this->item->city_id; ?>" />
+		<input type="hidden" name="controller" value="city" />
+		<?php echo JHtml::_('form.token'); ?>
 	</div>
 </form>

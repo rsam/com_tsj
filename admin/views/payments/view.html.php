@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * TSJs View
  */
-class TSJViewPayments extends JViewLegacy
+class TSJViewPayments extends JViewAbstract
 {
 	/**
 	 * Payments view display method

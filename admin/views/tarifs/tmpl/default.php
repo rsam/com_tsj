@@ -34,7 +34,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
 			name="filter_order_Dir" value="<?php echo $listDirn; ?>" /> <input
 			type="hidden" name="option" value="com_tsj" /> <input type="hidden"
 			name="controller" value="tarifs" /> <input type="hidden" name="view"
-			value="tarifs" /> <input type="hidden" name="task" value="" /> <input
+			value="tarifs" /> <input type="hidden" name="task" value="tarifs" /> <input
 			type="hidden" name="boxchecked" value="0" />
 			<?php echo JHtml::_('form.token'); ?>
 	</div>

@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * TSJs View
  */
-class TSJViewHSCs extends JViewLegacy
+class TSJViewHSCs extends JViewAbstract
 {
 	/**
 	 * HSCs view display method

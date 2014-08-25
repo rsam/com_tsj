@@ -34,9 +34,9 @@ class TSJControllerTSJs extends JControllerAdmin
 	 * Proxy for getModel.
 	 * @since	2.5
 	 */
-	public function getModel($name = 'TSJs', $prefix = 'TSJModel')
+    public function getModel($name = 'TSJs', $prefix = 'TSJModel', $config = array('ignore_request' => true))
 	{
-		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
+		$model = parent::getModel($name, $prefix, $config);
 		return $model;
 	}
 

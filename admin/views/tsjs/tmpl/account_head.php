@@ -11,7 +11,8 @@ $listDirn   = $this->escape($this->state->get('list.direction'));
 	<th width="30"><?=JHtml::_('grid.sort', 'id', 'account_id', $listDirn, $listOrder); ?>
 	</th>
 
-	<th width="20"><input type="checkbox" name="toggle" value=""
+	<th width="20">
+		<input type="checkbox" name="toggle" value=""
 		onclick="checkAll(<?php echo count($this->accountitems); ?>);" /></th>
 
 	<th><?=JHtml::_('grid.sort', 'COM_TSJ_ACCOUNT_NAME1', 'account_num', $listDirn, $listOrder); ?>

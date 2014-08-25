@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * TSJ View
  */
-class TSJViewCity extends JViewLegacy
+class TSJViewCity extends JViewAbstract
 {
 	/**
 	 * View form

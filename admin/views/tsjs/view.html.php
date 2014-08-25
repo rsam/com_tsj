@@ -11,7 +11,7 @@ JLoader::register('TSJsHelper', JPATH_COMPONENT.'/helpers/tsjs.php');
 /**
  * TSJs View
  */
-class TSJViewTSJs extends JViewLegacy
+class TSJViewTSJs extends JViewAbstract
 {
 	//public $layout='';
 
@@ -49,6 +49,8 @@ class TSJViewTSJs extends JViewLegacy
 		$this->item = $item;
 		$this->state = $state;
 
+		TSJsHelper::addSubmenu('tsjs');
+				
 		// Get data from the model
 		if ($this->getLayout() == 'city')
 		{
@@ -92,8 +94,12 @@ class TSJViewTSJs extends JViewLegacy
 		// Set the toolbar
 		$this->addToolBar();
 
-		TSJsHelper::addSubmenu(JRequest::getCmd('view', 'TSJs'));
 		// Display the template
+		if (version_compare(JPlatform::RELEASE, '12', '>='))
+		{
+			$this->sidebar = JHtmlSidebar::render();
+		}
+		
 		parent::display($tpl);
 
 		// Set the document
@@ -105,58 +111,95 @@ class TSJViewTSJs extends JViewLegacy
 	 */
 	protected function addToolBar()
 	{
+		$state	= $this->get('State');
+		$canDo	= TSJsHelper::getActions('com_tsjs', 'category', $state->get('filter.category_id'));
+		$user	= JFactory::getUser();
+		
 		// Заголовок
 		JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TSJS'));
 		//JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TSJS'), 'generic.png');
 
 		// Кнопки
 		$toolbar = JToolBar::getInstance('toolbar');
-
+		$toolbar->addButtonPath(JPATH_COMPONENT.DS.'buttons');
+		
 		if ($this->getLayout() == 'street')
 		{
-			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'street.remove');
-			JToolBarHelper::editList('street.edit');
 			JToolBarHelper::addNew('street.add');
+			if ($canDo->get('core.edit'))			
+			{
+				JToolBarHelper::editList('street.edit');
+			}
+			if ($canDo->get('core.remote'))			
+			{
+				JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'street.remove');
+			}
 		}
 		else if ($this->getLayout() == 'city')
 		{
-			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'city.remove');
+			if ($canDo->get('core.create')) {
+				JToolBarHelper::addNew('city.add');
+			}
 			JToolBarHelper::editList('city.edit');
-			JToolBarHelper::addNew('city.add');
+			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'city.remove');
 		}
 		else if ($this->getLayout() == 'address')
 		{
-			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'address.remove');
-			JToolBarHelper::editList('address.edit');
 			JToolBarHelper::addNew('address.add');
+			JToolBarHelper::editList('address.edit');
+			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'address.remove');
 		}
 		else if ($this->getLayout() == 'account')
 		{
-			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'account.remove');
-			JToolBarHelper::editList('account.edit');
 			JToolBarHelper::addNew('account.add');
+			JToolBarHelper::editList('account.edit');
+			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'account.remove');
 		}
-
-		JToolBarHelper::divider();
-		$toolbar->addButtonPath(JPATH_COMPONENT.'/'.'buttons');
-		$toolbar->loadButtonType('Import', true);
-		$toolbar->appendButton('Import', 'tsjs-import', 'COM_TSJ_CONFIG_IMPORT', 'tsjs.import');
+		else{
+		//JToolBarHelper::divider();
+		$toolbar->loadButtonType('Import', true);		
+		
+		if (version_compare(JPlatform::RELEASE, '12', '<')){
+			$toolbar->appendButton('Import', 'tsjs-import', 'COM_TSJ_CONFIG_IMPORT', 'tsjs.import',false);
+		}
+		else{
+			$toolbar->appendButton('Import', 'import', 'tsjs-import', 'COM_TSJ_CONFIG_IMPORT', 'tsjs.import', false);		
+		}
 
 		$doc = JFactory::getDocument();
 		//$icon_48_import = " .icon-48-tsjs {background:url(components/com_tsj/images/header/icon-48-importer.png) no-repeat; }";
 		//$doc->addStyleDeclaration($icon_48_import);
 		$icon_32_import = " .icon-32-tsjs-import {background:url(components/com_tsj/images/importer.png) no-repeat; }";
 		$doc->addStyleDeclaration($icon_32_import);
-		JToolBarHelper::divider();
+		
+		}
 
+		// Add a batch button
+		/*if ($user->authorise('core.create', 'com_tsjs') && $user->authorise('core.edit', 'com_tsjs') && $user->authorise('core.edit.state', 'com_tsjs'))
+		{
+			JHtml::_('bootstrap.modal', 'collapseModal');
+			$title = JText::_('JTOOLBAR_BATCH');
+
+			// Instantiate a new JLayoutFile instance and render the batch button
+			$layout = new JLayoutFile('joomla.toolbar.batch');
+
+			$dhtml = $layout->render(array('title' => $title));
+			$toolbar->appendButton('Custom', $dhtml, 'batch');
+		}*/	
+		
 		// Options button.
 		if (JFactory::getUser()->authorise('core.admin', 'com_tsj'))
 		{
 			JToolBarHelper::preferences('com_tsj');
-			JToolBarHelper::divider();
+			//JToolBarHelper::divider();
 		}
 
-		JToolBarHelper::help( 'Components_TSJ', true );
+		JToolBarHelper::help( 'Components_TSJ', true );		
+		
+		if (version_compare(JPlatform::RELEASE, '12', '>='))
+		{		
+			JHtmlSidebar::setAction('index.php?option=com_tsjs&view=tsjs');
+		}
 	}
 
 	/**

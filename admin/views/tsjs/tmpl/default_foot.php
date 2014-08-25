@@ -6,9 +6,13 @@ JHtml::_('behavior.tooltip');
 ?>
 <tr>
 	<td colspan="2">
-		<table width='100%'>
+	<div id="j-sidebar-container" class="span2">
+		<?php echo $this->sidebar; ?>
+	</div>
+	<div id="j-main-container" class="span10">
+		<table width='80%'>
 			<tr>
-				<td width='50%' class='adminform' valign='top'>
+				<td valign='top' width='50%' style='padding: 0px 0px 0px 0px'>
 
 					<form action="<?php echo JRoute::_('index.php?option=com_tsj'); ?>"
 						method="post" name="adminForm" id="adminForm">
@@ -32,11 +36,12 @@ JHtml::_('behavior.tooltip');
 								name="layout" value="tsjs" />
 								<?php echo JHtml::_('form.token'); ?>
 						</div>
-					</form> <!-- set main control form --> <br>
+					</form> <!-- set main control form --> 
+					
 					<form action="<?php echo JRoute::_('index.php?option=com_tsj'); ?>"
 						method="post" name="configForm" id="configForm">
 
-						<table style="width: 100%;">
+						<table>
 							<tr>
 								<td style="float: right;"><?php 
 								$state_water[] = JHTML::_('select.option', '1', 'Включить');
@@ -85,7 +90,7 @@ JHtml::_('behavior.tooltip');
 								</td>
 							</tr>
 						</table>
-
+					
 						<div>
 							<input type="hidden" name="task" value="tsjs.setconfig" /> <input
 								type="hidden" name="boxchecked" value="0" /> <input
@@ -95,10 +100,10 @@ JHtml::_('behavior.tooltip');
 
 								<?php echo JHtml::_('form.token'); ?>
 						</div>
-				    </form>
+					</form>
 				</td>
 				<td valign='top' width='50%' style='padding: 0px 0px 0px 0px'>
-					<table class='adminlist'>
+					<table class='adminlist' border>
 						<tr>
 							<td colspan='2'>
 								<p>
@@ -108,7 +113,7 @@ JHtml::_('behavior.tooltip');
 						</tr>
 						<tr>
 							<td width='40%'><?php echo JText::_('Version'); ?></td>
-							<td width='60%'><?php echo '2.0.0'; ?></td>
+							<td width='60%'><?php echo '3.0.0'; ?></td>
 						</tr>
 						<tr>
 							<td><?php echo JText::_('Copyright'); ?></td>
@@ -131,5 +136,6 @@ JHtml::_('behavior.tooltip');
 				</td>
 			</tr>
 		</table>
+	</div>
 	</td>
 </tr>
