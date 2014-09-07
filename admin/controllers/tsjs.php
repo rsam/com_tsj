@@ -46,9 +46,9 @@ class TSJControllerTSJs extends JControllerAdmin
 		// Check for request forgeries
 		JRequest::checkToken() or jexit('Invalid Token');
 
-		$app =& JFactory::getApplication('administrator');
+		$app =JFactory::getApplication('administrator');
 		$msg='';
-		$this->db =& JFactory::getDBO();
+		$this->db =JFactory::getDBO();
 		if (!$this->db->connected()) {
 			echo "Нет соединения с сервером баз данных. Повторите запрос позже";
 			jexit();
@@ -56,7 +56,7 @@ class TSJControllerTSJs extends JControllerAdmin
 
 		//$date = JFactory::getDate();
 		//$now = $date->toMYSQL();
-		$params =& JComponentHelper::getParams('com_tsj');
+		$params = JComponentHelper::getParams('com_tsj');
 
 		//libxml_use_internal_errors(true);
 
@@ -113,7 +113,7 @@ class TSJControllerTSJs extends JControllerAdmin
                   	WHERE #__tsj_city.city = '" . trim($data[1]) . "';";
 
 				$this->db->setQuery( $sql );
-				$row =& $this->db->loadResult();
+				$row = $this->db->loadResult();
 
 				if (!$result = $this->db->query()) {
 					//echo $this->db->stderr();
@@ -147,7 +147,7 @@ class TSJControllerTSJs extends JControllerAdmin
                   	WHERE #__tsj_street.street = '" . trim($data[2]) . "';";
 
 				$this->db->setQuery( $sql );
-				$row =& $this->db->loadResult();
+				$row = $this->db->loadResult();
 
 				if (!$result = $this->db->query()) {
 					//echo $this->db->stderr();
@@ -185,7 +185,7 @@ class TSJControllerTSJs extends JControllerAdmin
                   		AND t1.office = '" . trim($data[4]) . "';";
 
 				$this->db->setQuery( $sql );
-				$row =& $this->db->loadResult();
+				$row = $this->db->loadResult();
 
 				if (!$result = $this->db->query()) {
 					//echo $this->db->stderr();
@@ -220,7 +220,7 @@ class TSJControllerTSJs extends JControllerAdmin
                   	WHERE  t1.username = '" . trim($data[0]) . "';";
 
 				$this->db->setQuery( $sql );
-				$row =& $this->db->loadResult();
+				$row = $this->db->loadResult();
 
 				if (!$result = $this->db->query()) {
 					//echo $this->db->stderr();
@@ -272,7 +272,7 @@ class TSJControllerTSJs extends JControllerAdmin
                   	WHERE  t1.account_num = '" . trim($data[0]) . "';";
 
 				$this->db->setQuery( $sql );
-				$row =& $this->db->loadResult();
+				$row = $this->db->loadResult();
 
 				if (!$result = $this->db->query()) {
 					//echo $this->db->stderr();
@@ -331,7 +331,7 @@ class TSJControllerTSJs extends JControllerAdmin
 		//$data = JRequest::getVar('submit', array(), 'post', 'array');
 		if( isset($_POST['submit']))
 		{
-			$db =& JFactory::getDBO();
+			$db = JFactory::getDBO();
 			if (!$db->connected()) {
 				echo "Нет соединения с сервером баз данных. Повторите запрос позже";
 				jexit();

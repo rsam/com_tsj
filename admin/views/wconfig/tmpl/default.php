@@ -80,7 +80,7 @@ Joomla.submitbutton = function(task) {
     }
     else{
         echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'account'));
-        echo JHtml::_('bootstrap.addTab', 'myTab', 'account', JText::_('qqq', true));        
+        echo JHtml::_('bootstrap.addTab', 'myTab', 'account', JText::_('Config', true));        
     }
         
 	$fieldSets = $this->form->getFieldsets();
@@ -123,11 +123,11 @@ Joomla.submitbutton = function(task) {
 	endforeach;
 
     if (version_compare(JPlatform::RELEASE, '12', '<')){
-        echo JHtml::_('bootstrap.endTab');
-        echo JHtml::_('bootstrap.endTabSet');
+        echo JHtml::_('tabs.end');        
     }
     else{
-        echo JHtml::_('tabs.end');
+        echo JHtml::_('bootstrap.endTab');
+        echo JHtml::_('bootstrap.endTabSet');    
     }
         
 	?>

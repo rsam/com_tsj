@@ -6,9 +6,15 @@ JHtml::_('behavior.tooltip');
 ?>
 <tr>
 	<td colspan="2">
+    <?
+    if (version_compare(JPlatform::RELEASE, '12', '>=')){
+    ?>
 	<div id="j-sidebar-container" class="span2">
 		<?php echo $this->sidebar; ?>
 	</div>
+    <?
+    }
+    ?>
 	<div id="j-main-container" class="span10">
 		<table width='80%'>
 			<tr>

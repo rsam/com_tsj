@@ -112,7 +112,15 @@ class TSJViewTSJs extends JViewAbstract
 	protected function addToolBar()
 	{
 		$state	= $this->get('State');
-		$canDo	= TSJsHelper::getActions('com_tsjs', 'category', $state->get('filter.category_id'));
+		//$canDo	= TSJsHelper::getActions('com_tsjs', 'category', $state->get('filter.category_id'));
+        if (version_compare(JPlatform::RELEASE, '12', '<')){
+            //$canDo	= TSJsHelper::getActions('com_tsjs');
+        }
+        else{
+            $categoryId	= $this->state->get('filter.category_id');
+            //$canDo = JHelperContent::getActions('com_tsjs');
+        }
+        
 		$user	= JFactory::getUser();
 		
 		// Заголовок
@@ -126,7 +134,7 @@ class TSJViewTSJs extends JViewAbstract
 		if ($this->getLayout() == 'street')
 		{
 			JToolBarHelper::addNew('street.add');
-			if ($canDo->get('core.edit'))			
+			//if ($canDo->get('core.edit'))			
 			{
 				JToolBarHelper::editList('street.edit');
 			}
@@ -137,9 +145,9 @@ class TSJViewTSJs extends JViewAbstract
 		}
 		else if ($this->getLayout() == 'city')
 		{
-			if ($canDo->get('core.create')) {
+			//if ($canDo->get('core.create')) {
 				JToolBarHelper::addNew('city.add');
-			}
+			//}
 			JToolBarHelper::editList('city.edit');
 			JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'city.remove');
 		}
