@@ -75,13 +75,20 @@ Joomla.submitbutton = function(task) {
 	</fieldset>
 
 	<?php
-	echo JHtml::_('tabs.start', 'config-tabs-'.$this->component->option.'_configuration', array('useCookie'=>1));
+    if (version_compare(JPlatform::RELEASE, '12', '<')){
+        echo JHtml::_('tabs.start', 'config-tabs-'.$this->component->option.'_configuration', array('useCookie'=>1));        
+    }
+    else{
+        echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'account'));
+        echo JHtml::_('bootstrap.addTab', 'myTab', 'account', JText::_('qqq', true));        
+    }
+        
 	$fieldSets = $this->form->getFieldsets();
 
 	foreach ($fieldSets as $name => $fieldSet) :
 	$label = empty($fieldSet->label) ? 'COM_TSJ_'.$name.'_FIELDSET_LABEL' : $fieldSet->label;
 
-	echo JHtml::_('tabs.panel', JText::_($label), 'publishing-details');
+    echo JHtml::_('tabs.panel', JText::_($label), 'publishing-details');
 
 	if (isset($fieldSet->description) && !empty($fieldSet->description)) :
 	echo '<p class="tab-description">'.JText::_($fieldSet->description).'</p>';
@@ -115,7 +122,14 @@ Joomla.submitbutton = function(task) {
 	<?php
 	endforeach;
 
-	echo JHtml::_('tabs.end');
+    if (version_compare(JPlatform::RELEASE, '12', '<')){
+        echo JHtml::_('bootstrap.endTab');
+        echo JHtml::_('bootstrap.endTabSet');
+    }
+    else{
+        echo JHtml::_('tabs.end');
+    }
+        
 	?>
 
 	<div>

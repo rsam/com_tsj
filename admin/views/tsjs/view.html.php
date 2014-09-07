@@ -130,7 +130,7 @@ class TSJViewTSJs extends JViewAbstract
 			{
 				JToolBarHelper::editList('street.edit');
 			}
-			if ($canDo->get('core.remote'))			
+			//if ($canDo->get('core.remote'))			
 			{
 				JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'street.remove');
 			}

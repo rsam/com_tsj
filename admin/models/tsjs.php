@@ -202,19 +202,13 @@ class TSJModelTSJs extends JModelList
 	function getAccountItems()
 	{
 		// Загружаем данные, если они еще не загружены
-		/*select *
-		from #__tsj_account
-		inner join #__tsj_address on #__tsj_address.address_id = #__tsj_account.address_id
-		inner join #__tsj_city on #__tsj_address.city_id = #__tsj_city.city_id
-		inner join #__tsj_street on #__tsj_address.street_id = #__tsj_street.street_id;*/
-
 		if (empty( $this->_acount ))
 		{
 			$this->limitstart = JRequest::getVar('limitstart', 0, '', 'int');
 
-			$query = $this->getDbo()->getQuery( true );
-			//$db = JFactory::getDBO();
-			//$query = $db->getQuery(true);
+			//$query = $this->getDbo()->getQuery( true );
+			$db = JFactory::getDBO();
+			$query = $db->getQuery(true);
 			$query->select('*');
 			$query->from('#__tsj_account');
 			$query->innerJoin('#__tsj_address on #__tsj_address.address_id = #__tsj_account.address_id');
@@ -224,22 +218,40 @@ class TSJModelTSJs extends JModelList
 			//$query->order('#__tsj_city.city, #__tsj_street.street, #__tsj_address.house, #__tsj_address.office;');
 			//$db->setQuery((string)$query);
 
-			$listOrder = $this->state->get('list.ordering','address_id');
+			//$listOrder = $this->state->get('list.ordering','#__tsj_account.address_id');
 			$listDirn = $this->state->get('list.direction','asc');
-			//echo "lim=".$this->limit;
-			//echo "start=".$this->limitstart . "<br>";
-			$query->order($listOrder . ' ' . $listDirn);
-			//echo "orderCol=".$listOrder;
-			//echo "orderDirn=".$listDirn."<br>";
-			// Пагинация. Возвразщаем в массив нужное количество с нужной страницы
-			if($this->limit == 0)
-			$this->_account = $this->_getList( $query );
-			else
-			$this->_account = $this->_getList( $query, $this->limitstart, $this->limit);
-			//$this->_account = $db->loadObjectList();
 
-			//$query = 'SELECT * FROM #__tsj_account';
-			//$this->_account = $this->_getList( $query );
+            switch ($this->getState('list.ordering')) {
+                case 'account_id':
+                    $query->order('#__tsj_account.account_id ' . $listDirn);
+                    break;
+                case 'account_num':
+                    $query->order('#__tsj_account.account_num ' . $listDirn);
+                    //$join['tt'] = true;
+                    break;
+                case 'city':
+                    $query->order('#__tsj_city.city ' . $listDirn);
+                    //$join['c'] = true;
+                    break;
+                case 'street':
+                    $query->order('#__tsj_street.street ' . $listDirn);
+                    break;
+                case 'name':
+                    $query->order('#__users.name ' . $listDirn);
+                    break;
+                default:
+                    $query->order('#__tsj_account.account_id ' . $listDirn);
+                    $this->setState('list.ordering', 'id');
+            }
+        
+			//$query->order($db->quoteName($listOrder) . ' ' . $listDirn);
+			//echo "query=".$query;
+
+			// Пагинация. Возвращаем в массив нужное количество с нужной страницы
+			if($this->limit == 0)
+                $this->_account = $this->_getList( $query );
+			else
+                $this->_account = $this->_getList( $query, $this->limitstart, $this->limit);
 		}
 
 		return $this->_account;

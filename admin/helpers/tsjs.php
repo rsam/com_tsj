@@ -39,7 +39,7 @@ class TSJsHelper extends JHelperAbstract
 	 */
 	public static $extension = 'com_tsjs';	 
 	
-	public static function getActions()
+	public static function getActions($extension, $categoryId = 0)
 	{
 		$user	= JFactory::getUser();
 		$result	= new JObject;

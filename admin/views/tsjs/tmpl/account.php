@@ -20,6 +20,7 @@ $view = JRequest::getCmd('view');
 $listOrder = $this->escape($this->state->get('list.ordering'));
 //направление сортировки
 $listDirn = $this->escape($this->state->get('list.direction'));
+
 ?>
 
 <form action="<?php echo JRoute::_('index.php?option=com_tsj'); ?>"

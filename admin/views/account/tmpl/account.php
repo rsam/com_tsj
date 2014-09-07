@@ -49,13 +49,12 @@ JHtml::_('behavior.formvalidation');
 	</fieldset>
 
 	<div>
-		<input type="hidden" name="task" value="account.edit" /> <input
-			type="hidden" name="option" value="com_tsj" /> <input type="hidden"
-			name="account_id" value="<?php echo $this->item->account_id; ?>" /> <input
-			type="hidden" name="user_id"
-			value="<?php echo $this->item->user_id; ?>" /> <input type="hidden"
-			name="address_id" value="<?php echo $this->item->address_id; ?>" /> <input
-			type="hidden" name="controller" value="account" />
-			<?php echo JHtml::_('form.token'); ?>
+		<input type="hidden" name="task" value="account.edit" />
+        <input type="hidden" name="option" value="com_tsj" />
+        <input type="hidden" name="account_id" value="<?php echo $this->item->account_id; ?>" />
+        <input type="hidden" name="user_id" value="<?php echo $this->item->user_id; ?>" />
+        <input type="hidden" name="address_id" value="<?php echo $this->item->address_id; ?>" />
+        <input type="hidden" name="controller" value="account" />
+		<?php echo JHtml::_('form.token'); ?>
 	</div>
 </form>

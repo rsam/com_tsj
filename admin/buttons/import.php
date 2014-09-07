@@ -30,9 +30,9 @@ if (version_compare(JPlatform::RELEASE, '12', 'ge'))
 			$html .= "</form> \n";
 
 			$i18n_text	= JText::_($text2);
+            $btnClass = "btn btn-small";
 			$class	= $this->fetchIconClass($name.'-import');
 			$html .= "<button onclick=\"$doTask\" class=\"" . $btnClass . "\">\n";
-			$html .= "<i class=\"$class $iconWhite\">\n";
 			$html .= "</i>\n";
 			$html .= "$i18n_text\n";
 			$html .= "</button>\n";

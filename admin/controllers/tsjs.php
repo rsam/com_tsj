@@ -304,7 +304,7 @@ class TSJControllerTSJs extends JControllerAdmin
 				else {
 					$sql = " UPDATE #__tsj_account
                   		SET   address_id='$address_id',
-                        		sq='$data[6]', tel='" .$this->encrypt($data[7], $key,  $cipher, $mode). "',
+                        		sq='$data[6]', tel='$data[7]',
                         		cat='$data[8]', lic='$data[9]'
                   		WHERE account_num='$data[0]'";
 						
