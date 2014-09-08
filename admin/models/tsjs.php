@@ -23,7 +23,7 @@ class TSJModelTSJs extends JModelList
 	var $_address;
 	var $_office;
 	var $_acount;
-	var $dbuser;
+	public $dbuser;
 
 	protected function getListQuery()
 	{
@@ -77,6 +77,7 @@ class TSJModelTSJs extends JModelList
 		$query="SHOW TABLE STATUS LIKE '%_users%';";
 		$db->setQuery((string)$query);
 		$row = $db->loadAssocList();
+        echo 'Read DB <_users> format = '.$row[0][Engine];
 		if($row[0][Engine] == 'InnoDB'){
 			JRequest::setVar($this->dbuser,'InnoDB');
 		}

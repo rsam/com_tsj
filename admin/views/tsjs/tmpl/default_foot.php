@@ -23,6 +23,7 @@ JHtml::_('behavior.tooltip');
 					<form action="<?php echo JRoute::_('index.php?option=com_tsj'); ?>"
 						method="post" name="adminForm" id="adminForm">
 						<?php
+                        echo 'Read getVar DB <_users> format = '. JRequest::getVar($this->dbuser, "MySQLi");
 						if (JRequest::getVar($this->dbuser, "MySQLi") != "InnoDB") {
 							echo JText::_('COM_TSJ_BASE_NOT_INNODB');
 							?>

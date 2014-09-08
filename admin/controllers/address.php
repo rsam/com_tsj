@@ -26,7 +26,7 @@ class TSJControllerAddress extends JControllerForm
 	 * save a record (and redirect to main page)
 	 * @return void
 	 */
-	function save()
+	function save($key = null, $urlVar = null)
 	{
 		//$model = $this->getModel('address');
 		if (parent::save('address.save')) {
@@ -60,7 +60,7 @@ class TSJControllerAddress extends JControllerForm
 	 * cancel editing a record
 	 * @return void
 	 */
-	function cancel()
+	function cancel($key = null)
 	{
 		$msg = JText::_( 'Operation Cancelled' );
 		$this->setRedirect( 'index.php?option=com_tsj&view=tsjs&layout=address', $msg );
