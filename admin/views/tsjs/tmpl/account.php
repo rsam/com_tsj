@@ -23,7 +23,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
 
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_tsj'); ?>"
+<form action="<?php echo JRoute::_('index.php?option=com_tsj&view=account'); ?>"
 	method="post" name="adminForm" id="adminForm">
 <?php if (!empty( $this->sidebar)) : ?>
 	<div id="j-sidebar-container" class="span2">
@@ -46,15 +46,15 @@ $listDirn = $this->escape($this->state->get('list.direction'));
 		</table>
 	</div>
 	<div>
-		<input type="hidden" name="filter_order"
-			value="<?php echo $listOrder; ?>" /> <input type="hidden"
-			name="filter_order_Dir" value="<?php echo $listDirn; ?>" /> <input
-			type="hidden" name="view" value="<?=$view?>" /> <input type="hidden"
-			name="option" value="<?=$option?>" /> <input type="hidden"
-			name="controller" value="tsjs" /> <input type="hidden" name="layout"
-			value="account" /> <input type="hidden" name="task" value="account" /> <input
-			type="hidden" name="boxchecked" value="0" />
-			<?php echo JHtml::_('form.token'); ?>
+		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
+        <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
+        <input type="hidden" name="view" value="tsjs" />
+        <input type="hidden" name="option" value="<?=$option?>" />
+        <input type="hidden" name="controller" value="tsjs" />
+        <input type="hidden" name="layout" value="account" />
+        <input type="hidden" name="task" value="account" />
+        <input type="hidden" name="boxchecked" value="0" />
+		<?php echo JHtml::_('form.token'); ?>
 	</div>
 
 </form>

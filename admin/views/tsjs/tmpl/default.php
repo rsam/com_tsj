@@ -13,7 +13,7 @@ else
 }
 JHtml::_('behavior.multiselect');
 ?>
-	<table width=100% class="table table-striped adminlist" id="tsjsList">
+	<table width=100% class="table table-striped adminlist" id="defaultlist">
 		<thead>
 		<?php echo $this->loadTemplate('head');?>
 		</thead>

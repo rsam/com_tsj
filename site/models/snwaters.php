@@ -94,7 +94,7 @@ class TSJModelSNWaters extends JModelForm
                " GROUP BY t1.office_counter_id;";
 
 			$this->db->setQuery( $sql );
-			$row =& $this->db->loadObjectList();
+			$row = $this->db->loadObjectList();
 
 			if (!$result = $this->db->query()) {
 				//echo $this->db->stderr();
@@ -166,7 +166,7 @@ class TSJModelSNWaters extends JModelForm
               WHERE user_id ='" . $this->username . "';";
 
 		$this->db->setQuery( $sql );
-		$row =& $this->db->loadObject();
+		$row = $this->db->loadObject();
 
 		if (!$result = $this->db->query()) {
 			echo 'Не заполнены дополнительные базы данных. Обратитесь к администратору.';
@@ -189,7 +189,7 @@ class TSJModelSNWaters extends JModelForm
               			t1.counts = '". $countpoint . "';";
 
 		$this->db->setQuery( $sql );
-		$row =& $this->db->loadResult();
+		$row = $this->db->loadResult();
 
 		if (!$result = $this->db->query()) {
 			JError::raiseError(500, $this->db->getErrorMsg());

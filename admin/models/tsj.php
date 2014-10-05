@@ -10,11 +10,7 @@ jimport( 'joomla.application.component.view' );
  * TSJ Model
  */
 class TSJModelTSJ extends JModelAdmin
-{
-	public $lout;
-	 
-	public $my_var3;
-	 
+{ 
 	/**
 	 * Returns a reference to the a Table object, always creating it.
 	 *

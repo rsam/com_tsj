@@ -39,7 +39,7 @@ if (version_compare(JPlatform::RELEASE, '12', '<'))
          * @return  void
          * @since   2.5
          */
-        //public static $extension = 'com_tsjs';	 
+        //public static $extension = 'com_tsj';	 
         
         public static function getActions($extension, $categoryId = 0)
         {
@@ -59,15 +59,12 @@ if (version_compare(JPlatform::RELEASE, '12', '<'))
             return $result;
         }	
         
-        public static function addSubmenu($vName='tsjs')
+        public static function addSubmenu($vName='default')
         {
-        
-            if (version_compare(JPlatform::RELEASE, '12', '<'))
-            {
                 JSubMenuHelper::addEntry(
                 JText::_('COM_TSJS_SUBMENU_MAIN'),
-                 'index.php?option=com_tsj&view=tsjs&layout=tsjs',
-                $vName == 'main'
+                 'index.php?option=com_tsj&view=tsjs&layout=default',
+                $vName == 'default'
                 );
 
                 JSubMenuHelper::addEntry(
@@ -93,39 +90,6 @@ if (version_compare(JPlatform::RELEASE, '12', '<'))
                  'index.php?option=com_tsj&view=tsjs&layout=account',
                 $vName == 'account'
                 );
-            }
-            else{
-                JHtmlSidebar::addEntry(
-                JText::_('COM_TSJS_SUBMENU_MAIN'),
-                 'index.php?option=com_tsj&view=tsjs&layout=tsjs',
-                $vName == 'main'
-                );
-
-                JHtmlSidebar::addEntry(
-                JText::_('COM_TSJS_SUBMENU_CITY'),
-                 'index.php?option=com_tsj&view=tsjs&layout=city',
-                $vName == 'city'
-                );
-
-                JHtmlSidebar::addEntry(
-                JText::_('COM_TSJS_SUBMENU_STREET'),
-                 'index.php?option=com_tsj&view=tsjs&layout=street',
-                $vName == 'street'
-                );
-
-                JHtmlSidebar::addEntry(
-                JText::_('COM_TSJS_SUBMENU_ADDRESS'),
-                 'index.php?option=com_tsj&view=tsjs&layout=address',
-                $vName == 'address'
-                );
-
-                JHtmlSidebar::addEntry(
-                JText::_('COM_TSJS_SUBMENU_ACCOUNT'),
-                 'index.php?option=com_tsj&view=tsjs&layout=account',
-                $vName == 'account'
-                );
-            }
-
         }
          
     }
@@ -142,43 +106,9 @@ else{
          */
         public static function addSubmenu($vName='tsjs')
         {
-        
-            if (version_compare(JPlatform::RELEASE, '12', '<'))
-            {
-                JSubMenuHelper::addEntry(
-                JText::_('COM_TSJS_SUBMENU_MAIN'),
-                 'index.php?option=com_tsj&view=tsjs&layout=tsjs',
-                $vName == 'main'
-                );
-
-                JSubMenuHelper::addEntry(
-                JText::_('COM_TSJS_SUBMENU_CITY'),
-                 'index.php?option=com_tsj&view=tsjs&layout=city',
-                $vName == 'city'
-                );
-
-                JSubMenuHelper::addEntry(
-                JText::_('COM_TSJS_SUBMENU_STREET'),
-                 'index.php?option=com_tsj&view=tsjs&layout=street',
-                $vName == 'street'
-                );
-
-                JSubMenuHelper::addEntry(
-                JText::_('COM_TSJS_SUBMENU_ADDRESS'),
-                 'index.php?option=com_tsj&view=tsjs&layout=address',
-                $vName == 'address'
-                );
-
-                JSubMenuHelper::addEntry(
-                JText::_('COM_TSJS_SUBMENU_ACCOUNT'),
-                 'index.php?option=com_tsj&view=tsjs&layout=account',
-                $vName == 'account'
-                );
-            }
-            else{
                 JHtmlSidebar::addEntry(
                 JText::_('COM_TSJS_SUBMENU_MAIN'),
-                 'index.php?option=com_tsj&view=tsjs&layout=tsjs',
+                 'index.php?option=com_tsj&view=tsjs&layout=default',
                 $vName == 'main'
                 );
 
@@ -205,8 +135,6 @@ else{
                  'index.php?option=com_tsj&view=tsjs&layout=account',
                 $vName == 'account'
                 );
-            }
-
         }
     }
 }

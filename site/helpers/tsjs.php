@@ -32,7 +32,7 @@ class TSJsHelper
 	public static function getLic()
 	{
 		// Чтение username из таблицы User
-		$user = &JFactory::getUser();
+		$user = JFactory::getUser();
 
 		$username = $user->get('username');
 		if($username == null) $username = 0;

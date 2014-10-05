@@ -28,7 +28,8 @@ class TSJModelTSJs extends JModelList
 	protected function getListQuery()
 	{
 		// Create a new query object.
-		$query = $this->getDbo()->getQuery( true );
+        $db    = JFactory::getDbo();
+		$query = $db->getQuery( true );
 		//выбираем
 		$layout = JRequest::getVar( 'layout');
 			
@@ -36,12 +37,27 @@ class TSJModelTSJs extends JModelList
 			$query->select('*')->from('#__tsj_street');
 		}
 		else if($layout == 'address'){
-			$query->select('*')->from('#__tsj_address');
+			$query->select('*')->from('#__tsj_address')->
+                innerJoin('#__tsj_city on #__tsj_address.city_id = #__tsj_city.city_id')->
+                innerJoin('#__tsj_street on #__tsj_address.street_id = #__tsj_street.street_id');
 		}
 		else if($layout == 'account'){
-			$query->select('*')->from('#__tsj_account');
+			$query->select('*')->from('#__tsj_account')->
+                innerJoin('#__tsj_address on #__tsj_address.address_id = #__tsj_account.address_id')->
+                innerJoin('#__tsj_city on #__tsj_address.city_id = #__tsj_city.city_id')->
+                innerJoin('#__tsj_street on #__tsj_address.street_id = #__tsj_street.street_id')->
+                innerJoin('#__users on #__tsj_account.user_id = #__users.id');
 		}
-		else $query->select('*')->from('#__tsj_city');
+		else {
+            $query->select('*')->from('#__tsj_city');
+        }
+        
+		// Add the list ordering clause.
+		$orderCol	= $this->state->get('list.ordering', 'greeting');
+		$orderDirn 	= $this->state->get('list.direction', 'asc');
+
+		$query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
+        
 		return $query;
 	}
 
@@ -74,10 +90,11 @@ class TSJModelTSJs extends JModelList
 		// Проверка на InnoDB тип таблицы #_users
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query="SHOW TABLE STATUS LIKE '%_users%';";
+		#$query="SHOW TABLE STATUS LIKE '%_users%';";
+        $query="SHOW TABLE STATUS LIKE '" . $db->getPrefix() . "users';";
 		$db->setQuery((string)$query);
 		$row = $db->loadAssocList();
-        echo 'Read DB <_users> format = '.$row[0][Engine];
+        #echo 'Read DB <_users> format = '.$row[0][Engine];
 		if($row[0][Engine] == 'InnoDB'){
 			JRequest::setVar($this->dbuser,'InnoDB');
 		}
@@ -287,7 +304,6 @@ class TSJModelTSJs extends JModelList
 		$params = array();
 
 		$db	= JFactory::getDBO();
-		
 		$db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_on';" );
 		$row = $db->loadResult();
 		// РџСЂРѕРІРµСЂРєР° РЅР° РѕС€РёР±РєРё
@@ -330,7 +346,6 @@ class TSJModelTSJs extends JModelList
 			}
 			// Check for request forgeries.
 			//JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
-
 			$db->setQuery(" DELETE FROM #__tsj_cfg WHERE cfg_name = 'water_on'");
 			$db->query();
 			if ($error = $db->getErrorMsg()) {

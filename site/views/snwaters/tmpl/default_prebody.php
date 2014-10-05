@@ -159,9 +159,15 @@ JHtml::_('behavior.formvalidation');
 ?>
 
 <tr>
-	<td><?php
-	if($this->dataofsn != NULL)
-	{
+	<td>
+    <?php
+    
+        $name[0] = NULL; $name[1] = NULL; $name[2] = NULL; $name[3] = NULL;  
+        $csnp[0] = NULL; $csnp[1] = NULL; $csnp[2] = NULL; $csnp[3] = NULL;
+        $hsnp[0] = NULL; $hsnp[1] = NULL; $hsnp[2] = NULL; $hsnp[3] = NULL;                
+        $cdatep[0] = NULL; $cdatep[1] = NULL; $cdatep[2] = NULL; $cdatep[3] = NULL;   
+        $hdatep[0] = NULL; $hdatep[1] = NULL; $hdatep[2] = NULL; $hdatep[3] = NULL;
+    
 		foreach ( $this->dataofsn as $row )
 		{
 			for($i = 1; $i <= $row->counts; $i++)
@@ -175,10 +181,12 @@ JHtml::_('behavior.formvalidation');
 				$name[$i] = $row->{'water_name_'.$i};
 			}
 		}
-	}
 
+if(!empty($row->counts)){
 	if($row->counts == 0) $this->countofpoint = 1;
 	else $this->countofpoint = $row->counts;
+}
+else $this->countofpoint = 1;
 
 	$date = date("Y-m-d");
 	//$date_month = date("Y-m");
@@ -293,8 +301,9 @@ JHtml::_('behavior.formvalidation');
 			</fieldset>
 
 			<div class="clr"></div>
-		</form> <br> <?php
-   	echo "<script>check_form(" . $row->counts . ");</script>";
+		</form> <br> 
+    <?php
+        if(!empty($row)) echo "<script>check_form(" . $row->counts . ");</script>";
    	?>
 	</td>
 </tr>

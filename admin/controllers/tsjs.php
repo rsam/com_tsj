@@ -36,7 +36,9 @@ class TSJControllerTSJs extends JControllerAdmin
 	 */
     public function getModel($name = 'TSJs', $prefix = 'TSJModel', $config = array('ignore_request' => true))
 	{
+        //JFactory::getApplication()->enqueueMessage('Debug: TSJControllerTSJs::getModel');
 		$model = parent::getModel($name, $prefix, $config);
+        //JFactory::getApplication()->enqueueMessage('Debug: TSJControllerTSJs::getModel model='.$model);
 		return $model;
 	}
 
@@ -319,10 +321,10 @@ class TSJControllerTSJs extends JControllerAdmin
 
 			}
 
-			echo '<br>Импорт закончен.<br>';
+			echo JText::_('COM_TSJ_IMPORT_FINISH');
 			fclose($handle);
 		}
-		//$this->setRedirect('index.php?option=com_tsjs');
+		//$this->setRedirect('index.php?option=com_tsj');
 	}
 
 	public function setinnodb()
@@ -350,6 +352,7 @@ class TSJControllerTSJs extends JControllerAdmin
 	public function setconfig()
 	{
 		// Проверка токена
+
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// Инициализация переменных

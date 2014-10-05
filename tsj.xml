@@ -10,7 +10,7 @@
    <copyright>Copyright 2012-2014 Shibin Roman</copyright>
    <license>GNU/GPL3</license>
    <!-- The version string is recorded in the components table -->
-   <version>3.0.0</version>
+   <version>3.0.1</version>
    <!-- The description is optional and defaults to the name -->
    <description>COM_TSJ_DESCRIPTION</description>
 
@@ -46,7 +46,11 @@
       <folder>language</folder>
       <folder>helpers</folder>
    </files>
-
+   <languages folder="site">
+      <language tag="en-GB">language/en-GB/en-GB.com_tsj.ini</language>
+      <language tag="ru-RU">language/ru-RU/ru-RU.com_tsj.ini</language>
+   </languages>
+    
    <media destination="com_tsj" folder="media">
       <filename>index.html</filename>
       <folder>images</folder>

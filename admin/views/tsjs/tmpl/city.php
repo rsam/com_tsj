@@ -15,7 +15,7 @@ JHtml::_('behavior.multiselect');
 
 
 $option = JRequest::getCmd('option');
-$view = JRequest::getCmd('view');
+//$view = JRequest::getCmd('view');
 
 //поле для текущей сортировки
 $listOrder = $this->escape($this->state->get('list.ordering'));
@@ -23,7 +23,7 @@ $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn = $this->escape($this->state->get('list.direction'));
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_tsj'); ?>"	method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_tsj&view=city'); ?>"	method="post" name="adminForm" id="adminForm">
 <?php if (!empty( $this->sidebar)) : ?>
 	<div id="j-sidebar-container" class="span2">
 		<?php echo $this->sidebar; ?>
@@ -47,7 +47,7 @@ $listDirn = $this->escape($this->state->get('list.direction'));
 	<div>
 		<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" /> 
 		<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-		<input type="hidden" name="view" value="<?=$view?>" />
+		<input type="hidden" name="view" value="tsjs" />
 		<input type="hidden" name="option" value="<?=$option?>" />
 		<input type="hidden" name="controller" value="tsjs" />
 		<input type="hidden" name="layout" value="city" />

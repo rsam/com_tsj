@@ -17,7 +17,7 @@ JLoader::register('TSJsHelper', JPATH_COMPONENT.'/helpers/tsjs.php');
  * @subpackage	com_tsj
  * @since		1.6
  */
-class TSJViewEConfig extends JViewLegacy
+class TSJViewEConfig extends JViewAbstract
 {
 	protected $form;
 	protected $item;

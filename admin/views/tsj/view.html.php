@@ -8,10 +8,8 @@ jimport('joomla.application.component.view');
 /**
  * TSJ View
  */
-class TSJViewTSJ extends JViewLegacy
+class TSJViewTSJ extends JViewAbstract
 {
-	 
-	public $my_var6;
 	/**
 	 * display method of TSJ view
 	 * @return void
@@ -38,7 +36,7 @@ class TSJViewTSJ extends JViewLegacy
 		parent::display($tpl);
 
 		// Set the document
-		$this->setDocument();
+		//$this->setDocument();
 	}
 
 	/**
@@ -46,10 +44,10 @@ class TSJViewTSJ extends JViewLegacy
 	 */
 	protected function addToolBar()
 	{
-		JRequest::setVar('hidemainmenu', true);
+        $input = JFactory::getApplication()->input;
+		$input->set('hidemainmenu', true);
 		$isNew = ($this->item->id == 0);
-		JToolBarHelper::title($isNew ? JText::_('COM_TSJ_MANAGER_TSJ_NEW')
-		: JText::_('COM_TSJ_MANAGER_TSJ_EDIT'));
+		JToolBarHelper::title($isNew ? JText::_('COM_TSJ_MANAGER_TSJ_NEW') : JText::_('COM_TSJ_MANAGER_TSJ_EDIT'));
 		JToolBarHelper::save('tsj.save');
 		JToolBarHelper::cancel('tsj.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 	}
@@ -63,11 +61,9 @@ class TSJViewTSJ extends JViewLegacy
 	{
 		$isNew = ($this->item->id < 1);
 		$document = JFactory::getDocument();
-		$document->setTitle($isNew ? JText::_('COM_TSJ_TSJ_CREATING')
-		: JText::_('COM_TSJ_TSJ_EDITING'));
+		$document->setTitle($isNew ? JText::_('COM_TSJ_TSJ_CREATING') : JText::_('COM_TSJ_TSJ_EDITING'));
 		$document->addScript(JURI::root() . $this->script);
-		$document->addScript(JURI::root() . "/administrator/components/com_tsj"
-		. "/views/tsj/submitbutton.js");
+		$document->addScript(JURI::root() . "/administrator/components/com_tsj" . "/views/tsj/submitbutton.js");
 		JText::script('COM_TSJ_TSJ_ERROR_UNACCEPTABLE');
 	}
 }

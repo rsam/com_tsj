@@ -1,7 +1,11 @@
 <?php
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
+if (version_compare(JPlatform::RELEASE, '12', '>=')) JHtml::_('behavior.tabstate');
 // Set some global property
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 if(!defined('DS')) define('DS',DIRECTORY_SEPARATOR);
 
@@ -20,6 +24,8 @@ if (version_compare(JPlatform::RELEASE, '12', '<'))
 	jimport('joomla.application.component.controller');
 	jimport('joomla.application.component.view');
 	
+    //JFactory::getApplication()->enqueueMessage('Debug: Create JController & JView class');
+    
 	if (!class_exists('JControllerAbstract'))
 	{
 		abstract class JControllerAbstract extends JController {}
@@ -41,13 +47,13 @@ else
 	}
 }
 
+$input = JFactory::getApplication()->input;
 // Get an instance of the controller prefixed by TSJ
-$controller = JControllerAbstract::getInstance('TSJ');
-//$controller = JController::getInstance('TSJ');
+$controller = JControllerAbstract::getInstance('tsj');
 
 // Perform the Request task
-$input = JFactory::getApplication()->input;
-$controller->execute(JRequest::getCmd('task'));
+$controller->execute($input->get('task'));
+//JFactory::getApplication()->enqueueMessage('Debug: Task='. JRequest::getCmd('task'));
 
 // Redirect if set by the controller
 $controller->redirect();

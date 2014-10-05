@@ -17,7 +17,6 @@ class TSJViewCity extends JViewAbstract
 	 */
 	protected $form = null;
 	protected $isNew = null;
-	protected $item = null;
 	protected $script = null;
 
 	/**
@@ -27,9 +26,9 @@ class TSJViewCity extends JViewAbstract
 	public function display($tpl = null)
 	{
 		// get the Data
-		$item = $this->get('Item');
-		$form = $this->get('Form');
-		$script = $this->get('Script');
+		$this->item = $this->get('Item');
+		$this->form = $this->get('Form');
+		$this->script = $this->get('Script');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -38,11 +37,6 @@ class TSJViewCity extends JViewAbstract
 			return false;
 		}
 
-		// Assign data to the view
-		$this->item = $item;
-		$this->form = $form;
-		$this->script = $script;
-
 		// Set the toolbar
 		$this->addToolBar();
 
@@ -50,7 +44,7 @@ class TSJViewCity extends JViewAbstract
 		parent::display($tpl);
 
 		// Set the document
-		$this->setDocument();
+		//$this->setDocument();
 	}
 
 	/**
@@ -59,10 +53,10 @@ class TSJViewCity extends JViewAbstract
 	protected function addToolBar()
 	{
 		JRequest::setVar('hidemainmenu', true);
-		$this->isNew = ($this->item->city_id == 0);
+		$isNew = ($this->item->city_id == 0);
 		JToolBarHelper::title($this->isNew ? JText::_('COM_TSJ_NEW_RECORD') : JText::_('COM_TSJ_EDIT_RECORD'));
 		JToolBarHelper::save('city.save');
-		JToolBarHelper::cancel('city.cancel', $this->isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
+		JToolBarHelper::cancel('city.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 
 		$this->assignRef('city', $this->item);
 	}
@@ -75,8 +69,8 @@ class TSJViewCity extends JViewAbstract
 	protected function setDocument()
 	{
 		$document = JFactory::getDocument();
-		$this->isNew = ($this->item->city_id == 0);
-		$document->setTitle($this->isNew ? JText::_('CREATING') : JText::_('EDITING'));
+		$isNew = ($this->item->city_id == 0);
+		$document->setTitle($isNew ? JText::_('CREATING') : JText::_('EDITING'));
 		$document->addScript(JURI::root() . $this->script);
 		$document->addScript(JURI::root() . "/administrator/components/com_tsj/views/city/submitbutton.js");
 		JText::script('COM_TSJ_TSJ_ERROR_UNACCEPTABLE');

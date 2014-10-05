@@ -24,10 +24,10 @@ class TSJViewTarifs extends JViewAbstract
 	function display($tpl = null)
 	{
 		// Get data from the model
-		$form = $this->get('Form');
-		$items = $this->get('Items');
-		$state = $this->get('State');
-		$pagination = $this->get('Pagination');
+		$this->form = $this->get('Form');
+		$this->items = $this->get('Items');
+		$this->state = $this->get('State');
+		$this->pagination = $this->get('Pagination');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -35,11 +35,6 @@ class TSJViewTarifs extends JViewAbstract
 			JError::raiseError(500, implode('<br />', $errors));
 			return false;
 		}
-		// Assign data to the view
-		$this->form = $form;
-		$this->items = $items;
-		$this->state = $state;
-		$this->pagination = $pagination;
 
 		// Set the toolbar
 		$this->addToolBar();
@@ -63,10 +58,9 @@ class TSJViewTarifs extends JViewAbstract
 		JToolBarHelper::preferences('com_tsj');
 		JToolBarHelper::divider();
 		}*/
-
-		JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'tarif.remove');
-		JToolBarHelper::editList('tarif.edit');
 		JToolBarHelper::addNew('tarif.add');
+        	JToolBarHelper::editList('tarif.edit');
+		JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'tarif.remove');
 
 		JToolBarHelper::help( 'com_tsj', true );
 	}

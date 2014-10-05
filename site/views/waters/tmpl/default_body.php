@@ -85,7 +85,11 @@ defined('_JEXEC') or die('Restricted Access');
 				if($show_sn) echo '<td align="center">' . $row->{'ser_num_cold_p'.$i} . '</td>';
 
 				// Вывод данных
-				$rashod =  $row->{'data_cold_c'.$i} - $prev_row->{'data_cold_c'.$i};
+                if($prev_row != NULL)
+                    $rashod =  $row->{'data_cold_c'.$i} - $prev_row->{'data_cold_c'.$i};
+                else
+                    $rashod =  $row->{'data_cold_c'.$i};
+                    
 				$rashod_cold += $rashod*1; // расход холодная суммарно
 				if($rashod < 0){
 					echo '<td align="center" style="background-color: #FF0000;"><span style="color: #ffffff;"><b>' . $row->{'data_cold_c'.$i} . '</b></span></td>';
@@ -108,7 +112,11 @@ defined('_JEXEC') or die('Restricted Access');
 				if($show_sn) echo '<td align="center">' . $row->{'ser_num_hot_p'.$i} . '</td>';
 
 				// Вывод данных
-				$rashod =  $row->{'data_hot_c'.$i} - $prev_row->{'data_hot_c'.$i};
+                if($prev_row != NULL)
+                    $rashod =  $row->{'data_hot_c'.$i} - $prev_row->{'data_hot_c'.$i};
+                else
+                    $rashod =  $row->{'data_hot_c'.$i};
+                    
 				$rashod_hot += $rashod*1; // расход горячая суммарно
 				if($rashod < 0){
 					echo '<td align="center" style="background-color: #FF0000;"><span style="color: #ffffff;"><b>' . $row->{'data_hot_c'.$i} . '</b></span></td>';

@@ -20,7 +20,7 @@ class TSJModelCity extends JModelAdmin
 	function __construct()
 	{
 		parent::__construct();
-		 
+
 		$array = JRequest::getVar('cid',  0, '', 'array');
 		$this->setId((int)$array[0]);
 	}

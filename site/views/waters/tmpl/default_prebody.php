@@ -47,6 +47,7 @@ JHtml::_('behavior.formvalidation');
 	$day = date("d");
 
 	// Проверка на допущение ввода показаний по диапазону дат и повтора ввода показаний
+    $test = 0;
 	$form = MyHelper::check($test, $date, $day);
 	if ($form > 0) :
 

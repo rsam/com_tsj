@@ -38,7 +38,7 @@ class TSJViewWaters extends JViewLegacy
 	// Переопределяем JView display метод
 	function display($tpl = null)
 	{
-		$app = &JFactory::getApplication();
+		$app = JFactory::getApplication();
 
 		$this->lic = JRequest::getVar('lic');
 		//echo $this->lic;

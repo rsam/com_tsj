@@ -10,7 +10,7 @@ jimport('joomla.application.component.view');
  */
 class TSJViewSNWaters extends JViewLegacy
 {
-	public $dataofsn;
+	//public $dataofsn;
 	public $params;
 	public $form;
 	public $username;
@@ -20,7 +20,7 @@ class TSJViewSNWaters extends JViewLegacy
 	{
 		parent::__construct($config);
 		// Чтение username из таблицы User
-		$user = &JFactory::getUser();
+		$user = JFactory::getUser();
 		$this->username = $user->get('id');
 		$this->user = $user->get('username');
 		if($this->username == null) $this->username = 0;
@@ -32,7 +32,7 @@ class TSJViewSNWaters extends JViewLegacy
 	// Overwriting JView display method
 	function display($tpl = null)
 	{
-		$app = &JFactory::getApplication();
+		$app = JFactory::getApplication();
 
 		$this->lic = JRequest::getVar('lic');
 		//echo $this->lic;
@@ -43,15 +43,14 @@ class TSJViewSNWaters extends JViewLegacy
 		}
 
 		// Assign data to the view
-		$dataofsn = $this->get('DataOfSN');
-		$this->dataofsn = $dataofsn;
-
+		$this->dataofsn = $this->get('DataOfSN');;
+        
 		// Получим параметры компонента вызвав метод getParams
-		$app = &JFactory::getApplication();
+		$app = JFactory::getApplication();
 		$this->params = $app->getParams();
 
 		//$dispatcher = JDispatcher::getInstance();
-		$this->form     = $this->get('Form');
+		$this->form = $this->get('Form');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
