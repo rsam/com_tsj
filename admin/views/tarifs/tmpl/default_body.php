@@ -2,9 +2,18 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
 ?>
-<?php foreach($this->items as $i => $item): ?>
+
+<?php if (!empty($this->items)){ ?>
+
+<?php
+$listOrder   = $this->escape($this->state->get('list.ordering'));
+$listDirn   = $this->escape($this->state->get('list.direction'));
+
+ foreach($this->items as $i => $item): 
+        $ordering	= ($listOrder == 'ordering');?>
 <tr class="row<?php echo $i % 2; ?>">
-	<td><?php echo $item->tarif_id; ?>
+	<td>
+        <?php echo $item->tarif_id; ?>
 	</td>
 	<td><?php echo JHtml::_('grid.id', $i, $item->tarif_id); ?>
 	</td>
@@ -32,9 +41,9 @@ defined('_JEXEC') or die('Restricted Access');
 		href="<?php echo JRoute::_('index.php?option=com_tsj&view=tarif&layout=edit&tarif_id='.(int) $item->tarif_id);?>">
 		<?php
 		switch ($this->escape($item->tarif_type)) {
-			case 1 : echo 'c 1 ��.�.'; break;
-			case 2 : echo '� 1 ��������'; break;
-			case 3 : echo '� ���������'; break;
+			case 1 : echo 'c 1 кв.м.'; break;
+			case 2 : echo 'с 1 человека'; break;
+			case 3 : echo 'с квартиры'; break;
 		}
 		//echo $this->escape($item->tarif_type);
 		?>
@@ -42,3 +51,4 @@ defined('_JEXEC') or die('Restricted Access');
 	</td>
 </tr>
 		<?php endforeach; ?>
+<?php } ?>        

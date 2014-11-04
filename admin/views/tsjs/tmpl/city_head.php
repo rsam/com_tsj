@@ -13,7 +13,7 @@ $listDirn   = $this->escape($this->state->get('list.direction'));
         <? echo JHtml::_('grid.sort', 'id', 'city_id', $listDirn, $listOrder); ?>
 	</th>
 	<th width="20">
-        <input type="checkbox" name="checkall-toggle" value="" onclick="Joomla.checkAll(this)" />
+        <input type="checkbox" name="toggle" value="" onclick="Joomla.checkAll(this)" />   
     </th>
 	<th>
         <? echo JHtml::_('grid.sort', 'COM_TSJ_CITY_HEADING_NAME', 'city', $listDirn, $listOrder); ?>

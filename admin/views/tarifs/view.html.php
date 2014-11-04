@@ -12,10 +12,10 @@ jimport( 'joomla.html.toolbar' );
  */
 class TSJViewTarifs extends JViewAbstract
 {
-	//список записей
 	protected $items;
-	//объект постраничной навигации
 	protected $pagination;
+	protected $state;
+    public $dbuser;
 
 	/**
 	 * Tarifs view display method
@@ -25,10 +25,10 @@ class TSJViewTarifs extends JViewAbstract
 	{
 		// Get data from the model
 		$this->form = $this->get('Form');
-		$this->items = $this->get('Items');
 		$this->state = $this->get('State');
 		$this->pagination = $this->get('Pagination');
-
+		$this->param = $this->get('Params');  
+        $this->items = $this->get('Items');
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
@@ -43,7 +43,7 @@ class TSJViewTarifs extends JViewAbstract
 		parent::display($tpl);
 
 		// Set the document
-		$this->setDocument();
+		//$this->setDocument();
 	}
 
 	/**
@@ -51,6 +51,16 @@ class TSJViewTarifs extends JViewAbstract
 	 */
 	protected function addToolBar()
 	{
+		$state	= $this->get('State');
+		$user	= JFactory::getUser();
+        
+		//$canDo	= TSJsHelper::getActions('com_tsj', 'category', $state->get('filter.category_id'));
+        if (version_compare(JPlatform::RELEASE, '12', '<')){
+        }
+        else{
+            $categoryId	= $this->state->get('filter.category_id');
+        }
+        
 		JToolBarHelper::title(JText::_('COM_TSJ_MANAGER_TARIF'));
 
 		//Выводим кнопку настройки
@@ -58,11 +68,19 @@ class TSJViewTarifs extends JViewAbstract
 		JToolBarHelper::preferences('com_tsj');
 		JToolBarHelper::divider();
 		}*/
+		$toolbar = JToolBar::getInstance('toolbar');
+		$toolbar->addButtonPath(JPATH_COMPONENT.DS.'buttons');
+     
 		JToolBarHelper::addNew('tarif.add');
-        	JToolBarHelper::editList('tarif.edit');
+        JToolBarHelper::editList('tarif.edit');
 		JToolBarHelper::deleteList('Вы действительно хотите удалить выбранные записи ?', 'tarif.remove');
 
 		JToolBarHelper::help( 'com_tsj', true );
+        
+		if (version_compare(JPlatform::RELEASE, '12', '>='))
+		{		
+			JHtmlSidebar::setAction('index.php?option=com_tsj&view=default');
+		}        
 	}
 
 	/**
