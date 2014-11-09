@@ -28,7 +28,7 @@ class TSJControllerTarif extends JControllerForm
 	 */
 	function save($key = null, $urlVar = null)
 	{
-		//$model = $this->getModel('tarif');
+		$model = $this->getModel('tarif');
 
 		if (parent::save('tarif.save')) {
 			$msg = JText::_( 'tarif Saved!' );

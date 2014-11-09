@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
@@ -35,15 +35,17 @@ class TSJViewSNWaters extends JViewLegacy
 		$app = JFactory::getApplication();
 
 		$this->lic = JRequest::getVar('lic');
-		//echo $this->lic;
+        	if($this->lic != 1) $this->lic = 0;		
 
 		if($this->lic == 0){
 			// redirect to lic
 			$app->redirect('index.php?option=com_tsj&view=lic&task=snwaters');
 		}
+        	else echo 'Соглашение на обработку данных получено';	
+
 
 		// Assign data to the view
-		$this->dataofsn = $this->get('DataOfSN');;
+		$this->dataofsn = $this->get('DataOfSN');
         
 		// Получим параметры компонента вызвав метод getParams
 		$app = JFactory::getApplication();

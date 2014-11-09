@@ -259,6 +259,7 @@ CREATE TABLE `#__tsj_tarif`(
   `tarif` DOUBLE NULL COMMENT 'Main Tarif',
   `tarif_1` DOUBLE NULL COMMENT 'Tarif category 1',
   `tarif_2` DOUBLE NULL COMMENT 'Tarif category 2',
+  `tarif_type` INT(1) NULL COMMENT 'Tarif type',  
   PRIMARY KEY (`tarif_id`)
 )
 COLLATE='utf8_unicode_ci'

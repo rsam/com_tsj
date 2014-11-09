@@ -16,8 +16,8 @@ class TSJViewTarif extends JViewAbstract
 	 * @var         form
 	 */
 	protected $form = null;
-	protected $script;
-	protected $isNew;
+	protected $isNew = null;
+	protected $script = null;
 
 	/**
 	 * display method of TSJ view
@@ -26,9 +26,9 @@ class TSJViewTarif extends JViewAbstract
 	public function display($tpl = null)
 	{
 		// get the Data
-		$item = $this->get('Item');
-		$form = $this->get('Form');
-		//$script = $this->get('Script');
+		$this->item = $this->get('Item');
+		$this->form = $this->get('Form');
+		$this->script = $this->get('Script');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -37,11 +37,6 @@ class TSJViewTarif extends JViewAbstract
 			return false;
 		}
 
-		// Assign data to the view
-		$this->item = $item;
-		$this->form = $form;
-		//$this->script = $script;
-
 		// Set the toolbar
 		$this->addToolBar();
 
@@ -49,7 +44,7 @@ class TSJViewTarif extends JViewAbstract
 		parent::display($tpl);
 
 		// Set the document
-		$this->setDocument();
+		//$this->setDocument();
 	}
 
 	/**
@@ -57,13 +52,13 @@ class TSJViewTarif extends JViewAbstract
 	 */
 	protected function addToolBar()
 	{
-		JRequest::setVar('hidemainmenu', true);
-		$this->isNew = ($this->item->tarif_id == 0);
-		JToolBarHelper::title($this->isNew ? JText::_('NEW') : JText::_('EDIT'));
+		JRequest::setVar('hidemainmenu', true);      
+		$isNew = ($this->item->tarif_id == 0);
+		JToolBarHelper::title($this->isNew ? JText::_('COM_TSJ_NEW_RECORD') : JText::_('COM_TSJ_EDIT_RECORD'));
 		JToolBarHelper::save('tarif.save');
-		JToolBarHelper::cancel('tarif.cancel', $this->isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
+		JToolBarHelper::cancel('tarif.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 
-		$this->assignRef('tarif', $this->item);
+		$this->assignRef('tarif', $this->item);        
 	}
 
 	/**
@@ -74,8 +69,8 @@ class TSJViewTarif extends JViewAbstract
 	protected function setDocument()
 	{
 		$document = JFactory::getDocument();
-		$this->isNew = ($this->item->tarif_id == 0);
-		$document->setTitle($this->isNew ? JText::_('CREATING') : JText::_('EDITING'));
+		$isNew = ($this->item->tarif_id == 0);
+		$document->setTitle($isNew ? JText::_('CREATING') : JText::_('EDITING'));
 		$document->addScript(JURI::root() . $this->script);
 		$document->addScript(JURI::root() . "/administrator/components/com_tsj/views/tarif/submitbutton.js");
 		JText::script('COM_TSJ_TSJ_ERROR_UNACCEPTABLE');

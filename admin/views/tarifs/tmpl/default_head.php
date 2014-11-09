@@ -9,10 +9,12 @@ $listDirn   = $this->escape($this->state->get('list.direction'));
 
 ?>
 <tr>
-	<th width="30"><?=JHtml::_('grid.sort', 'id', 'tarif_id', $listDirn, $listOrder); ?>
+	<th width="30">
+        <?=JHtml::_('grid.sort', 'id', 'tarif_id', $listDirn, $listOrder); ?>
 	</th>
-	<th width="20"><input type="checkbox" name="toggle" value=""
-		onclick="checkAll(<?php echo count($this->items); ?>);" /></th>
+	<th width="20">
+        <input type="checkbox" name="toggle" value="" onclick="Joomla.checkAll(this)" />
+    </th>
 	<th><?=JHtml::_('grid.sort', 'COM_TSJ_TARIF_NAME_SHORT', 'tarif_name_short', $listDirn, $listOrder); ?>
 	</th>
 	<th><?=JHtml::_('grid.sort', 'COM_TSJ_TARIF_NAME', 'tarif_name', $listDirn, $listOrder); ?>

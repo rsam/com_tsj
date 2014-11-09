@@ -5,6 +5,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.modellist');
 // import Joomla modelform library
 jimport('joomla.application.component.modeladmin');
+define('Engine','Engine');
 
 /**
  * TSJList Model
@@ -27,9 +28,16 @@ class TSJModelTarifs extends JModelList
 	protected function getListQuery()
 	{
 		// Create a new query object.
-		$query = $this->getDbo()->getQuery( true );
+        $db    = JFactory::getDbo();
+		$query = $db->getQuery( true );
 		$query->select('*')->from('#__tsj_tarif');
 
+		// Add the list ordering clause.
+		$orderCol	= $this->state->get('list.ordering', 'greeting');
+		$orderDirn 	= $this->state->get('list.direction', 'asc');
+
+		$query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
+        
 		return $query;
 	}
 
@@ -62,10 +70,24 @@ class TSJModelTarifs extends JModelList
 			$query->select('*');
 			$query->from('#__tsj_tarif');
 
-			$listOrder = $this->state->get('list.ordering','tarif_id');
+			//$listOrder = $this->state->get('list.ordering','tarif_id');
 			$listDirn = $this->state->get('list.direction','asc');
-			$query->order($listOrder . ' ' . $listDirn);
+			//$query->order($listOrder . ' ' . $listDirn);
 
+            switch ($this->getState('list.ordering')) {
+                case 'tarif_name_short':
+                    $query->order('#__tsj_tarif.tarif_name_short ' . $listDirn);
+                    //$join['c'] = true;
+                    break;
+                case 'tarif_name':
+                    $query->order('#__tsj_tarif.tarif_name ' . $listDirn);
+                    //$join['c'] = true;
+                    break;                    
+                default:
+                    $query->order('#__tsj_tarif.tarif_id ' . $listDirn);
+                    $this->setState('list.ordering', 'tarif_id');
+            }
+            
 			/*echo "lim=".$this->limit;
 			 echo "start=".$this->limitstart . "<br>";
 			 echo "orderCol=".$listOrder;
@@ -73,9 +95,9 @@ class TSJModelTarifs extends JModelList
 				
 			// Пагинация. Возвразщаем в массив нужное количество с нужной страницы
 			if($this->limit == 0)
-			$this->_tarif = $this->_getList( $query );
+                $this->_tarif = $this->_getList( $query );
 			else
-			$this->_tarif = $this->_getList( $query, $this->limitstart, $this->limit);
+                $this->_tarif = $this->_getList( $query, $this->limitstart, $this->limit);
 		}
 
 		return $this->_tarif;
