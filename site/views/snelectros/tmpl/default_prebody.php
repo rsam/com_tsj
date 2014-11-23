@@ -1,3 +1,15 @@
+<?php
+// No direct access to this file
+defined('_JEXEC') or die('Restricted Access');
+
+// Установка живучести сессии
+JHtml::_('behavior.keepalive');
+// Подключение скриптов проверки формы
+JHtml::_('behavior.formvalidation');
+// Подключение скриптов для тулбара
+//JHtml::_('behavior.tooltip');
+?>
+
 <script Language="JavaScript">
 <!--
 function check_form_electro(value)
@@ -80,6 +92,7 @@ function check_form_electro(value)
       document.snelectros.snelectros_ename3.disabled = true;
       document.snelectros.snelectros_ename3.style.display="none";
    }
+   
 }
 
 function verify()
@@ -95,18 +108,6 @@ function verify()
 
 -->
 </script>
-
-<?php
-// No direct access to this file
-defined('_JEXEC') or die('Restricted Access');
-
-// Установка живучести сессии
-JHtml::_('behavior.keepalive');
-// Подключение скриптов проверки формы
-JHtml::_('behavior.formvalidation');
-// Подключение скриптов для тулбара
-//JHtml::_('behavior.tooltip');
-?>
 
 <tr>
 	<td><?php
@@ -125,8 +126,11 @@ JHtml::_('behavior.formvalidation');
 		}
 	}
 
+if(!empty($row->counts)){
 	if($row->counts == 0) $this->countofpoint = 1;
 	else $this->countofpoint = $row->counts;
+}
+else $this->countofpoint = 1;
 
 	$date = date("Y-m-d");
 	//$date_month = date("Y-m");
@@ -210,11 +214,12 @@ JHtml::_('behavior.formvalidation');
 					</tr>
 					<?php
 				}
+                echo "<script>check_form_electro(" . $this->countofpoint . ");</script>";
 				?>
 
 					<tr>
 						<td align=left><input type="hidden" name="option" value="com_tsj" />
-							<input type="hidden" name="task" value="snelectros.submit" /> <!--<button class="back_button" id="submit" name="submit" type="submit" value="Передать показания"></button>-->
+							<input type="hidden" name="task" value="snelectros.save" /> <!--<button class="back_button" id="submit" name="submit" type="submit" value="Передать показания"></button>-->
 							<input id="submit" name="submit" type="submit"
 							value="Передать данные" /> <?php echo JHtml::_('form.token'); ?>
 						</td>
@@ -227,8 +232,11 @@ JHtml::_('behavior.formvalidation');
 			</fieldset>
 
 			<div class="clr"></div>
-		</form> <br> <?php
-   	echo "<script>check_form_electro(" . $row->counts . ");</script>";
+		</form> <br> 
+    <?php
+        if(!empty($row)) echo "<script>check_form_electro(" . $this->countofpoint . ");</script>";
    	?>
 	</td>
 </tr>
+
+<!--<script>window.onload=check_form_electro(<?$this->countofpoint?>);</script>-->

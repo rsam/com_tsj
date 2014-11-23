@@ -80,7 +80,7 @@ class TSJControllerTSJs extends JControllerAdmin
 
 			// Проверка формата файла, включая заголовок.
 			// Строки csv файла должны быть в формате:
-			//"№_лицевого_счета";"Город";"Улица";"№_дома";"№_квартиры";"ФИО",площадь(.);"Телефон";№_категории
+			//"№_лицевого_счета";"Город";"Улица";"№_дома";"№_квартиры";"ФИО",площадь(.);"Телефон";№_категории;password;email
 			// Кодировка UTF-8
 			while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
 				$num = count($data);
@@ -90,9 +90,10 @@ class TSJControllerTSJs extends JControllerAdmin
 				//   echo $data[$c] . "<br />\n";
 				//}
 
-				if( $num < 7 ) {
+				if( $num != 12 ) {
 					echo "Не верный формат CSV файла. Не правильное количество столбцов.\n";
-					echo "Формат CSV файла должен быть UTF-8 :\"№_лицевого_счета\";\"Город\";\"Улица\";\"№_дома\";\"№_квартиры\";площадь(.);\"Телефон\"\n";
+					echo "Формат CSV файла должен быть UTF-8 :\"№_лицевого_счета\";\"Город\";\"Улица\";\"№_дома\";\"№_квартиры\";\"ФИО\";площадь(.);\"Телефон\";Категория;\"Лиценция\";\"Password\";\"EMail\"\n";
+                    //account_num;city;street;house;office;fio;sq;tel;cat;lic;password;email
 					fclose($handle);
 					return false;
 				}
@@ -241,6 +242,11 @@ class TSJControllerTSJs extends JControllerAdmin
 						
 					// Это регулярное выражение удалит: пробелы и <>"'%;()&
 					$user_id = preg_replace('/[ <>\"\'%;()]+/i', '', $data[0]);
+                    $password = preg_replace('/[ <>\"\'%;()]+/i', '', $data[10]);
+                    if(empty($data[11])) $email = $user_id . '@test.ru';
+                    else $email = $data[11];
+                    
+                    
 					// проверка на размер логина. Должен быть более 2х символов
 					if(strlen($user_id) < 2) {
 						echo "Ошибка. Логин должен быть не менее 2х символов.<br><br>";
@@ -252,9 +258,17 @@ class TSJControllerTSJs extends JControllerAdmin
 					$currentdate = JFactory::getDate();
 					echo "Пользователь добавлен автоматически ". $currentdate .".<br><br>";
 						
-					$sql = " INSERT INTO #__users
-								(name, username, email, password, block, sendEmail, registerDate)
-                  		VALUES ('$data[5]','$user_id','$user_id". '@test.ru' ."','" . md5($user_id) . "','0','1','$currentdate');";
+                    if(!empty($data[10])){
+                        // Если пароль указан
+                        $sql = " INSERT INTO #__users
+                                    (name, username, email, password, block, sendEmail, registerDate)
+                            VALUES ('$data[5]','$user_id','" . $email . "','" . md5($password) . "','0','1','$currentdate');";
+                    }
+                    else{
+                        $sql = " INSERT INTO #__users
+                                    (name, username, email, password, block, sendEmail, registerDate)
+                            VALUES ('$data[5]','$user_id','" . $email . "','" . md5($user_id) . "','0','1','$currentdate');";                    
+                    }
 
 					$this->db->setQuery( $sql );
 

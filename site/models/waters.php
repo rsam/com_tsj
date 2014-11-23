@@ -109,6 +109,22 @@ class TSJModelWaters extends JModelForm
 		$row =& $this->db->loadResult();
 		$params['water_linksn'] = $row;
 
+		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_linksn_ok';" );
+		$row =& $this->db->loadResult();
+		$params['water_linksn_ok'] = $row;
+
+		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_linksn_ko';" );
+		$row =& $this->db->loadResult();
+		$params['water_linksn_ko'] = $row;
+
+		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_link_ok';" );
+		$row =& $this->db->loadResult();
+		$params['water_link_ok'] = $row;
+
+		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_link_ko';" );
+		$row =& $this->db->loadResult();
+		$params['water_link_ko'] = $row;
+        
 		$this->db->setQuery( "SELECT cfg_value FROM #__tsj_cfg WHERE cfg_name = 'water_startDay';" );
 		$row =& $this->db->loadResult();
 		$params['water_startDay'] = $row;

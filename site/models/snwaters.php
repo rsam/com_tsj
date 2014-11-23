@@ -202,9 +202,9 @@ class TSJModelSNWaters extends JModelForm
 
 
 		// добавить
-		if($row != 0)
+		/*if($row != 0)
 		{
-			//echo 'Обновлено.';
+			echo 'Обновлено.';
 			$sql = "UPDATE #__tsj_water_office
        SET water_name_1='$name[1]',water_name_2='$name[2]',water_name_3='$name[3]',
        	date_in_hot_p1='$datehotwater1',date_in_hot_p2='$datehotwater2',date_in_hot_p2='$datehotwater2',
@@ -214,7 +214,7 @@ class TSJModelSNWaters extends JModelForm
 			$this->db->setQuery( $sql );
 
 		}
-		else
+		else*/
 		{
 			//echo 'Сохранено.' . date('Y-m-d',strtotime($datehotwater));
 			// Сохраняем серийные номера и другую информацию

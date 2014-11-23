@@ -190,7 +190,7 @@ class TSJModelSNElectros extends JModelForm
 
 
 		// добавить
-		if($row != 0)
+		/*if($row != 0)
 		{
 			//echo 'Обновлено.';
 			$sql = "UPDATE #__tsj_electro_office
@@ -201,7 +201,7 @@ class TSJModelSNElectros extends JModelForm
 			$this->db->setQuery( $sql );
 
 		}
-		else
+		else*/
 		{
 			//echo 'Сохранено.' . date('Y-m-d',strtotime($datehotelectro));
 			// Сохраняем серийные номера и другую информацию

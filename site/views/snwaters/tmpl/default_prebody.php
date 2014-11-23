@@ -1,3 +1,15 @@
+<?php
+// No direct access to this file
+defined('_JEXEC') or die('Restricted Access');
+
+// Установка живучести сессии
+JHtml::_('behavior.keepalive');
+// Подключение скриптов проверки формы
+JHtml::_('behavior.formvalidation');
+// Подключение скриптов для тулбара
+//JHtml::_('behavior.tooltip');
+?>
+
 <script Language="JavaScript">
 <!--
 function check_form(value)
@@ -130,6 +142,7 @@ function check_form(value)
       document.snwaters.snwaters_wname3.disabled = true;
       document.snwaters.snwaters_wname3.style.display="none";
    }
+   
 }
 
 function verify()
@@ -145,18 +158,6 @@ function verify()
 
 -->
 </script>
-
-<?php
-// No direct access to this file
-defined('_JEXEC') or die('Restricted Access');
-
-// Установка живучести сессии
-JHtml::_('behavior.keepalive');
-// Подключение скриптов проверки формы
-JHtml::_('behavior.formvalidation');
-// Подключение скриптов для тулбара
-//JHtml::_('behavior.tooltip');
-?>
 
 <tr>
 	<td>
@@ -190,7 +191,8 @@ else $this->countofpoint = 1;
 
 	$date = date("Y-m-d");
 	//$date_month = date("Y-m");
-	$day = date("d");
+	$day = date("d");    
+    
 	?>
 
 		<form class="form-validate" name="snwaters" id="snwaters"
@@ -284,11 +286,12 @@ else $this->countofpoint = 1;
 					</tr>
 					<?php
 				}
+                echo "<script>check_form(" . $this->countofpoint . ");</script>";
 				?>
 
 					<tr>
 						<td align=left><input type="hidden" name="option" value="com_tsj" />
-							<input type="hidden" name="task" value="snwaters.submit" /> <!--<button class="back_button" id="submit" name="submit" type="submit" value="Передать показания"></button>-->
+							<input type="hidden" name="task" value="snwaters.save" /> <!--<button class="back_button" id="submit" name="submit" type="submit" value="Передать показания"></button>-->
 							<input id="submit" name="submit" type="submit"
 							value="Передать данные" /> <?php echo JHtml::_('form.token'); ?>
 						</td>
@@ -303,7 +306,9 @@ else $this->countofpoint = 1;
 			<div class="clr"></div>
 		</form> <br> 
     <?php
-        if(!empty($row)) echo "<script>check_form(" . $row->counts . ");</script>";
+        if(!empty($row)) echo "<script>check_form(" . $this->countofpoint . ");</script>";
    	?>
 	</td>
 </tr>
+
+<!--<script>window.onload=check_form(<?$this->countofpoint?>);</script>-->

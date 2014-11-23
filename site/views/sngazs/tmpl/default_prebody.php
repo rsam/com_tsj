@@ -1,3 +1,15 @@
+<?php
+// No direct access to this file
+defined('_JEXEC') or die('Restricted Access');
+
+// Установка живучести сессии
+JHtml::_('behavior.keepalive');
+// Подключение скриптов проверки формы
+JHtml::_('behavior.formvalidation');
+// Подключение скриптов для тулбара
+//JHtml::_('behavior.tooltip');
+?>
+
 <script Language="JavaScript">
 <!--
 function check_form_gaz(value)
@@ -96,18 +108,6 @@ function verify()
 -->
 </script>
 
-<?php
-// No direct access to this file
-defined('_JEXEC') or die('Restricted Access');
-
-// Установка живучести сессии
-JHtml::_('behavior.keepalive');
-// Подключение скриптов проверки формы
-JHtml::_('behavior.formvalidation');
-// Подключение скриптов для тулбара
-//JHtml::_('behavior.tooltip');
-?>
-
 <tr>
 	<td><?php
 	if($this->dataofsn != NULL)
@@ -125,12 +125,16 @@ JHtml::_('behavior.formvalidation');
 		}
 	}
 
+if(!empty($row->counts)){
 	if($row->counts == 0) $this->countofpoint = 1;
 	else $this->countofpoint = $row->counts;
+}
+else $this->countofpoint = 1;
 
 	$date = date("Y-m-d");
 	//$date_month = date("Y-m");
-	$day = date("d");
+	$day = date("d");    
+    
 	?>
 
 		<form class="form-validate" name="sngazs" id="sngazs"
@@ -210,11 +214,12 @@ JHtml::_('behavior.formvalidation');
 					</tr>
 					<?php
 				}
+                echo "<script>check_form_gaz(" . $this->countofpoint . ");</script>";
 				?>
 
 					<tr>
 						<td align=left><input type="hidden" name="option" value="com_tsj" />
-							<input type="hidden" name="task" value="sngazs.submit" /> <!--<button class="back_button" id="submit" name="submit" type="submit" value="Передать показания"></button>-->
+							<input type="hidden" name="task" value="sngazs.save" /> <!--<button class="back_button" id="submit" name="submit" type="submit" value="Передать показания"></button>-->
 							<input id="submit" name="submit" type="submit"
 							value="Передать данные" /> <?php echo JHtml::_('form.token'); ?>
 						</td>
@@ -227,8 +232,11 @@ JHtml::_('behavior.formvalidation');
 			</fieldset>
 
 			<div class="clr"></div>
-		</form> <br> <?php
-   	echo "<script>check_form_gaz(" . $row->counts . ");</script>";
+		</form> <br> 
+    <?php
+        if(!empty($row)) echo "<script>check_form_gaz(" . $this->countofpoint . ");</script>";
    	?>
 	</td>
 </tr>
+
+<!--<script>window.onload=check_form_gaz(<?$this->countofpoint?>);</script>-->

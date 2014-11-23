@@ -16,14 +16,14 @@ fclose($fobj);
 <form class="form-validate" name="lic" id="lic"
 	action="<?php echo JRoute::_('index.php'); ?>" method="post">
 	<fieldset>
-		<p align=center>
-			Согласен с использованием персональных данных на сайте &nbsp;&nbsp;<input
-				type="checkbox" name="checklic" id="checklic" value="1" /> <input
-				type="hidden" name="option" value="com_tsj" /> <input type="hidden"
-				name="task" value="lic.submit" /> <input type="hidden"
-				name="subtask" value="<?php echo $this->tsk ?>" /> <br> <input
-				id="submit" name="submit" type="submit" value="Передать данные" />
-				<?php echo JHtml::_('form.token'); ?>
+		<p align=center>Согласен с использованием персональных данных на сайте &nbsp;&nbsp;
+        <input type="checkbox" name="checklic" id="checklic" value="1" />
+        <input type="hidden" name="option" value="com_tsj" />
+        <input type="hidden" name="task" value="lic.save" />
+        <input type="hidden" name="subtask" value="<?php echo $this->tsk ?>" />
+        <br>
+        <input id="save" name="save" type="submit" value="Передать данные" />
+		<?php echo JHtml::_('form.token'); ?>
 		</p>
 	</fieldset>
 </form>

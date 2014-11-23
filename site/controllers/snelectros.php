@@ -44,7 +44,7 @@ class TSJControllerSNElectros extends JControllerForm
 	 * @since   11.1
 	 */
 	// Метод вызывается при нажатии кнопки формы
-	public function submit()
+	public function save()
 	{
 		// Check for request forgeries.
 		JRequest::checkToken() or jexit(JText::_('JINVALID_TOKEN'));

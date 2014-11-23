@@ -63,6 +63,8 @@ class TSJControllerWaters extends JControllerForm
 		if ($upditem)
 		{
 			echo "<h2>Показания индивидуальных счетчиков воды сохранены</h2>";
+            //$rdr = JRequest::getVar('watersrdr', array(), 'post', 'array');
+            //$this->setRedirect(JRoute::_("'".$rdr."'", false));
 		}
 		else
 		{

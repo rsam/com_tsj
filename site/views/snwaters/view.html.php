@@ -10,7 +10,7 @@ jimport('joomla.application.component.view');
  */
 class TSJViewSNWaters extends JViewLegacy
 {
-	//public $dataofsn;
+	public $dataofsn;
 	public $params;
 	public $form;
 	public $username;
@@ -26,7 +26,7 @@ class TSJViewSNWaters extends JViewLegacy
 		if($this->username == null) $this->username = 0;
 
 		## only for test
-		//$this->username = 6334;
+		//$this->username = test;
 	}
 	 
 	// Overwriting JView display method
