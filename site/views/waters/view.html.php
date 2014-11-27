@@ -11,12 +11,14 @@ jimport('joomla.application.component.view');
 class TSJViewWaters extends JViewLegacy
 {
 	public $dataofsn;
+    public $address;
 	public $dataofcounter;
 	public $params;
 	public $form;
 	 
 	public $user;
 	public $username;
+    public $userid;
 	 
 	public $lic;
 	 
@@ -25,13 +27,14 @@ class TSJViewWaters extends JViewLegacy
 		parent::__construct($config);
 
 		// Чтение username из таблицы User
-		$user = &JFactory::getUser();
-		$this->username = $user->get('id');
+		$user = JFactory::getUser();
+		$this->userid = $user->get('id');
+        $this->username = $user->get('name');
 		$this->user = $user->get('username');
-		if($this->username == null) $this->username = 0;
+		if($this->userid == null) $this->userid = 0;
 
 		## only for test
-		//$this->username = 6334;
+		//$this->username = test;
 
 	}
 	 
@@ -56,6 +59,9 @@ class TSJViewWaters extends JViewLegacy
 		$dataofcounter = $this->get('DataOfCounters');
 		$this->dataofcounter = $dataofcounter;
 
+        $address = $this->get('Address');
+        $this->address = $address;
+        
 		// Получим параметры компонента вызвав метод модели getParams
 		$this->params = $this->get('Params');
 		//print_r($this->params);

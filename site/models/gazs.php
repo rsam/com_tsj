@@ -21,6 +21,8 @@ class TSJModelGazs extends JModelForm
 	 * @var string msg
 	 */
 	protected $msg;
+    protected $msg1;
+    protected $msg2;
 
 	/**
 	 * @var integer count of points with gaz counters
@@ -60,7 +62,7 @@ class TSJModelGazs extends JModelForm
 		parent::__construct($config);
 
 		// Чтение username из таблицы User
-		$user = &JFactory::getUser();
+		$user = JFactory::getUser();
 
 		$this->username = $user->get('id');
 		if($this->username == null) $this->username = 0;
@@ -73,7 +75,7 @@ class TSJModelGazs extends JModelForm
 		}
 
 		### for test only
-		//$this->username = 6334;
+		//$this->username = test;
 
 	}
 
@@ -178,7 +180,7 @@ class TSJModelGazs extends JModelForm
 	 */
 	public function getDataOfSN()
 	{
-		if (!isset($this->msg))
+		if (!isset($this->msg1))
 		{
 			// Подготовка запроса на получение показаний счетчиков
 			$sql = " SELECT t1.office_counter_id, t2.user_id,
@@ -206,11 +208,47 @@ class TSJModelGazs extends JModelForm
 			{
 				return NULL;
 			}
+			$this->msg1 = true;            
 		}
 
 		return $row;
 	}
 
+    public function getAddress()
+	{
+		if (!isset($this->msg2))
+		{
+			// Подготовка запроса на получение показаний счетчиков
+			$sql = " SELECT *
+                  FROM #__tsj_account
+                  INNER JOIN #__tsj_address on #__tsj_address.address_id = #__tsj_account.address_id
+                  INNER JOIN #__tsj_city on #__tsj_address.city_id = #__tsj_city.city_id
+                  INNER JOIN #__tsj_street on #__tsj_address.street_id = #__tsj_street.street_id
+                  WHERE #__tsj_account.user_id ='" . $this->username . "'" .
+                  ";";
+
+			// Выполнение запроса в базу данных и получения списка строк соответствующих запросу row
+			$this->db->setQuery( $sql );
+			$row = $this->db->loadObject();
+			$this->office_counter_id = $row->city . ', ' . $row->street . ', ' . $row->house . ' - ' . $row->office;
+			//echo $office_counter_id;
+
+			// Проверка на ошибки
+			if (!$result = $this->db->query()) {
+				return false;
+			}
+
+			if (empty($row))
+			{
+				return NULL;
+			}
+            
+			$this->msg2 = true;            
+		}
+
+		return $this->office_counter_id;
+	}
+    
 	/**
 	 * Get the data for a new qualification
 	 */

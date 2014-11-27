@@ -14,7 +14,8 @@ class TSJViewGazs extends JViewLegacy
 	public $dataofcounter;
 	public $params;
 	public $form;
-	 
+    public $address;   
+    
 	public $user;
 	public $username;
 	 
@@ -25,20 +26,21 @@ class TSJViewGazs extends JViewLegacy
 		parent::__construct($config);
 
 		// Чтение username из таблицы User
-		$user = &JFactory::getUser();
-		$this->username = $user->get('id');
+		$user = JFactory::getUser();
+		$this->userid = $user->get('id');
+        $this->username = $user->get('name');
 		$this->user = $user->get('username');
-		if($this->username == null) $this->username = 0;
+		if($this->userid == null) $this->userid = 0;
 
 		## only for test
-		//$this->username = 6334;
+		//$this->username = test;
 
 	}
 	 
 	// Переопределяем JView display метод
 	function display($tpl = null)
 	{
-		$app = &JFactory::getApplication();
+		$app = JFactory::getApplication();
 
 		$this->lic = JRequest::getVar('lic');
 		//echo $this->lic;
@@ -56,6 +58,9 @@ class TSJViewGazs extends JViewLegacy
 		$dataofcounter = $this->get('DataOfCounters');
 		$this->dataofcounter = $dataofcounter;
 
+        $address = $this->get('Address');
+        $this->address = $address;
+        
 		// Получим параметры компонента вызвав метод модели getParams
 		$this->params = $this->get('Params');
 		//print_r($this->params);
