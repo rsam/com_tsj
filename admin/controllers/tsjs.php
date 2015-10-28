@@ -42,6 +42,316 @@ class TSJControllerTSJs extends JControllerAdmin
 		return $model;
 	}
 
+	function wimport()
+	{        
+		// Check for request forgeries
+		JRequest::checkToken() or jexit('Invalid Token');
+
+		$app =JFactory::getApplication('administrator');
+		$msg='';
+		$this->db =JFactory::getDBO();
+		if (!$this->db->connected()) {
+			echo "Нет соединения с сервером баз данных. Повторите запрос позже";
+			jexit();
+		}
+
+		//$date = JFactory::getDate();
+		//$now = $date->toMYSQL();
+		$params = JComponentHelper::getParams('com_tsj');
+
+		//libxml_use_internal_errors(true);
+
+		//Retrieve file details from uploaded file, sent from upload form:
+		$file = JRequest::getVar('file_upload', null, 'files', 'array');
+		if ($file['name'])
+		{
+			$local = false;
+			$filename = $file['tmp_name'];
+		}
+		else
+		{
+			$local = true;
+			$filename = JPATH_COMPONENT_ADMINISTRATOR.'/'.'files'.'/'.JRequest::getVar('local_file', null);
+		}
+
+		//$row = 1;
+		if (($handle = fopen($filename, "r")) !== FALSE) {
+
+			// Проверка формата файла, включая заголовок.
+			
+			//********************************************************
+			//** Внимание !!! Важно - формат файла и экспорта в csv **
+			//********************************************************
+			
+			// Строки csv файла должны быть в формате:
+			//"№_лицевого_счета";кол-во_точек;"Название";"SN";Дата_поверки;"Вид_показаний";Показания
+			// Поле вид показаний: Hot_1 или Cold_1 или Hot_2 или Cold_2 или Hot_3 или Cold_3
+			// Тип поля: №_лицевого_счета, Название_1, SN, Вид_показаний - текст
+			// Тип поля: кол-во_точек, Показания - число
+			// Тип поля: Дата_поверки - дата
+			
+			// При сохранении из excell в csv обязательно использовать настройки
+			// Кодировка: Юникод UTF-8
+			// Разделитель полей: ;
+			// Разделитель текста: "
+			// Сохранять содержимое ячеек как на экране - выбрано
+			// Текстовые значения в кавычках - выбрано
+			
+			//********************************************************
+			
+			$k = 0;
+			while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+				$num = count($data);
+				//echo $num."полей в строке"."<br />";
+				$k++;
+				//for ($c=0; $c < $num; $c++) {
+				//   echo $data[$c] . "<br />\n";
+				//}
+
+				if( $num != 7 ) {
+					echo "Неверный формат CSV файла. Не правильное количество столбцов.\n";
+					echo "Формат CSV файла должен быть UTF-8 :\"№_лицевого_счета\";кол-во_точек;\"Название\";\"SN\";Дата_поверки;\"Вид_показаний\";Показания;";
+					echo " Ошибка в строке №".$k;
+                    //account_num;city;street;house;office;fio;sq;tel;cat;lic;password;email
+					fclose($handle);
+					return false;
+				}
+			}
+				
+			fseek($handle, 0);
+
+			$city_id = 0;
+			$street_id = 0;
+			$address_id = 0;
+			$account_id = 0;	
+
+			$whot = "Горячая вода";
+			$wcold = "Холодная вода";
+			$eld = "Э ДЕНЬ";
+			$eln = "Э НОЧЬ";
+
+			$data = fgetcsv( $handle, 1000, ";" ); // Первая строка заголовка пропускается
+			
+			while ( ( $data = fgetcsv( $handle, 1000, ";" ) ) !== FALSE ) {
+				//$num = count($data);
+
+				//------------------------------------------------------------------------
+				// Ищем account_num в таблице tsj_account и запоминаем его
+				$sql = " SELECT account_id FROM #__tsj_account
+						WHERE account_num = '" . trim($data[0]) . "';";
+
+				$this->db->setQuery( $sql );
+				$row = $this->db->loadResult();
+
+				if (!$result = $this->db->query()) {
+					//echo $this->db->stderr();
+					fclose($handle);
+					return false;
+				}
+
+				// Запоминаем ID если запись найдена
+				if (empty($row)){
+					//echo JText::_('COM_TSJ_IMPORT_FINISH');
+					//return false;
+					continue;
+				}
+				else{
+					echo JText::_('.');
+					$account_id = $row;
+				}
+				
+				//print_r("id=".$account_id."<br />");
+				
+				//------------------------------------------------------------------------
+				// Определяем тип показаний по полю $data[5]
+				if(strcmp($data[5], $whot) == 0){
+					$table_name = '#__tsj_water_office';
+					$table_field_name = "water_name_1";
+					$type_1 = $whot;
+					$ser_num = "ser_num_hot_p1";
+					$date_in = "date_in_hot_p1";
+					$table_data_name = "#__tsj_water_data";
+					$data_counter = "data_hot_c1";
+				}
+				if(strcmp($data[5], $wcold) == 0){
+					$table_name = '#__tsj_water_office';
+					$table_field_name = "water_name_1";
+					$type_1 = $wcold;
+					$ser_num = "ser_num_cold_p1";					
+					$date_in = "date_in_cold_p1";
+					$table_data_name = "#__tsj_water_data";					
+					$data_counter = "data_cold_c1";
+				}
+				if(strcmp($data[5], $eld) == 0){
+					$table_name = '#__tsj_electro_office';
+					$table_field_name = "electro_name_1";
+					$type_1 = $eld;
+					$ser_num = "ser_num_p1";
+					$date_in = "date_in_p1";
+					$table_data_name = "#__tsj_electro_data";	
+					$data_counter = "data_c1";					
+				}
+				
+				if(strcmp($data[5], $eln) == 0){
+					$table_name = '#__tsj_electro_office';
+					$table_field_name = "electro_name_1";					
+					$type_1 = $eln;
+					$ser_num = "ser_num_p2";
+					$date_in = "date_in_p2";
+					$table_data_name = "#__tsj_electro_data";					
+					$data_counter = "data_c2";					
+				}
+				
+				
+				//print_r("value=".$data[6]."<br />");
+				// Замена запятой на точку в поле показаний
+				$data[6] = str_replace(",",".",$data[6]);
+				//print_r("value=".$data[6]."<br />");				
+				
+				
+				//-------------------------------------------------------------------
+				// Запись серийных номеров и дат поверок счетчиков
+				
+				//------------------------------------------------------------------------
+				// Смотрим нет ли уже записи с таким account_id в таблице $table_name
+				$sql = " SELECT *
+                  	FROM ".$table_name.
+                  	" WHERE account_id='$account_id';";
+					
+				//print_r($sql."<br />");
+				$this->db->setQuery( $sql );
+				$row = $this->db->loadResult();
+
+				if (!$result = $this->db->query()) {
+					//echo $this->db->stderr();
+					fclose($handle);
+					return false;
+				}
+				
+				if (empty($row)) {
+					//print_r("Add new record"."<br />");
+					// в таблице $table_name запись с account_id не найдена
+					// Добавляем в таблицу tsj_water_office запись
+					// Добавить
+					$sql = " INSERT INTO ".$table_name.
+									" (account_id,counts, ".$table_field_name.")
+							VALUES ('$account_id','$data[1]','$data[2]');";
+							
+					//print_r($sql."<br />");
+					$this->db->setQuery( $sql );
+
+					if (!$result = $this->db->query()) {
+						echo $this->db->stderr();
+						fclose($handle);
+						return false;
+					}
+				}
+				
+				if(strcmp($data[5], $type_1) == 0){
+					//print_r("Update hot record"."<br />");
+					$sql = " UPDATE ".$table_name.
+						" SET ".$ser_num."='$data[3]', ".$date_in."='$data[4]'
+						WHERE account_id='$account_id';";
+				}
+				else if(strcmp($data[5], $type_1) == 0){
+					//print_r("Update cold record"."<br />");
+					$sql = " UPDATE ".$table_name.
+						" SET ".$ser_num."='$data[3]', ".$date_in."='$data[4]'
+						WHERE account_id='$account_id';";
+				}
+				//print_r($sql."<br />");							
+				$this->db->setQuery( $sql );
+
+				if (!$result = $this->db->query()) {
+					echo $this->db->stderr();
+					fclose($handle);
+					return false;
+				}
+
+				//-------------------------------------------------------------------
+				// Запись показаний счетчиков
+				
+				//-------------------------------------------------------------------
+				// Запоминаем office_counter_id из таблицы $table_name
+				$sql = " SELECT office_counter_id, account_id
+                  	FROM ".$table_name.
+                  	" WHERE account_id='$account_id';";
+				//print_r($sql."<br />");
+				
+				$this->db->setQuery( $sql );
+				$row = $this->db->loadResult();
+
+				if (!$result = $this->db->query()) {
+					//echo $this->db->stderr();
+					fclose($handle);
+					return false;
+				}
+				
+				if (empty($row)) {
+					// ошибка
+					print_r("Have not account_id=".$account_id." in table ".$table_name."<br />");
+					return false;
+				}
+				else $office_counter_id = $row;
+				
+				
+				//-------------------------------------------------------------------
+				// Проверяем нет ли записи
+				$sql = " SELECT *
+                  	FROM ".$table_data_name.
+                  	" WHERE office_counter_id='$office_counter_id';";
+				//print_r($sql."<br />");
+					
+				$this->db->setQuery( $sql );
+				$row = $this->db->loadResult();
+
+				if (!$result = $this->db->query()) {
+					//echo $this->db->stderr();
+					fclose($handle);
+					return false;
+				}
+				
+				if (empty($row)) {
+					// Записываем показания в таблицу $table_data_name
+					$sql = " INSERT INTO ".$table_data_name.
+									" (office_counter_id)
+							VALUES ('$office_counter_id');";
+					//print_r($sql."<br />");
+					$this->db->setQuery( $sql );
+
+					if (!$result = $this->db->query()) {
+						echo $this->db->stderr();
+						fclose($handle);
+						return false;
+					}
+				}
+					
+				if(strcmp($data[5], $type_1) == 0){
+					$sql = " UPDATE ".$table_data_name.
+						" SET ".$data_counter."='$data[6]'
+						WHERE office_counter_id='$office_counter_id';";
+				}
+				else if(strcmp($data[5], $type_1) == 0){
+					$sql = " UPDATE ".$table_data_name.
+						" SET ".$data_counter."='$data[6]'
+						WHERE office_counter_id='$office_counter_id';";
+				}
+				//print_r($sql."<br />");							
+				$this->db->setQuery( $sql );
+
+				if (!$result = $this->db->query()) {
+					echo $this->db->stderr();
+					fclose($handle);
+					return false;
+				}		
+			}
+
+			echo JText::_('COM_TSJ_IMPORT_FINISH');
+			fclose($handle);
+		}
+		//$this->setRedirect('index.php?option=com_tsj');
+    }
+        
 	function import()
 	{
 
@@ -302,7 +612,9 @@ class TSJControllerTSJs extends JControllerAdmin
 				//$key = "thg43hgfhd45";
 				//echo $this->encrypt($data[7], $key,  $cipher, $mode);
 				//$user_id = 258;
-
+				
+				$data[6] = str_replace(",",".",$data[6]);
+				
 				if (empty($row)) {
 					// Добавить
 					$sql = " INSERT INTO #__tsj_account

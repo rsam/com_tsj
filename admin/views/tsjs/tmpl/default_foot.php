@@ -6,13 +6,13 @@ JHtml::_('behavior.tooltip');
 ?>
 <tr>
 	<td colspan="2">
-    <?
+    <?php
     if (version_compare(JPlatform::RELEASE, '12', '>=')){
     ?>
 	<div id="j-sidebar-container" class="span2">
 		<?php echo $this->sidebar; ?>
 	</div>
-    <?
+    <?php
     }
     ?>
 	<div id="j-main-container" class="span10">

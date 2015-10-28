@@ -165,21 +165,37 @@ class TSJViewTSJs extends JViewAbstract
             }
 		}
 		else{
-            $toolbar->loadButtonType('Import', true);		
-            
-            if (version_compare(JPlatform::RELEASE, '12', '<')){
-                $toolbar->appendButton('Import', 'tsjs-import', 'COM_TSJ_CONFIG_IMPORT', 'tsjs.import',false);
-            }
-            else{
-                $toolbar->appendButton('Import', 'import', 'tsjs-import', 'COM_TSJ_CONFIG_IMPORT', 'tsjs.import', false);		
-            }
+                    $toolbar->loadButtonType('Import', true);		
 
-		$doc = JFactory::getDocument();
-		//$icon_48_import = " .icon-48-tsjs {background:url(components/com_tsj/images/header/icon-48-importer.png) no-repeat; }";
-		//$doc->addStyleDeclaration($icon_48_import);
-		$icon_32_import = " .icon-32-tsjs-import {background:url(components/com_tsj/images/importer.png) no-repeat; }";
-		$doc->addStyleDeclaration($icon_32_import);
+                    if (version_compare(JPlatform::RELEASE, '12', '<')){
+                        $toolbar->appendButton('Import', 'tsjs-import', 'COM_TSJ_CONFIG_IMPORT', 'tsjs.import',false);
+                    }
+                    else{
+                        $toolbar->appendButton('Import', 'import', 'tsjs-import', 'COM_TSJ_CONFIG_IMPORT', 'tsjs.import', false);		
+                    }
+
+                    $doc = JFactory::getDocument();
+                    //$icon_48_import = " .icon-48-tsjs {background:url(components/com_tsj/images/header/icon-48-importer.png) no-repeat; }";
+                    //$doc->addStyleDeclaration($icon_48_import);
+                    $icon_32_import = " .icon-32-tsjs-import {background:url(components/com_tsj/images/importer.png) no-repeat; }";
+                    $doc->addStyleDeclaration($icon_32_import);
 		
+                    
+                    $toolbar->loadButtonType('wImport', true);		
+
+                    if (version_compare(JPlatform::RELEASE, '12', '<')){
+                        $toolbar->appendButton('wImport', 'tsjs-wimport', 'COM_TSJ_CONFIG_WIMPORT', 'tsjs.wimport',false);
+                    }
+                    else{
+                        $toolbar->appendButton('wImport', 'wimport', 'tsjs-wimport', 'COM_TSJ_CONFIG_WIMPORT', 'tsjs.wimport', false);		
+                    }
+
+                    $doc = JFactory::getDocument();
+                    //$icon_48_import = " .icon-48-tsjs {background:url(components/com_tsj/images/header/icon-48-importer.png) no-repeat; }";
+                    //$doc->addStyleDeclaration($icon_48_import);
+                    $icon_32_import = " .icon-32-tsjs-import {background:url(components/com_tsj/images/importer.png) no-repeat; }";
+                    $doc->addStyleDeclaration($icon_32_import);
+                    
 		}
 		
 		// Options button.

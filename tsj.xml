@@ -7,10 +7,10 @@
    <author>Shibin Roman</author>
    <authorEmail>rsa_m@mail.ru</authorEmail>
    <authorUrl>http://resea.ru</authorUrl>
-   <copyright>Copyright 2012-2014 Shibin Roman</copyright>
+   <copyright>Copyright 2012-2015 Shibin Roman</copyright>
    <license>GNU/GPL3</license>
    <!-- The version string is recorded in the components table -->
-   <version>3.0.3</version>
+   <version>3.1.0</version>
    <!-- The description is optional and defaults to the name -->
    <description>COM_TSJ_DESCRIPTION</description>
 
